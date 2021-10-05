@@ -20,6 +20,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Local Apps
+    'diary',
+
     # Third Party Apps
     'rest_framework',
     'debug_toolbar',
