@@ -6,6 +6,7 @@ from rest_framework.response import Response
 
 from .models import Article
 from .serializers import ArticleSerializer
+from .permissions import IsAuthorOrReadonly
 
 
 @api_view(['GET', 'POST'])
@@ -26,7 +27,7 @@ def article_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-# TODO: IsAuthorOrReadonly 데코레이터 추가
+@permission_classes([IsAuthorOrReadonly])
 def article_detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
     # 게시물 상세 페이지 READ
