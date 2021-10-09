@@ -21,13 +21,17 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Local Apps
+    'accounts',
     'diary',
 
-    # Third Party Apps
+    # DRF Auth Apps
     'rest_framework',
-    'debug_toolbar',
+    'rest_framework_simplejwt',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
 
     # Django Apps
+    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -98,7 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
 LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'Asia/Seoul'
@@ -130,10 +133,16 @@ INTERNAL_IPS = [
     # ...
 ]
 
-
 REST_FRAMEWORK = {
+    # 인증된 유저에게만 접근 허용
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-    ]
+    ],
 }
