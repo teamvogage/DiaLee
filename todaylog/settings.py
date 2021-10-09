@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
 
+    # Third Party Apps
+    'imagekit',
+
     # Django Apps
     'debug_toolbar',
     'django.contrib.admin',
@@ -132,6 +135,8 @@ INTERNAL_IPS = [
     '127.0.0.1',
     # ...
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
 
 REST_FRAMEWORK = {
     # 인증된 유저에게만 접근 허용
