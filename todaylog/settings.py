@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -137,6 +138,13 @@ INTERNAL_IPS = [
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
+
+SIMPLE_JWT = {
+    # 액세스 토큰의 유효 시간
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
+    # 리프레시 토큰의 유효 시간
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
+}
 
 REST_FRAMEWORK = {
     # 인증된 유저에게만 접근 허용
