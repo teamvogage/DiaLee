@@ -6,7 +6,7 @@ cryptography==35.0.0
 defusedxml==0.7.1
 dj-rest-auth==2.1.11
 Django==3.2.7
-django-allauth==0.45.0
+django-allauth==0.44.0
 django-appconf==1.0.5
 django-debug-toolbar==3.2.2
 django-filter==21.1

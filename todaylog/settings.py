@@ -27,9 +27,15 @@ INSTALLED_APPS = [
 
     # DRF Auth Apps
     'rest_framework',
+    'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+
+    # AllAuth Apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     # Third Party Apps
     'imagekit',
@@ -42,7 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -146,13 +155,15 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
 }
 
+REST_USE_JWT = True
+
 REST_FRAMEWORK = {
     # 인증된 유저에게만 접근 허용
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ),
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
