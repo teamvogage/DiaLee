@@ -8,13 +8,15 @@ import { ComponentProps } from "react"
 import styled from 'styled-components';
 import { useRecoilValue } from "recoil";
 
-const StyledMain =styled.main`
-height:640px;
+const StyledMain =styled.main<{isDisabledMain:boolean}>`
+height:600px;
 border-left:4px solid black;
         border-bottom:2px solid black;
         border-top:2px solid black;
         border-right:4px solid black;
-        word-break:break-all;
+        white-space:pre-line;
+        overflow:visible;
+        background-color:white;
 `
 const Main=({children}:ComponentProps<any>)=>{
     const isDisabledMain=useRecoilValue(disabledMainState);
@@ -22,7 +24,7 @@ const Main=({children}:ComponentProps<any>)=>{
 return (
         <FlexContainer direction= "column" align="start">
                 <Header/>
-                    <StyledMain>
+                    <StyledMain isDisabledMain={!isDisabledMain}>
                     {isDisabledMain?<DisabledDiv></DisabledDiv>:null}
                         {children}            
                     </StyledMain>                 

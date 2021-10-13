@@ -1,11 +1,12 @@
 import { ComponentProps } from 'react';
 import styled from 'styled-components'
 import Image from '../image'
-const StyledDiv=styled.div<{marginLeft:string}>`
+const StyledDiv=styled.div<{marginLeft:string,height:string}>`
     position:absolute;
     width:100%;
-    height:100%;
+    min-height:${({height})=>height||`100%`};
     z-index:1000;
+    
     display:flex;
     top:0;
     left:0;
@@ -24,9 +25,9 @@ const StyledDiv=styled.div<{marginLeft:string}>`
     
 `
 
-const disabledDiv=({marginLeft,onMouseMove}:ComponentProps<any>)=>{
+const disabledDiv=({height,marginLeft,onMouseMove}:ComponentProps<any>)=>{
     return(
-        <StyledDiv marginLeft={marginLeft} onMouseMove={onMouseMove}>
+        <StyledDiv height={height} marginLeft={marginLeft} onMouseMove={onMouseMove}>
 
         </StyledDiv>
     )

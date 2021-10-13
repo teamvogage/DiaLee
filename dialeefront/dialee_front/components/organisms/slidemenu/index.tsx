@@ -8,13 +8,9 @@ import {  useState } from 'react';
 import {  useRecoilValue, useSetRecoilState } from 'recoil';
 import headerImageState from '../../../atom/headerImageState';
 const StyledSlideMenu = styled.div<{active:boolean}>`
-  
-  
     margin-left:${({active})=>active?`-300px`:`50px`};
     max-height:min-content;
     transition:margin-left 0.5s;
-    
-    
     margin-top:0;
 `;
 const MenuButton=styled.div`
@@ -103,7 +99,9 @@ const SlideMenu=()=>{
             <StyledImage left="-10px" bottom="-300px" rotate="-10deg" >
                 <Image src={eraser} width="150px" height="200px" ></Image>
             </StyledImage>
-         
+            <StyledImage left="500px" bottom="-400px" rotate="-90deg" >
+                <Image rotate="no" src="/PencilBlue.png" width="40px" height="500px" ></Image>
+            </StyledImage>
         </FlexContainer>
         
     </StyledSlideMenu>

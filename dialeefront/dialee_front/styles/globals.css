@@ -25,14 +25,7 @@ img {
   -moz-user-select: none;
   user-select: none;
 }
-main {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: white;
-  min-width: 100%;
-  min-height: 100vh;
-  overflow: visible;
-}
+
 /*
 ##Device = Desktops
 ##Screen = 1281px to higher resolution desktops
@@ -46,7 +39,7 @@ div.body_container {
   transition: width 2s;
   min-width: 280px;
   max-width: 280px;
-  min-height: 100%;
+  height: 700px;
   font-size: 30px;
   background-color: rgb(153, 98, 27);
 }

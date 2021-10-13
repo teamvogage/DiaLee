@@ -9,7 +9,7 @@ const MainLoading =()=>{
 
     
     return(
-    <DisabledDiv >
+    <DisabledDiv height="670px">
         
     </DisabledDiv>
     )
