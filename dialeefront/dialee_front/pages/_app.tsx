@@ -1,10 +1,19 @@
 import '../styles/globals.css'
-import { springTheme, summerTheme,fallTheme,winterTheme, basicTheme,} from '../styles/theme'
+import { springTheme, summerTheme,fallTheme,winterTheme, basicTheme,retroTheme} from '../styles/theme'
 import type { AppProps } from 'next/app'
 import {ThemeProvider} from 'styled-components'
-import Header from '../components/templates/header';
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
+import FlexContainer from '../components/atoms/flexcontainer'
+import SlideMenu from '../components/organisms/slidemenu';
+import Main from  '../components/templates/Main'
 const now=new Date();
-let theme=basicTheme;
+let theme=fallTheme;
 if(now.getMonth()===11)
   theme=winterTheme;
 else if(now.getMonth()===6)
@@ -17,10 +26,19 @@ else if(now.getMonth()===8){
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (<>
-    <ThemeProvider theme={theme}>
-      <Header/>
-     <Component {...pageProps} />
-  </ThemeProvider>
+  <RecoilRoot>
+    <div className="body_container" onContextMenu={function(e){e.preventDefault()}}>
+        <ThemeProvider theme={theme}>
+          <FlexContainer direction="row"  align="between">
+            <SlideMenu></SlideMenu>
+            <Main>
+                <Component {...pageProps} />
+            </Main>
+        </FlexContainer>
+        
+      </ThemeProvider>
+  </div>
+  </RecoilRoot>
  </> )
 
 }
