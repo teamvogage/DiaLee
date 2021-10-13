@@ -157,6 +157,8 @@ SIMPLE_JWT = {
 
 REST_USE_JWT = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 REST_FRAMEWORK = {
     # 인증된 유저에게만 접근 허용
     'DEFAULT_PERMISSION_CLASSES': (
