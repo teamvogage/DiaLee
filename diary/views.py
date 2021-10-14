@@ -4,8 +4,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from .models import Article
-from .serializers import ArticleSerializer
+from .models import Article, Comment
+from .serializers import ArticleSerializer, CommentSerializer
 from .permissions import IsAuthorOrReadonly
 
 
@@ -28,8 +28,8 @@ def article_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthorOrReadonly])
-def article_detail(request, pk):
-    article = get_object_or_404(Article, pk=pk)
+def article_detail(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
     # 게시물 상세 페이지 READ
     if request.method == 'GET':
         serializer = ArticleSerializer(article)
@@ -46,3 +46,23 @@ def article_detail(request, pk):
     else:
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def comment_list(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+
+    # 댓글 목록 READ
+    if request.method == 'GET':
+        comments = Comment.objects.filter(article=article)
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+
+    # 댓글 CREATE
+    else:
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+        return Response(serializer.data)
+
