@@ -2,7 +2,7 @@ import React from 'react'
 import Main from './index'
 import {basicTheme,springTheme,winterTheme,fallTheme,summerTheme,retroTheme} from '../../../styles/theme'
 import {ThemeProvider} from 'styled-components'
-
+import { RecoilRoot } from 'recoil'
 export default {
     component:Main,
     title:"Main",

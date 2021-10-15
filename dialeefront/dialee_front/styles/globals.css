@@ -7,12 +7,14 @@ html,
 body {
   display: flex;
   justify-content: center;
-  font-family: "Cute font", "Cafe24SSurroundAir";
+  align-items: center;
+  font-family: "Cafe24SSurroundAir", "Cute font";
   margin: 0;
   padding: 0;
   width: 100%;
+  font-size: 0px;
   overflow-x: hidden;
-  overflow-y: visible;
+  overflow-y: hidden;
   height: 100%;
   -webkit-user-drag: none;
   -moz-user-select: none;
@@ -32,26 +34,35 @@ img {
 ##Device = 데스크탑
 ##Screen = 1281px 이상 해상도 데스크탑
 */
-div.body_container {
-  border: 1px solid black;
+div#home_container {
+  z-index: 3000;
+  width: 100vw;
+  position: fixed;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  border: 5px solid black;
+  background-color: aliceblue;
+}
+div#body_container {
+  border: 3px solid black;
   overflow-x: hidden;
   overflow-y: hidden;
   transition: width 2s;
-  min-width: 280px;
-  max-width: 280px;
-  height: 700px;
-  font-size: 30px;
+
+  max-width: 900px;
+  width: 100vw;
+  height: 100vh;
+  font-size: 0px;
   background-color: rgb(153, 98, 27);
 }
+
 @media (min-width: 1281px) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 900px;
-    max-width: 900px;
-    font-size: 30px;
   }
 
   /*
@@ -67,15 +78,12 @@ div.body_container {
   ##Screen = 1025px에서 1280px 사이
   */
 }
+
 @media (min-width: 1025px) and (max-width: 1280px) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 1028px;
-    max-width: 1028px;
-    font-size: 30px;
   }
 }
 /*
@@ -87,13 +95,9 @@ div.body_container {
 
 @media (min-width: 768px) and (max-width: 1024px) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 768px;
-    max-width: 768px;
-    font-size: 30px;
   }
 }
 
@@ -106,13 +110,9 @@ div.body_container {
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 1023px;
-    max-width: 1023px;
-    font-size: 30px;
   }
 }
 
@@ -125,13 +125,9 @@ div.body_container {
 
 @media (min-width: 481px) and (max-width: 767px) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 450px;
-    max-width: 450px;
-    font-size: 30px;
   }
 }
 
@@ -144,46 +140,34 @@ div.body_container {
 
 @media (min-width: 320px) and (max-width: 480px) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 320px;
-    max-width: 320px;
-    font-size: 30px;
   }
 }
 @media (min-width: 375px) and (max-width: 480px) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 375px;
-    max-width: 375px;
-    font-size: 30px;
   }
 }
 @media (min-width: 360px) and (max-width: 480px) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 360px;
-    max-width: 360px;
-    font-size: 30px;
+    /* min-width: 360px;
+    max-width: 360px; */
   }
 }
 @media (min-width: 411px) and (max-width: 481px) {
   div.body_container {
-    border: 1px solid black;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: width 2s;
-    min-width: 411px;
-    max-width: 411px;
-    font-size: 30px;
+    /* min-width: 411px;
+    max-width: 411px; */
   }
 }
 

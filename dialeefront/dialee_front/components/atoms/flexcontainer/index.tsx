@@ -13,6 +13,7 @@ export interface IcontainerProps{
 const StyledDiv=styled.div<IcontainerProps>`
     position:relative;
     width:100%;
+ 
     display:flex;
     margin-left:${({margin}:IcontainerProps)=>{return margin||"0px"}};
     flex-direction:${({direction}:IcontainerProps)=>{return direction||"row"}};

@@ -8,15 +8,18 @@ import {  useState } from 'react';
 import {  useRecoilValue, useSetRecoilState } from 'recoil';
 import headerImageState from '../../../atom/headerImageState';
 const StyledSlideMenu = styled.div<{active:boolean}>`
-    margin-left:${({active})=>active?`-300px`:`50px`};
+    margin-left:${({active})=>active?`-300px`:`30px`};
     max-height:min-content;
     transition:margin-left 0.5s;
     margin-top:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
 `;
 const MenuButton=styled.div`
  position:absolute;
  z-index:3;
- margin-top:-10px;
+ top:0;
  left:0;
  width:33px;
  height:33px;
@@ -29,7 +32,10 @@ const StyledImage=styled.div<{left:string,bottom:string,rotate:string}>`
 
 `
 const StyledDiv=styled.div`
-margin-top:50px;
+            margin-top:50px;
+
+          
+            z-index:3;
 `
 
 const SlideMenu=()=>{
@@ -38,12 +44,12 @@ const SlideMenu=()=>{
     const [click,setClick]=useState(0);
     const isDisabledMain=useRecoilValue(disabledMainState);
     const disabledMainHandler= useSetRecoilState(disabledMainState);
-    const headerImageHandler=useSetRecoilState(headerImageState);
+ 
     const onClick=()=>{
         disabledMainHandler(!isDisabledMain);
         if(active===true){
         setClick(click+1);
-        headerImageHandler(click%10);
+  
         const random=Math.random()*100+1;
         if(random<3)
         setEraser("/EraserPrincess.png")
@@ -63,7 +69,6 @@ const SlideMenu=()=>{
         return setActive(!active);
     }
     
-
     return(
      <StyledSlideMenu active={active}>
          
@@ -72,36 +77,36 @@ const SlideMenu=()=>{
                    
             </Button>  
         </MenuButton>
-        
-         <StyledDiv>   
-         <ButtonList listType="slideMenu">
-                <Button align="between" width="170px" alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu0">
+         <StyledDiv>    
+         <ButtonList listType="slideMenu" >
+                
+                <Button marginRight="12px" align="between" width="170px" alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu0">
                                 메뉴
                     </Button>  
-                    <Button align="between" width="165px"  alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu1">
+                    <Button marginRight="7px" align="between" width="170px"  alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu1">
                                 메뉴
                     </Button>  
-                    <Button align="between" width="160px"  alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu2">
+                    <Button marginRight="12px" align="between" width="170px"  alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu2">
                                 메뉴
                     </Button>  
-                    <Button align="between" width="155px"  alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu3">
+                    <Button marginRight="17px" align="between" width="170px"  alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu3">
                                 메뉴
                     </Button> 
-                    <Button align="between" width="150px" alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu4">
+                    <Button marginRight="22px" align="between" width="170px" alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu4">
                                 메뉴
                     </Button> 
         </ButtonList>
+       
         </StyledDiv>
+        
         <FlexContainer direction="row" align="end">
-            <StyledImage left="-20px" bottom="0px" rotate="30deg">
+            <StyledImage left="-50px" bottom="40px" rotate="-10deg">
                 <Image rotate={"no"} src="/Pencil.png" width="40px" height="500px"></Image>
             </StyledImage>
-            <StyledImage left="-10px" bottom="-300px" rotate="-10deg" >
+            <StyledImage left="-30px" bottom="-100px" rotate="-10deg" >
                 <Image src={eraser} width="150px" height="200px" ></Image>
             </StyledImage>
-            <StyledImage left="500px" bottom="-400px" rotate="-90deg" >
-                <Image rotate="no" src="/PencilBlue.png" width="40px" height="500px" ></Image>
-            </StyledImage>
+           
         </FlexContainer>
         
     </StyledSlideMenu>

@@ -32,14 +32,16 @@ const ButtonList =({listType,children}:ComponentProps<any>)=>{
                 direction:'column',
                 align:'between',
                 alignContent:'end',
-                alignItems:'end',
+                alignItems:'flex-end',
                 wrap:'no-wrap',
-                margin:'-200px',
+                margin:'60px',
             }  
+    
+
     return(
-        <FlexContainer direction="row" align="end">
+        <FlexContainer direction="row" align="start">
             <FlexContainer direction={listProps.direction} algin={listProps.align} alignContent={listProps.alignContent} alignItems={listProps.alignItems} wrap={listProps.wrap} margin={listProps.margin}>
-            {children??children.map((val:any)=>{return val})}    
+            {children??children.map((val:any,i:number)=>{return val})}    
             </FlexContainer>
         </FlexContainer>
     )

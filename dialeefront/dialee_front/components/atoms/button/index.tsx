@@ -8,12 +8,14 @@ interface IbuttonProps{
   btn_type: string;
   width:string;
   height:string;
+  marginRight:string;
 }
 const Prefix=styled.div`
 `
 const Suffix=styled.div`
 `
 const StyledButton=styled.button<IbuttonProps>`
+z-index:3;
     font-family:${props=>props.theme.fontFamily};
     font-size:${({btn_type,theme})=>{
       switch(btn_type){
@@ -108,7 +110,7 @@ const StyledButton=styled.button<IbuttonProps>`
         return height;
       switch(btn_type){
         default:
-          return "40px"
+          return "60px"
         case "menu":
           return  "30px"
         case "primary": 
@@ -128,7 +130,7 @@ const StyledButton=styled.button<IbuttonProps>`
         return width;
       switch(btn_type){
         default:
-          return "150px"
+          return "200px"
         case "primary": 
           return  "300px"
         case "secondary":
@@ -145,7 +147,7 @@ const StyledButton=styled.button<IbuttonProps>`
       if(btn_type==="cancle")
       return `white`;
       if(btn_type.startsWith("sub")){
-        return 'white';
+        return 'black';
       }
       return 'black'
     
@@ -176,10 +178,11 @@ const StyledButton=styled.button<IbuttonProps>`
      }} ;
      transition-property:background-color;
      transition-duration:0.2s;
+     margin-right:${({marginRight})=>marginRight||`0px`};
 `
-export default function Button({suffix,prefix,width,height,btn_type,direction,align,wrap,onClick,children,alignItems}:ComponentProps<any>) {
+export default function Button({marginRight,suffix,prefix,width,height,btn_type,direction,align,wrap,onClick,children,alignItems}:ComponentProps<any>) {
   return (
-    <StyledButton type="button" btn_type={btn_type} width={width} height={height} onClick={onClick}>
+    <StyledButton type="button" marginRight={marginRight} btn_type={btn_type} width={width} height={height} onClick={onClick}>
       <FlexContainer direction={direction} align={btn_type.startsWith("sub")?"between":align?align:"center"} wrap={wrap} alignItems={alignItems?alignItems:"center"}>
          <span>
           {prefix?<Prefix ><Image rotate="no" width="30px" height="30px" src={prefix} ></Image></Prefix>:null}

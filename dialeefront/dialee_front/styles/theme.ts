@@ -83,7 +83,7 @@ const basicFontSize:IfontSize={
 const basicTheme: DefaultTheme={
     colors:basicColorTheme,
     fontSize:basicFontSize,
-    fontFamily:`"Cute Font", cursive;`,
+    fontFamily:`"Cafe24SSurroundAir", cursive;`,
     textColor:standardTextColor,
 }
 const springTheme: DefaultTheme = {
@@ -110,7 +110,7 @@ const winterTheme:DefaultTheme={
 }
 const retroFontSize:IfontSize={
     ...basicFontSize,
-    button:"15px",
+    button:"30px",
 }
 const retroTheme:DefaultTheme={
     ...basicTheme,

@@ -2,15 +2,17 @@ import React from 'react'
 import Footer from './index'
 import {basicTheme,springTheme,winterTheme,fallTheme,summerTheme,retroTheme} from '../../../styles/theme'
 import {ThemeProvider} from 'styled-components'
-
+import { RecoilRoot } from 'recoil'
 export default {
     component:Footer,
     title:"Footer",
 };
 
-export const Default=()=><ThemeProvider theme={basicTheme}><Footer></Footer></ThemeProvider>
-export const Spring=()=><ThemeProvider theme={springTheme}><Footer></Footer></ThemeProvider>
-export const Summer=()=><ThemeProvider theme={summerTheme}><Footer ></Footer></ThemeProvider>
-export const Fall=()=><ThemeProvider theme={fallTheme}><Footer ></Footer></ThemeProvider>
-export const Winter=()=><ThemeProvider theme={winterTheme}><Footer></Footer></ThemeProvider>
-export const Retro=()=><ThemeProvider theme={retroTheme}><Footer></Footer></ThemeProvider>
+const Template=(theme)=><RecoilRoot><ThemeProvider theme={theme}><Footer ></Footer></ThemeProvider></RecoilRoot>
+export const Basic =()=>Template(basicTheme)
+export const Spring=()=>Template(springTheme)
+
+export const Summer=()=>Template(summerTheme)
+export const Fall=()=>Template(fallTheme)
+export const Winter=()=>Template(winterTheme)
+export const Retro=()=>Template(retroTheme)
