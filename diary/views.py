@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 
 from .models import Article, Comment
 from .serializers import ArticleSerializer, CommentSerializer
-from .permissions import IsAuthorOrReadonly
+from .permissions import IsAuthorOrReadonly, IsAuthor
 
 
 @api_view(['GET', 'POST'])
@@ -74,11 +74,6 @@ def comment_list(request, article_pk):
     else:
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            serializer.save(author=request.user, article=article)
         return Response(serializer.data)
 
-
-@api_view(['PUT', 'DELETE'])
-@permission_classes([IsAuthorOrReadonly])
-def comment_detail(request, article_pk, comment_pk):
-    pass
