@@ -77,3 +77,25 @@ def comment_list(request, article_pk):
             serializer.save(author=request.user, article=article)
         return Response(serializer.data)
 
+
+class CommentDetailView(APIView):
+    permission_classes = [IsAuthor]
+
+    def get_object(self, comment_pk):
+        comment = get_object_or_404(Comment, pk=comment_pk)
+        self.check_object_permissions(self.request, comment)
+        return comment
+
+    # 댓글 UPDATE
+    def put(self, request, comment_pk):
+        comment = self.get_object(comment_pk)
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+        return Response(serializer.data)
+
+    # 댓글 DELETE
+    def delete(self, request, comment_pk):
+        comment = self.get_object(comment_pk)
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
