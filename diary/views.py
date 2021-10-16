@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Article, Comment
 from .serializers import ArticleSerializer, CommentSerializer
@@ -26,24 +27,34 @@ def article_list(request):
         return Response(serializer.data)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthorOrReadonly])
-def article_detail(request, article_pk):
-    article = get_object_or_404(Article, pk=article_pk)
-    # 게시물 상세 페이지 READ
-    if request.method == 'GET':
+class ArticleDetailView(APIView):
+    """
+    Custom Permission 클래스를 적용하기 위해, FBV를 CBV로 수정함.
+    """
+    permission_classes = [IsAuthorOrReadonly]
+
+    def get_object(self, article_pk):
+        article = get_object_or_404(Article, pk=article_pk)
+        self.check_object_permissions(self.request, article)
+        return article
+
+    # 게시글 상세 페이지 READ
+    def get(self, request, article_pk):
+        article = self.get_object(article_pk)
         serializer = ArticleSerializer(article)
         return Response(serializer.data)
 
     # 게시글 UPDATE
-    elif request.method == 'PUT':
+    def put(self, request, article_pk):
+        article = self.get_object(article_pk)
         serializer = ArticleSerializer(article, data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
         return Response(serializer.data)
 
     # 게시글 DELETE
-    else:
+    def delete(self, request, article_pk):
+        article = self.get_object(article_pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -66,3 +77,8 @@ def comment_list(request, article_pk):
             serializer.save()
         return Response(serializer.data)
 
+
+@api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthorOrReadonly])
+def comment_detail(request, article_pk, comment_pk):
+    pass
