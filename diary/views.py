@@ -66,7 +66,7 @@ def comment_list(request, article_pk):
 
     # 댓글 목록 READ
     if request.method == 'GET':
-        comments = Comment.objects.filter(article=article)
+        comments = article.comments.all()
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
 
