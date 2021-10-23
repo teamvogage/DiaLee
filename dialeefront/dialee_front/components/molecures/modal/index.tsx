@@ -31,7 +31,7 @@ const Modal=({top,left,width,height,zIndex,title,confirmBtn,additionalBtns,child
                         </section> 
                     </FlexContainer>  
                     
-                    <FlexContainer width="100%"  direction="row" flexGrow="1" align="center" alignItems="stretch" >
+                    <FlexContainer width="100%"  direction="row" flexGrow="2" align="center" alignItems="stretch" >
                         <FlexContainer direction="row" align="center" alignItems="center">
                 
                         {confirmBtn?confirmBtn :null}

@@ -10,12 +10,25 @@ animation-fill-mode:${({animationFill})=>animationFill};
 @keyframes slideInTopAnim{
     from{
         opacity:0;
-        margin-top:-300px;
+        transform: translateY(-600px);
     }
     to{
-        margin-top:10px;
+        transform: translateY(0px);
     }
-};`
+};
+@keyframes slideInLeftAnim{
+    0%{
+        opacity:0;
+        transform: translateX(-600px);
+    }
+    90%{
+        opacity:1;
+        transform: translateX(50px);
+    }
+   
+}
+
+`
 const AnimatedDiv=({animationFill,animationTime,animationDelay,animation,children}:ComponentProps<any>)=>{
     return(
         <StyledDiv animation={animation} animationDelay={animationDelay} animationFill={animationFill} animationTime={animationTime}>

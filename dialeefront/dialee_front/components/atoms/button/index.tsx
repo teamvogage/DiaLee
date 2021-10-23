@@ -4,6 +4,7 @@ import FlexContainer from '../flexcontainer'
 import styled from 'styled-components';
 import Image from '../image';
 import { urlObjectKeys } from 'next/dist/shared/lib/utils';
+import AnimatedDiv from '../animatedDiv';
 interface IbuttonProps{
   btn_type: string;
   width:string;
@@ -31,7 +32,8 @@ z-index:3;
           return "20px";
         case "cancle":
           return "20px";
-       
+        case "small":
+          return "20px";
       }
      }
     };
@@ -48,7 +50,8 @@ z-index:3;
           return  "280px"
         case "secondary":
           return  "180px"
-         
+        case "small":
+          return "10px";
       }
      }
     };
@@ -71,6 +74,9 @@ z-index:3;
       }
       if(props.btn_type==="socialGoogle"){
         return 'white'
+      }
+      if(props.btn_type==="small"){
+        return "white"
       }
       return props.theme.colors.color3
     
@@ -98,6 +104,9 @@ z-index:3;
           }
           if(props.btn_type==="slideMenu") 
           return `none`;
+          if(props.btn_type==="small"){
+            return "black"
+          }
           return props.theme.colors.color3
         
         }};
@@ -123,6 +132,8 @@ z-index:3;
             return `black`;
         if(props.btn_type==="cancle")
             return "yellow"; 
+        if(props.btn_type==="small")
+            return "gray";
        return 'black';
      }};
      width:${(props)=>{
@@ -149,13 +160,15 @@ z-index:3;
           return  "200px"
         case "book":
           return "297px";
-          case "slideMenu":
-            return "35px";
-            case "ok":
-              return "40px";
-            case "cancle":
-              return "40px";
-              
+        case "slideMenu":
+          return "35px";
+        case "ok":
+          return "40px";
+        case "cancle":
+          return "40px";
+        case "small":
+          return "30px";
+         
       }
      }
     };
@@ -180,7 +193,8 @@ z-index:3;
             return "100px";
           case "cancle":
             return "100px";
-
+          case "small":
+            return  "fit-content";
       }
      }
     };
@@ -214,6 +228,7 @@ z-index:3;
         case "cancle" :
         case "ok": 
         case "book":
+        case "small":
           return "0";
         case "slideMenu":
           return "5%";
@@ -227,7 +242,7 @@ z-index:3;
      margin-right:${({marginRight})=>marginRight||`0px`};
 `
 export default function Button({marginRight,suffix,prefix,width,height,btn_type,direction,align,wrap,onClick,children,alignItems}:ComponentProps<any>) {
-  return (
+  return (<AnimatedDiv animation={!btn_type.startsWith("small")?null:"slideInLeftAnim"} animationFill={!btn_type.startsWith("small")?null:"forwards"} animationTime={!btn_type.startsWith("small")?null:"1s"}>
     <StyledButton type="button" marginRight={marginRight} btn_type={btn_type} width={width} height={height} onClick={onClick}>
       <FlexContainer direction={direction} align={btn_type.startsWith("sub")?"between":align?align:"center"} wrap={wrap} alignItems={alignItems?alignItems:"center"}>
          <span>
@@ -241,5 +256,6 @@ export default function Button({marginRight,suffix,prefix,width,height,btn_type,
           {suffix?<Suffix><Image rotate="no" width="20px" height="20px" src={suffix} /></Suffix>:null}
         </FlexContainer>
     </StyledButton>
+    </AnimatedDiv>
   );
 }

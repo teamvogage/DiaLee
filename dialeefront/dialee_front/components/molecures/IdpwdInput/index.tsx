@@ -38,6 +38,7 @@ const IdAndPassword=({direction}:ComponentProps<any>)=>{
             <Span size="24" color="black"> 비밀번호 </Span>
             <Input name="pwd" size={inputSize} placeholder="password" auto="autocomplete" maxlength="16" value="gg"  ></Input>
             <Button  btn_type="ok"> 로그인 </Button>
+            <Button  btn_type="small"> 아이디/비밀번호 찾기 </Button>
             </FlexContainer>
             </StyledDiv>
             </AnimatedDiv>
