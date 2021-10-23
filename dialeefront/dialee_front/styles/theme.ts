@@ -21,6 +21,11 @@ export class CtextColor{
     secondary:String="black";
     title:String="black";
 }
+export class CFontfamilies{
+    menu:String="NanumSon";
+    title:String="NanumSon";
+    plain:String="NanumSon";
+}
 const standardTextColor=new CtextColor();
 const basicColorTheme:CcolorTheme={
     
@@ -83,7 +88,7 @@ const basicFontSize:IfontSize={
 const basicTheme: DefaultTheme={
     colors:basicColorTheme,
     fontSize:basicFontSize,
-    fontFamily:`"Cafe24SSurroundAir", cursive;`,
+    fontFamily:`NanumSon`,
     textColor:standardTextColor,
 }
 const springTheme: DefaultTheme = {
@@ -116,7 +121,7 @@ const retroTheme:DefaultTheme={
     ...basicTheme,
     colors:retroColorTheme,
     fontSize:retroFontSize,
-    fontFamily:"Cafe24SSurroundAir"
+    fontFamily:"NanumSon"
 }
 
 export { springTheme, summerTheme,fallTheme,winterTheme,basicTheme ,retroTheme};

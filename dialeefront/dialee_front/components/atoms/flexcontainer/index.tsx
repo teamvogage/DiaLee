@@ -8,12 +8,15 @@ export interface IcontainerProps{
     alignContent:string;
     alignItems:string;
     margin:string;
+    flexGrow:string;
+    width:string;
+    height:string;
 }
 
 const StyledDiv=styled.div<IcontainerProps>`
     position:relative;
-    width:100%;
- 
+    width:${({flexGrow,width})=>flexGrow?width:"100%"};
+    height:${({flexGrow,height})=>flexGrow?height:"100%"};
     display:flex;
     margin-left:${({margin}:IcontainerProps)=>{return margin||"0px"}};
     flex-direction:${({direction}:IcontainerProps)=>{return direction||"row"}};
@@ -30,14 +33,15 @@ const StyledDiv=styled.div<IcontainerProps>`
         return 'space-between'
 
     }};
+    flex-grow:${({flexGrow})=>{return flexGrow||1}};
     align-content:${({alignContent}:IcontainerProps)=>{return alignContent||null}};
     align-items:${({alignItems}:IcontainerProps)=>{return alignItems||null}};
 `
 
-const Container =({alignContent,alignItems,wrap,direction,align,children,margin}:ComponentProps<any>)=>{
+const Container =({alignContent,alignItems,wrap,direction,align,children,margin,flexGrow,width,height}:ComponentProps<any>)=>{
     
     return(
-        <StyledDiv alignContent={alignContent} alignItems={alignItems} wrap={wrap} margin={margin} direction={direction} align={align}>
+        <StyledDiv width={width} height={height} alignContent={alignContent} flexGrow={flexGrow} alignItems={alignItems} wrap={wrap} margin={margin} direction={direction} align={align}>
             {children}
         </StyledDiv>
     )

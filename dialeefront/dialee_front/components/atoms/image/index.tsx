@@ -10,7 +10,7 @@ const StyledDiv=styled.div<{width:string,height:string,rotate:string,shadow:stri
         ${({rotate})=>rotate!=="no"?` animation:imgani 1s infinite;`:`none`}
        
     }
-    -webkit-user-drag: none;
+    
 
 
     box-shadow:${({shadow})=>shadow?shadow:null};

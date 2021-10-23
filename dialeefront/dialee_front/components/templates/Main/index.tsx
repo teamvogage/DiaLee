@@ -1,6 +1,6 @@
 import Header from "../../organisms/header"
 import FlexContainer from '../../atoms/flexcontainer'
-import Footer from "../../organisms/footer"
+
 import disabledMainState from "../../../atom/disabledMainState";
 import DisabledDiv from "../../molecures/mainloading";
 import { ComponentProps } from "react"

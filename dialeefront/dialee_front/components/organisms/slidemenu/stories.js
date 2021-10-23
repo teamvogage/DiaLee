@@ -2,7 +2,7 @@ import React from 'react'
 import SliderMenu from './index'
 import {basicTheme,springTheme,winterTheme,fallTheme,summerTheme,retroTheme} from '../../../styles/theme'
 import {ThemeProvider} from 'styled-components'
-import {RecoilRoot} from 'recoil'
+import { RecoilRoot } from 'recoil'
 export default {
     component:SliderMenu,
     title:"SliderMenu",
