@@ -1,25 +1,18 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from dj_rest_auth.registration.serializers import RegisterSerializer
 
 
 User = get_user_model()
 
 
-class SignupSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
+class CustomRegisterSerializer(RegisterSerializer):
+    # 기본 설정 필드: username, password, email
+    # 추가 설정 필드: profile_image
     profile_image = serializers.ImageField(use_url=True)
 
-    # TODO: 프로필 이미지 파일을 'profile_{username}'으로 저장하기
-    def create(self, validated_data):
-        user = User.objects.create(
-            username=validated_data["username"],
-            email=validated_data['email'],
-            profile_image=validated_data['profile_image']
-        )
-        user.set_password(validated_data["password"])
-        user.save()
-        return user
+    def get_cleaned_data(self):
+        data = super().get_cleaned_data()
+        data['profile_image'] = self.validated_data.get('profile_image', '')
 
-    class Meta:
-        model = User
-        fields = ["pk", "username", "password", "email", "profile_image"]
+        return data
