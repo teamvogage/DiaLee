@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -15,7 +15,7 @@ from .permissions import IsAuthorOrReadonly, IsAuthor
 def article_list(request):
     # 게시글 목록 READ
     if request.method == 'GET':
-        articles = Article.objects.all()
+        articles = get_list_or_404(Article)
         serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data)
 
@@ -24,7 +24,7 @@ def article_list(request):
         serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class ArticleDetailView(APIView):
@@ -75,7 +75,7 @@ def comment_list(request, article_pk):
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save(author=request.user, article=article)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class CommentDetailView(APIView):
