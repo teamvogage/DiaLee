@@ -4,10 +4,30 @@ import FlexContainer from '../../atoms/flexcontainer';
 import Span from '../../atoms/span';
 import Button from '../../atoms/button';
 import Image from '../../atoms/image';
+import styled from "styled-components";
+
+const StyledModal = styled.div<{animated:string}>`
+background:linear-gradient(180deg,rgba(224,224,224,0.6) 0%, rgba(224,224,148,0.3) 5%, rgba(245,256,220,0.4) 30%, rgba(255,255,255,0.5) 50%, rgba(224,224,255,0.4) 70% ,rgba(225,255,245,0.6) 100%);
+z-index:8000;
+position:absolute;
+width:70%;
+
+height:fit-content;
+animation:${props=>props.animated=="on"?"slideInTopAnim 3s forwards":"none"};
+   
+    @keyframes slideInTopAnim{
+        from{
+            opacity:0;
+            transform: translateY(-600px);
+        }
+        to{
+            transform: translateY(0px);
+        }
+    };
+`
 
 
-
-const Modal=({top,left,width,height,zIndex,title,confirmBtn,additionalBtns,children,isCancle}:ComponentProps<any>)=>{
+const Modal=({title,confirmBtn,additionalBtns,children,isCancle,animated}:ComponentProps<any>)=>{
     const [isActive,setActive]=useState(true);
     const allowCancle=isCancle==="no"?false:true;
     const onCancle=(e:MouseEvent)=>{
@@ -15,10 +35,8 @@ const Modal=({top,left,width,height,zIndex,title,confirmBtn,additionalBtns,child
         setActive(false);
     }
     return(<>
-        {isActive?<FixedDiv background="rgba(255,255,255,0.001)" top="0%" left="0%" width="100%" height="100%" zIndex={zIndex||3000}>
-                <FixedDiv background="radial-gradient( rgba(245,256,220,1) 10%, rgba(234,234,139,1) 90%, rgba(224,224,148,1) 90%,rgb(67,63,47) 100%);" top={top||'5%'} left={left||'5%'} width={width||'90%'} height={height||'90%'}>  </FixedDiv>
-                <FixedDiv  background="radial-gradient(ellipse,rgba(67,63,47,0.01) 0%, rgba(224,224,148,0.01) 5%, rgba(245,256,220,0.1) 12%, rgba(234,234,139,0.7) 90%, rgba(67,63,47,1) 95%,rgba(67,63,47,1) 100%);" top={top||'5%'} left={left||'5%'} width={width||'90%'} height={height||'90%'} /> 
-                <FixedDiv  background="linear-gradient(180deg,rgba(67,63,47,1) 0%, rgba(224,224,148,0.3) 5%, rgba(245,256,220,0.2) 12%, rgba(234,234,139,0.1) 90%, rgba(224,224,148,0.3) 95%,rgba(67,63,47,1) 100%);" top={top||'5%'} left={left||'5%'} width={width||'90%'} height={height||'90%'} > 
+        {isActive?<>
+                    <StyledModal animated={animated} > 
                     <FlexContainer direction="column" align="center" alignItems="flex-start">
                     
                     <FlexContainer width="100%" flexGrow="1" direction="row" align="center" alignItems="center" >
@@ -41,12 +59,12 @@ const Modal=({top,left,width,height,zIndex,title,confirmBtn,additionalBtns,child
                         </FlexContainer>
                     </FlexContainer>   
                     <FlexContainer width="100%" flexGrow="1" direction="row" align="center" alignItems="center" >
-                    {additionalBtns?additionalBtns:<Image src="/imoticon/Anchor.png" width="30px"height="30px"/>}
+                    {additionalBtns?additionalBtns:<Image src="/imoticon/Anchorpink.png" width="30px"height="30px"/>}
                     </FlexContainer>
                 </FlexContainer>  
         
-        </FixedDiv>
-    </FixedDiv>:null}
+        </StyledModal>
+    </>:null}
     </>)
 }
 export default Modal

@@ -11,6 +11,8 @@ export interface IcontainerProps{
     flexGrow:string;
     width:string;
     height:string;
+    background:string;
+    zIndex:string;
 }
 
 const StyledDiv=styled.div<IcontainerProps>`
@@ -36,12 +38,14 @@ const StyledDiv=styled.div<IcontainerProps>`
     flex-grow:${({flexGrow})=>{return flexGrow||1}};
     align-content:${({alignContent}:IcontainerProps)=>{return alignContent||null}};
     align-items:${({alignItems}:IcontainerProps)=>{return alignItems||null}};
+    background:${({background})=>{return background||null}};
+    z-index:${({zIndex})=>{return zIndex||null}};
 `
 
-const Container =({alignContent,alignItems,wrap,direction,align,children,margin,flexGrow,width,height}:ComponentProps<any>)=>{
+const Container =({background,zIndex,alignContent,alignItems,wrap,direction,align,children,margin,flexGrow,width,height}:ComponentProps<any>)=>{
     
     return(
-        <StyledDiv width={width} height={height} alignContent={alignContent} flexGrow={flexGrow} alignItems={alignItems} wrap={wrap} margin={margin} direction={direction} align={align}>
+        <StyledDiv zIndex={zIndex} background={background} width={width} height={height} alignContent={alignContent} flexGrow={flexGrow} alignItems={alignItems} wrap={wrap} margin={margin} direction={direction} align={align}>
             {children}
         </StyledDiv>
     )

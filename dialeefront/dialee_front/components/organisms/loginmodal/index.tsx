@@ -1,23 +1,27 @@
 import Modal from "../../molecures/modal";
-import IdAndPassword from "../../molecures/IdpwdInput";
+import IdAndPassword from "../../molecures/normallLoginBtns";
 import Button from '../../atoms/button';
 import SocialLoginBtns from "../../molecures/socialLoginBtns";
 
-import styled from "styled-components";
-const StyledHr=styled.div`
-width:100%;
-height:100%;
-postion:relative;
-border:2px solid dashed;
-`
+import { useState } from "react";
+import SignUp from "../signup";
+
 const LoginModal=()=>{
-   
-    return (
-    <Modal top="10%" left="5%" width="90%" height="80%" title="로그인" confirmBtn={<Button btn_type="ok">회원가입</Button> }  zIndex={3499} isCancle="no">
+    const [signUp,setSignUp]=useState(false);
+    const onSignUp=()=>{
         
+        return setSignUp(true);
+    }
+    const onCancleSignUp=()=>{
+        return setSignUp(false);
+    }
+    return (
+    <Modal animated="on" top="10%"  width="80%" height="fit-content" title="로그인" confirmBtn={signUp==false?<Button btn_type="ok" onClick={onSignUp}>회원가입</Button>:<Button btn_type="cancle" onClick={onCancleSignUp} >뒤로</Button>}  zIndex={8000} isCancle="no">
+        {signUp==true?<SignUp></SignUp>:<>
         <SocialLoginBtns/>
-        <StyledHr/>
-        <IdAndPassword direction="column"> </IdAndPassword>
+         <IdAndPassword direction="column"> </IdAndPassword>
+        </>}
+
     </Modal>
     )
 }

@@ -34,9 +34,9 @@ const IdAndPassword=({direction}:ComponentProps<any>)=>{
             <FlexContainer align="center" alignItems="center" direction={direction||"row"}> 
             
             <Span size="24" color="black"> 아이디 </Span>
-            <Input name="id" size={inputSize} placeholder="ID" auto="autocomplete"  maxlength="16" value="gg"  ></Input>
+            <Input name="id"  placeholder="ID" auto="autocomplete"  maxlength="16"   ></Input>
             <Span size="24" color="black"> 비밀번호 </Span>
-            <Input name="pwd" size={inputSize} placeholder="password" auto="autocomplete" maxlength="16" value="gg"  ></Input>
+            <Input name="pwd"  placeholder="password" auto="autocomplete" maxlength="16"   ></Input>
             <Button  btn_type="ok"> 로그인 </Button>
             <Button  btn_type="small"> 아이디/비밀번호 찾기 </Button>
             </FlexContainer>

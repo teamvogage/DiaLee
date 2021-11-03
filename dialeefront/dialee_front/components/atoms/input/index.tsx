@@ -40,13 +40,12 @@ const StyledInput =styled.input<IinputProps>`
     value:${props=>props.value||''};
     type:${props=>props.type||'text'};
     placeholder:${props=>props.placeholder||';'};
-   
+    ::placeholder:{color:red};
 `
 
 const Input=(props:ComponentProps<any>)=>{
     return(
-        <StyledInput id={props.id} name={props.name} {...props}></StyledInput>
-        
+        <StyledInput id={props.id} name={props.name}  onChange={props.onChange} {...props}></StyledInput>
     )
 }
 export default Input;

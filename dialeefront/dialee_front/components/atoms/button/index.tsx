@@ -67,6 +67,9 @@ z-index:3;
       if(props.btn_type==="ok"){
         return 'white';
       }
+      if(props.btn_type==="no"){
+        return 'gray';
+      }
       if(props.btn_type==="slideMenu") 
       return `none`;
       if(props.btn_type==="socialKakao"){
@@ -95,6 +98,9 @@ z-index:3;
           }
           if(props.btn_type==="ok"){
             return 'skyblue';
+          }
+          if(props.btn_type==="no"){
+            return 'gray';
           }
           if(props.btn_type==="socialKakao"){
             return '#F7E600'
@@ -134,16 +140,19 @@ z-index:3;
             return "yellow"; 
         if(props.btn_type==="small")
             return "gray";
+        if(props.btn_type==="no")
+            return "red";
        return 'black';
      }};
      width:${(props)=>{
       if(props.btn_type.startsWith("sub")) 
           return `170px`; 
      }};
-     transition:width 0.3s;
+    
      color:white;
       border-radius:${({btn_type}:IbuttonProps)=>{if(btn_type==="menu")return 0;}};
     };
+    
      height:${({height,btn_type}:IbuttonProps)=>{
       if(height)
         return height;
@@ -163,6 +172,7 @@ z-index:3;
         case "slideMenu":
           return "35px";
         case "ok":
+        case "no":  
           return "40px";
         case "cancle":
           return "40px";
@@ -190,6 +200,7 @@ z-index:3;
           case "slideMenu":
             return "35px";
           case "ok":
+          case "no":
             return "100px";
           case "cancle":
             return "100px";
@@ -204,6 +215,9 @@ z-index:3;
       return `white`;
       if(btn_type.startsWith("sub")){
         return 'black';
+      }
+      if(btn_type==="no"){
+        return 'white';
       }
       return 'black'
     
@@ -227,6 +241,7 @@ z-index:3;
           return  "100%"
         case "cancle" :
         case "ok": 
+        case "no":
         case "book":
         case "small":
           return "0";

@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
 import styled from 'styled-components'
-import Modal from '../components/molecures/modal'
+import LoginModal from '../components/organisms/loginmodal'
+import AnimatedDiv from '../components/atoms/animatedDiv'
 const PageWaveCover1=styled.div<{clicked:string}>`
 height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
@@ -32,7 +33,7 @@ const PageWaveCover2=styled.div<{clicked:string}>`
   position:absolute;
   left:${({clicked})=>clicked==="true"?'-70%':'-50%;'};
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
-  background: linear-gradient(#590995 ,#03C4A1);
+  background:${({clicked})=>clicked==="true"?'linear-gradient(#590995 ,#03C4A1);':'linear-gradient(#590995 ,#03C4A1);'}; 
   border:2px #03C4A1 solid;
   max-width: 1700px;
   max-height:1700px;
@@ -75,17 +76,20 @@ const PageWaveCover3=styled.div<{clicked:string}>`
 `
 const HomeDiv=styled.div`
     z-index: 3000;
-    width: 100%;
+    width:100%;
+    margin-left:27px;
     position: absolute;
     overflow: hidden;
     left:0;
     height: 100vh;
     display:flex;
     color:white;
+    flex-direction:column;
     font-size:30px;
     justify-content:center;
+    align-contents:flex-end;
     align-items:center;
-    background: linear-gradient(black,${props=>props.theme.colors.color1} );
+    background: linear-gradient(black,#590995 );
 `
 const MoonDiv=styled.div<{clicked:string}>`
   border-radius:100%;
@@ -96,8 +100,8 @@ const MoonDiv=styled.div<{clicked:string}>`
   height:70px;
   top:20%;
   left:46%;
-  // transform:${({clicked})=>clicked==="true"?'translate3d(-100px,100px,0) scale(80%)':'none'};
-  // transition:4s;
+  transform:${({clicked})=>clicked==="true"?'translateY(-2000px) scale(80%)':'none'};
+  transition:3s;
 `
 
 const MoonLightDiv=styled.div<{clicked:string}>`
@@ -111,24 +115,21 @@ const MoonLightDiv=styled.div<{clicked:string}>`
   height:70px;
   top:20%;
   left:46%;
-  // transform:${({clicked})=>clicked==="true"?'translate3d(-100px,100px,0) scale(80%)':'none'};
-  // transition:4s;
+   transform:${({clicked})=>clicked==="true"?'translateY(-2000px) scale(80%)':'none'};
+  transition:3s;
 `
 const Home: NextPage = () => {
   const [clicked,setClicked]=useState("false");
 
   return (
-        <HomeDiv onClick={function(){console.log("jo");setClicked("true")}}>
+        <HomeDiv onClick={function(){setClicked("true")}}>
             <MoonDiv clicked={clicked}/>
-            
             <MoonLightDiv clicked={clicked}/>
-         
             <PageWaveCover3 clicked={clicked}/>
             <PageWaveCover1 clicked={clicked}/>
             <PageWaveCover2 clicked={clicked} />
-           
+            {clicked==="true"?<LoginModal />:null}
             <h1>title</h1>
-     
         </HomeDiv>
   )
 }
