@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Third Party Apps
     'imagekit',
+    'corsheaders',
 
     # Django Apps
     'debug_toolbar',
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -182,3 +184,8 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 }
 
 ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+
+CORS_ALLOWED_ORIGINS = [
+    'http://39.115.162.208:30000',
+]
+CORS_ALLOW_CREDENTIALS = True
