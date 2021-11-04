@@ -33,6 +33,7 @@ const StyledInput =styled.input<IinputProps>`
     return "40px"
     }};
     border:none;
+    transition:width 3s;
     background-color:rgba(0,0,0,0);
     border-bottom:2px double black;
     ${(props)=>props.auto?`autofocus`:';'};

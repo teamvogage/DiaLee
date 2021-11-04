@@ -10,8 +10,9 @@ const StyledModal = styled.div<{animated:string}>`
 background:linear-gradient(180deg,rgba(224,224,224,0.6) 0%, rgba(224,224,148,0.3) 5%, rgba(245,256,220,0.4) 30%, rgba(255,255,255,0.5) 50%, rgba(224,224,255,0.4) 70% ,rgba(225,255,245,0.6) 100%);
 z-index:8000;
 position:absolute;
+max-width:70%;
+mint-width:70%;
 width:70%;
-
 height:fit-content;
 animation:${props=>props.animated=="on"?"slideInTopAnim 3s forwards":"none"};
    

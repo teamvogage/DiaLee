@@ -76,22 +76,22 @@ const SignUp=()=>{
     return(
         <AnimatedDiv animation="slideInTopAnim" animationTime="1s" animationFill="forwards">
             <FlexContainer align="center" alignItems="center" direction={"column"}> 
-                <Span size="18" color={text.Id=="문제 없음"?"skyblue":"red"} id="checkId">{text.Id}</Span>
+                <Span size="15" color={text.Id=="문제 없음"?"blue":"red"} id="checkId">{text.Id}</Span>
                 <Span size="24" color="black"> 아이디 </Span>
-                    <Input name="Id" size={"small"}  auto="autocomplete" id="Id"  maxlength="16" onChange={onChange}  ></Input>
-                <br/>  
-                <Span size="18" color={text.Pwd=="문제 없음"?"skyblue":"red"} id="validateSecret">{text.Pwd}</Span> 
-                <Span size="24" color="black"> 비밀번호 </Span>
-                    <Input name="Pwd"  type="password" size={"small"} id="Pwd"  maxlength="16" onChange={onChange}  ></Input>
-                    <br/>  
-                <Span size="18" color={text.rePwd=="문제 없음"?"skyblue":"red"} id="checkSecret" >{text.rePwd }</Span>   
-                <Span size="24" color="black"> 비밀번호 확인 </Span>
-                    <Input name="rePwd"   type="password" size={"small"}   maxlength="16"  onChange={onChange} ></Input>
+                    <Input name="Id" width={"200px"}  auto="autocomplete" id="Id"  maxlength="16" onChange={onChange}  ></Input>
                 
-                <br/>
-                <Span size="18" color={text.Email=="문제 없음"?"skyblue":"red"} id="checkEmail">{text.Email}</Span>    
+                <Span size="15" color={text.Pwd=="문제 없음"?"blue":"red"} id="validateSecret">{text.Pwd}</Span> 
+                <Span size="24" color="black"> 비밀번호 </Span>
+                    <Input name="Pwd"  type="password" width={"200px"} id="Pwd"  maxlength="16" onChange={onChange}  ></Input>
+                   
+                <Span size="15" color={text.rePwd=="문제 없음"?"blue":"red"} id="checkSecret" >{text.rePwd }</Span>   
+                <Span size="24" color="black"> 비밀번호 확인 </Span>
+                    <Input name="rePwd"   type="password" width={"200px"}  maxlength="16"  onChange={onChange} ></Input>
+                
+              
+                <Span size="15" color={text.Email=="문제 없음"?"blue":"red"} id="checkEmail">{text.Email}</Span>    
                 <Span size="24" color="black"> 이메일 </Span>
-                    <Input name="Email" size={"small"}  auto="autocomplete" id="Email" maxlength="16"  onChange={onChange} ></Input>
+                    <Input name="Email" width={"200px"} auto="autocomplete" id="Email" maxlength="16"  onChange={onChange} ></Input>
                    
                 {pass!=4?<Button  btn_type="no" > 회원가입 </Button>:<Button  btn_type="ok" onClick={onSend}> 회원가입 </Button>}
             </FlexContainer>  

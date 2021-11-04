@@ -6,6 +6,7 @@ const StyledSpan=styled.span<{size:number,color:string,background:string}>`
     background-color:${props=>props.background||"none"};
     border-bottom:1px solid black;
     font-weight:bold;
+    transition:width 3s;
 `
 const Span=(props:ComponentProps<any>)=>{
     return (<StyledSpan size={props.size} background={props.background} color={props.color}>{props.children}</StyledSpan>
