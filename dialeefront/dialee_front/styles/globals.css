@@ -23,11 +23,13 @@ body {
   font-size: 0px;
   overflow-x: hidden;
   overflow-y: hidden;
+  transition: background 4s;
   height: 100%;
   -webkit-user-drag: none;
   -moz-user-select: none;
   user-select: none;
-  background-color: white;
+  animation: backgroundAnim forwards 4s;
+
   -webkit-touch-callout: none;
 }
 img {
@@ -35,7 +37,14 @@ img {
   -moz-user-select: none;
   user-select: none;
 }
-
+@keyframes backgroundAnim {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: black;
+  }
+}
 /*
 ##Device = Desktops
 ##Screen = 1281px to higher resolution desktops
@@ -63,7 +72,7 @@ div#body_container {
   width: 100vw;
   height: 100vh;
   font-size: 0px;
-  background-color: rgb(153, 98, 27);
+  background-color: black;
 }
 
 @media (min-width: 1281px) {

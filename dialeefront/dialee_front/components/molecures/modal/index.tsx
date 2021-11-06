@@ -13,6 +13,7 @@ position:absolute;
 max-width:70%;
 mint-width:70%;
 width:70%;
+
 height:fit-content;
 animation:${props=>props.animated=="on"?"slideInTopAnim 3s forwards":"none"};
    

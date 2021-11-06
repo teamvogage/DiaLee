@@ -8,7 +8,7 @@ import {  useState } from 'react';
 import {  useRecoilValue, useSetRecoilState } from 'recoil';
 import headerImageState from '../../../atom/headerImageState';
 const StyledSlideMenu = styled.div<{active:boolean}>`
-    margin-left:${({active})=>active?`-300px`:`30px`};
+    margin-left:${({active})=>active?`-300px`:`90px`};
     max-height:min-content;
     transition:margin-left 0.5s;
     margin-top:0;
@@ -23,6 +23,7 @@ const MenuButton=styled.div`
  left:0;
  width:33px;
  height:33px;
+ background-color:white;
 `
 const StyledImage=styled.div<{left:string,bottom:string,rotate:string}>`
     left:${({left})=>left};

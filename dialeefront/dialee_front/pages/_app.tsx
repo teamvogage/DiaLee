@@ -11,6 +11,7 @@ import Main from  '../components/templates/Main'
 import {BASED_URL} from '../lib/constants'
 import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} from '../styles/theme';
 import { useState } from 'react'
+import styled from 'styled-components'
 
 axios.defaults.baseURL = BASED_URL;
 axios.defaults.withCredentials = true;

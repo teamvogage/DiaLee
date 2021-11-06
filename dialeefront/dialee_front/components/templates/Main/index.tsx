@@ -23,7 +23,7 @@ justify-content:center;
         white-space:pre-line;
         overflow:visible;
         background-color:white;
-
+    
 `
 const StyledPaper=styled.div`
   

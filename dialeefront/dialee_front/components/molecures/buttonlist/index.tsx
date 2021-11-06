@@ -10,7 +10,7 @@ const ButtonList =({listType,children}:ComponentProps<any>)=>{
         alignContent:'end',
         alignItems:'flex-end',
         wrap:'no-wrap',
-        margin:'60px',
+        margin:'0px',
     }
     if(listType==="slideMenu")
         listProps={
@@ -19,7 +19,7 @@ const ButtonList =({listType,children}:ComponentProps<any>)=>{
                     alignContent:'end',
                     alignItems:'flex-end',
                     wrap:'no-wrap',
-                    margin:'60px',
+                    margin:'0px',
                 }  
     
     if(listType==="socialBtns")

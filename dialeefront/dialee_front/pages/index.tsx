@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { useState } from 'react'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
+import HomeDiv from '../components/atoms/homeDiv'
 import AnimatedDiv from '../components/atoms/animatedDiv'
 const PageWaveCover1=styled.div<{clicked:string}>`
 height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
@@ -74,23 +75,7 @@ const PageWaveCover3=styled.div<{clicked:string}>`
   transition:4s;
   
 `
-const HomeDiv=styled.div`
-    z-index: 3000;
-    width:100%;
-    margin-left:27px;
-    position: absolute;
-    overflow: hidden;
-    left:0;
-    height: 100vh;
-    display:flex;
-    color:white;
-    flex-direction:column;
-    font-size:30px;
-    justify-content:center;
-    align-contents:flex-end;
-    align-items:center;
-    background: linear-gradient(black,#590995 );
-`
+
 const MoonDiv=styled.div<{clicked:string}>`
   border-radius:100%;
   background:linear-gradient(rgba(255,255,255,0.01),rgba(255,255,255,0.9));
