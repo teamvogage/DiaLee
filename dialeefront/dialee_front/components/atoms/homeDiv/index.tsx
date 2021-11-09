@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { ComponentProps ,memo} from "react";
 import styled from "styled-components";
 const StyledHomeDiv=styled.div`
     z-index: 3000;
@@ -25,4 +25,4 @@ const HomeDiv =({children,onClick,onFocus,onTouchSTart}:ComponentProps<any>)=>{
         </StyledHomeDiv>
     )
 }
-export default HomeDiv;
+export default memo(HomeDiv);

@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { useState,useMemo, useCallback } from 'react'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
 import AnimatedDiv from '../components/atoms/animatedDiv'
-const PageWaveCover1=styled.div<{clicked:string}>`
+import Image from '../components/atoms/image'
+let PageWaveCover1=styled.div<{clicked:string}>`
 height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   position:absolute;
@@ -24,10 +25,11 @@ height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
     75% {left:-100%; transform:  rotate(540deg) ; }
     100%{left:-120%; transform:  rotate(720deg) ;}
   };
+
   transition:4s;
   
 `
-const PageWaveCover2=styled.div<{clicked:string}>`
+let PageWaveCover2=styled.div<{clicked:string}>`
  
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
@@ -51,7 +53,7 @@ const PageWaveCover2=styled.div<{clicked:string}>`
   transition:4s;
   
 `
-const PageWaveCover3=styled.div<{clicked:string}>`
+let PageWaveCover3=styled.div<{clicked:string}>`
  
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
@@ -72,6 +74,7 @@ const PageWaveCover3=styled.div<{clicked:string}>`
     75% {left:-10%;transform:  rotate(540deg) ; }
     100%{left:-0%; transform:  rotate(720deg) ;}
   };
+
   transition:4s;
   
 `
@@ -87,8 +90,19 @@ const MoonDiv=styled.div<{clicked:string}>`
   left:46%;
   transform:${({clicked})=>clicked==="true"?'translateY(-2000px) scale(80%)':'none'};
   transition:3s;
+  animation:upAnimation 4s infinite;
+  @keyframes upAnimation{
+    0%{
+      transform: translateY(10px);
+    }
+    50%{
+      transform: translateY(-10px);
+    }
+    100%{
+      transform: translateY(10px);
+    }
+  }
 `
-
 const MoonLightDiv=styled.div<{clicked:string}>`
   border-radius:100%;
   width:70px;
@@ -102,19 +116,27 @@ const MoonLightDiv=styled.div<{clicked:string}>`
   left:46%;
    transform:${({clicked})=>clicked==="true"?'translateY(-2000px) scale(80%)':'none'};
   transition:3s;
+  animation:upAnimation 4s infinite;
+`
+
+const StyledH1=styled.h1<{clicked:string}>`
+animation:upAnimation 4s infinite;
 `
 const Home: NextPage = () => {
   const [clicked,setClicked]=useState("false");
-
+  const Wave1=useMemo(()=><PageWaveCover1 clicked={clicked}></PageWaveCover1>,[clicked]);
+  const Wave2=useMemo(()=><PageWaveCover2 clicked={clicked}></PageWaveCover2>,[clicked]);
+  const Wave3=useMemo(()=><PageWaveCover3 clicked={clicked}></PageWaveCover3>,[clicked]);
+  const Moon=useMemo(()=><><MoonDiv clicked={clicked}></MoonDiv><MoonLightDiv clicked={clicked}></MoonLightDiv> <StyledH1 clicked={clicked} >title</StyledH1></>,[clicked]);
+  const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
         <HomeDiv onClick={function(){setClicked("true")}}>
-            <MoonDiv clicked={clicked}/>
-            <MoonLightDiv clicked={clicked}/>
-            <PageWaveCover3 clicked={clicked}/>
-            <PageWaveCover1 clicked={clicked}/>
-            <PageWaveCover2 clicked={clicked} />
-            {clicked==="true"?<LoginModal />:null}
-            <h1>title</h1>
+            {Moon}
+            {Wave1}
+          
+            {Wave3}
+            {Wave2}
+            {clicked==="true"?Login:null}
         </HomeDiv>
   )
 }

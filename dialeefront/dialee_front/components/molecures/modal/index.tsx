@@ -1,5 +1,5 @@
 import FixedDiv from "../../atoms/fixedDiv"
-import { ComponentProps, useState } from "react"
+import { ComponentProps, useState,memo } from "react"
 import FlexContainer from '../../atoms/flexcontainer';
 import Span from '../../atoms/span';
 import Button from '../../atoms/button';
