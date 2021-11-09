@@ -125,7 +125,6 @@ z-index:3;
      }
      @keyframes moveX {
        100%{
-    
           transform: translateX(-25px)  rotate(360deg);
           transition-property: transform;
           transition-duration: 2s;
