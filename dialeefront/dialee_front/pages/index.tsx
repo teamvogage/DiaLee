@@ -7,7 +7,7 @@ import AnimatedDiv from '../components/atoms/animatedDiv'
 import Image from '../components/atoms/image'
 let PageWaveCover1=styled.div<{clicked:string}>`
 height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
-  width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
+  width:200vw;
   position:absolute;
   left:-80%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
@@ -32,7 +32,7 @@ height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
 let PageWaveCover2=styled.div<{clicked:string}>`
  
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
-  width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
+  width:200vw;
   position:absolute;
   left:-50%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
@@ -56,7 +56,7 @@ let PageWaveCover2=styled.div<{clicked:string}>`
 let PageWaveCover3=styled.div<{clicked:string}>`
  
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
-  width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
+  width:200vw;
   position:absolute;
   left:-30%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
