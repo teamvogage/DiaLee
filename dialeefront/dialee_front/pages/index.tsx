@@ -9,7 +9,7 @@ let PageWaveCover1=styled.div<{clicked:string}>`
 height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:200vw;
   position:absolute;
-  left:-80%;
+  left:-70%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
@@ -34,7 +34,7 @@ let PageWaveCover2=styled.div<{clicked:string}>`
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:200vw;
   position:absolute;
-  left:-50%;
+  left:-40%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background:${({clicked})=>clicked==="true"?'linear-gradient(#590995 ,#03C4A1);':'linear-gradient(#590995 ,#03C4A1);'}; 
   border:2px #03C4A1 solid;
@@ -58,7 +58,7 @@ let PageWaveCover3=styled.div<{clicked:string}>`
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:200vw;
   position:absolute;
-  left:-30%;
+  left:-10%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
