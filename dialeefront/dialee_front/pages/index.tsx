@@ -9,7 +9,7 @@ let PageWaveCover1=styled.div<{clicked:string}>`
 height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   position:absolute;
-  left:${({clicked})=>clicked==="true"?'-70%':'-60%;'};
+  left:-80%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
@@ -19,11 +19,11 @@ height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   border-radius: 39%;
   animation:wave2  30s linear infinite;
   @keyframes wave2{
-    0% {left:-120%;  transform: rotate(0deg); }
-    25%{left:-100%;   transform: rotate(180deg);}
-    50% {left:-120%; transform:  rotate(360deg) ; }
-    75% {left:-100%; transform:  rotate(540deg) ; }
-    100%{left:-120%; transform:  rotate(720deg) ;}
+    0% {  transform: rotate(0deg); }
+    25%{   transform: rotate(180deg);}
+    50% {transform:  rotate(360deg) ; }
+    75% { transform:  rotate(540deg) ; }
+    100%{ transform:  rotate(720deg) ;}
   };
 
   transition:4s;
@@ -34,7 +34,7 @@ let PageWaveCover2=styled.div<{clicked:string}>`
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   position:absolute;
-  left:${({clicked})=>clicked==="true"?'-70%':'-50%;'};
+  left:-50%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background:${({clicked})=>clicked==="true"?'linear-gradient(#590995 ,#03C4A1);':'linear-gradient(#590995 ,#03C4A1);'}; 
   border:2px #03C4A1 solid;
@@ -44,11 +44,11 @@ let PageWaveCover2=styled.div<{clicked:string}>`
   border-radius: 39%;
   animation:wave1   30s linear infinite;
   @keyframes wave1{
-    0% {left:-40%;  transform: rotate(0deg); }
-    25%{left:-50%;   transform: rotate(180deg);}
-    50% {left:-40%;transform:  rotate(360deg) ; }
-    75% {left:-50%;transform:  rotate(540deg) ; }
-    100%{left:-40%; transform:  rotate(720deg) ;}
+    0% { transform: rotate(0deg); }
+    25%{  transform: rotate(180deg);}
+    50% {transform:  rotate(360deg) ; }
+    75% {transform:  rotate(540deg) ; }
+    100%{ transform:  rotate(720deg) ;}
   };
   transition:4s;
   
@@ -58,7 +58,7 @@ let PageWaveCover3=styled.div<{clicked:string}>`
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   position:absolute;
-  left:${({clicked})=>clicked==="true"?'-70%':'-50%;'};
+  left:-30%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
@@ -68,11 +68,11 @@ let PageWaveCover3=styled.div<{clicked:string}>`
   border-radius: 42%;
   animation:wave3   30s linear infinite;
   @keyframes wave3{
-    0% {left:-0%;  transform: rotate(0deg); }
-    25%{left:-10%;   transform: rotate(180deg);}
-    50% {left:-0%;transform:  rotate(360deg) ; }
-    75% {left:-10%;transform:  rotate(540deg) ; }
-    100%{left:-0%; transform:  rotate(720deg) ;}
+    0% { transform: rotate(0deg); }
+    25%{  transform: rotate(180deg);}
+    50% {transform:  rotate(360deg) ; }
+    75% {transform:  rotate(540deg) ; }
+    100%{transform:  rotate(720deg) ;}
   };
 
   transition:4s;
