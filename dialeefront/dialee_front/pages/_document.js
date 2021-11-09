@@ -1,6 +1,6 @@
 import Document from "next/document";
-import { ServerStyleSheet } from "styled-components";
-
+import { ServerStyleSheet,ThemeProvider } from "styled-components";
+import {basicTheme} from "../styles/theme"
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();

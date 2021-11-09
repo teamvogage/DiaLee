@@ -1,7 +1,7 @@
 
 import React, {  ComponentProps } from 'react';
 import FlexContainer from '../flexcontainer'
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import Image from '../image';
 import { urlObjectKeys } from 'next/dist/shared/lib/utils';
 import AnimatedDiv from '../animatedDiv';
@@ -10,6 +10,7 @@ interface IbuttonProps{
   width:string;
   height:string;
   marginRight:string;
+  theme:any;
 }
 const Prefix=styled.div`
 `
@@ -18,12 +19,12 @@ const Suffix=styled.div`
 const StyledButton=styled.button<IbuttonProps>`
 z-index:3;
     font-family:${props=>props.theme.fontFamily};
-    font-size:${({btn_type,theme})=>{
-      if(btn_type.startsWith('social'))
+    font-size:${(props)=>{
+      if(props.btn_type.startsWith('social'))
       return "20px";
-      switch(btn_type){
+      switch(props.btn_type){
         default:
-          return theme.fontSize.button;
+          return props.theme.fontSize.button;
         case "primary": 
           return  "70px"
         case "secondary":
