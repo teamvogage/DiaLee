@@ -11,7 +11,9 @@ import AnimatedDiv from '../components/atoms/animatedDiv'
 import Image from '../components/atoms/image'
 import StyledBodyContainer from '../components/templates/Body'
 let PageWaveCover1=styled.div<{clicked:string}>`
+will-change: transform height; 
 height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
+
   width:200vw;
   position:absolute;
   left:-80%;
@@ -35,7 +37,7 @@ height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   
 `
 let PageWaveCover2=styled.div<{clicked:string}>`
- 
+will-change: transform height; 
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:200vw;
   position:absolute;
@@ -59,7 +61,7 @@ let PageWaveCover2=styled.div<{clicked:string}>`
   
 `
 let PageWaveCover3=styled.div<{clicked:string}>`
- 
+  will-change: transform height; 
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:200vw;
   position:absolute;
@@ -95,6 +97,7 @@ const MoonDiv=styled.div<{clicked:string}>`
   left:46%;
   transform:${({clicked})=>clicked==="true"?'translateY(-2000px) scale(80%)':'none'};
   transition:3s;
+  will-change: transform;
   animation:upAnimation 4s infinite;
   @keyframes upAnimation{
     0%{
@@ -126,7 +129,7 @@ const MoonLightDiv=styled.div<{clicked:string}>`
 
 const StyledH1=styled.h1<{clicked:string}>`
 animation:upAnimation 4s infinite;
-font-family:nanumson;
+
 `
 const Home: NextPage = () => {
   const [clicked,setClicked]=useState("false");

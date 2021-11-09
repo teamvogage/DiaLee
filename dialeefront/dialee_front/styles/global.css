@@ -1,11 +1,19 @@
-
-import { createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-
+@font-face {
+  font-family: "Cafe24SSurroundAir";
+  src: url("./Cafe24SsurroundAir.ttf");
+}
+@font-face {
+  font-family: "NanumBrush";
+  src: url("./NanumBrushScript-Regular.ttf");
+}
+@font-face {
+  font-family: "NanumSon";
+  src: url("./Nanumson.ttf");
+}
 
 html,
 body {
+  font-family: "Nanum Myeongjo", serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,7 +57,3 @@ a {
 header {
   height: 200px;
 }
-
-
-`
-export default GlobalStyle;

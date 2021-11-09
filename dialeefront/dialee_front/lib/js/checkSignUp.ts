@@ -12,7 +12,7 @@ export const validatePassword=(pwd:string):string=>{
         const checkNumber = pwd.search(/[0-9]/g);
 	    const checkEnglish = pwd.search(/[a-z]/ig);
 	    if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/.test(pwd)){            
-	        return  '숫자+영문자+특수문자 조합으로 \n8자리 이상 16자리 이하로 사용해야 합니다.';
+	        return  `숫자+영문자+특수문자 조합으로 8자리 이상 16자리 이하여야 합니다.`;
 	    }else if(checkNumber <0 || checkEnglish <0){
 	        return "숫자와 영문자를 혼용하여야 합니다.";
 	    }else if(pwd.search(/\s/) != -1)

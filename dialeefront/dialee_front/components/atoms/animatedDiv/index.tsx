@@ -6,7 +6,7 @@ animation-name:${({animation})=>animation};
 animation-delay:${({animationDelay})=>animationDelay};
 animation-duration:${({animationTime})=>animationTime};
 animation-fill-mode:${({animationFill})=>animationFill};
-
+will-change: transform  opacity; 
 @keyframes slideInTopAnim{
     from{
         opacity:0;
