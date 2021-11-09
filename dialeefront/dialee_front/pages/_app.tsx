@@ -1,4 +1,4 @@
-
+import '../styles/font.css' 
 import type { AppProps } from 'next/app'
 import {ThemeProvider} from 'styled-components'
 import Footer from "../components/organisms/footer"
@@ -8,7 +8,7 @@ import {BASED_URL} from '../lib/constants'
 import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} from '../styles/theme';
 import Head from 'next/head'
 import GlobalStyle from '../styles/globalStyle'
-import '../styles/font.css' 
+
 
 
 axios.defaults.baseURL = BASED_URL;
