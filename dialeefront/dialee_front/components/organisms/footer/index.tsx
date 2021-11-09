@@ -5,7 +5,7 @@ const StyledFooterContainer=styled.footer`
      width:100vw;
      display:flex;
      z-index:2999;
-    margin:0;
+     margin:0;
     left:0px;
      border-top:2px solid black;
      

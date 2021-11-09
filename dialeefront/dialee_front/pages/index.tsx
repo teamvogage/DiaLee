@@ -155,8 +155,6 @@ const Home: NextPage = () => {
             
         </FlexContainer>
       <Footer/> 
-     
-        
       </StyledBodyContainer>
   )
 }
