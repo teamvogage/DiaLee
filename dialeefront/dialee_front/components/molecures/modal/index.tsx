@@ -15,17 +15,18 @@ mint-width:70%;
 width:70%;
 
 height:fit-content;
-animation:${props=>props.animated=="on"?"slideInTopAnim 3s forwards":"none"};
-   
+animation:${props=>props.animated=="on"?"slideInTopAnim 3s  forwards":"none"};
+
     @keyframes slideInTopAnim{
         from{
-            opacity:0;
+           
             transform: translateY(-600px);
         }
         to{
             transform: translateY(0px);
         }
     };
+
 `
 
 

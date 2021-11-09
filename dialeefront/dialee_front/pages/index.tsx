@@ -11,20 +11,18 @@ import AnimatedDiv from '../components/atoms/animatedDiv'
 import Image from '../components/atoms/image'
 import StyledBodyContainer from '../components/templates/Body'
 let PageWaveCover1=styled.div<{clicked:string}>`
-will-change: top ; 
-height:300vh;
-
-  width:200vw;
+will-change: top height; 
+height:1600px;
+width:1600px;
   position:absolute;
-  left:-80%;
-  top:${({clicked})=>clicked==="true"?'-60% ':'70%'};
+  left:-270%;
+  top:${({clicked})=>clicked==="true"?'-60%':'70%'};
 
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
-  max-width: 1700px;
-  max-height:1700px;
-  transform-origin: 50% 48%;
-  border-radius: 39%;
+  
+  transform-origin: 52% 48%;
+  border-radius: 38%;
   animation:wave2  30s linear infinite;
   @keyframes wave2{
     0% {  transform: rotate(0deg); }
@@ -33,24 +31,23 @@ height:300vh;
     75% { transform:  rotate(540deg) ; }
     100%{ transform:  rotate(720deg) ;}
   };
- 
+  border:2px white solid;
   transition:top 4s;
   
 `
 let PageWaveCover2=styled.div<{clicked:string}>`
-will-change: top ; 
-  height:300vh;
-  width:300vw;
+will-change: top height; 
+height:1600px;
+width:1600px;
   position:absolute;
-  left:-50%;
-  top:${({clicked})=>clicked==="true"?'-60% ':'70%'};
+  left:-80%;
+  top:${({clicked})=>clicked==="true"?'-60%':'70%'};
 
   background:linear-gradient(#590995 ,#03C4A1);
   border:2px #03C4A1 solid;
-  max-width: 1700px;
-  max-height:1700px;
-  transform-origin: 50% 48%;
-  border-radius: 39%;
+  
+  transform-origin: 52% 48%;
+  border-radius: 38%;
   animation:wave1   30s linear infinite;
   @keyframes wave1{
     0% { transform: rotate(0deg); }
@@ -63,18 +60,17 @@ will-change: top ;
   transition:top 4s;
 `
 let PageWaveCover3=styled.div<{clicked:string}>`
-  will-change: top; 
-  height:300vh;
-  width:300vw;
+  will-change: top height; 
+  height:1600px;
+  width:1600px;
   position:absolute;
-  left:-10%;
-  top:${({clicked})=>clicked==="true"?'-60% ':'70%'};
+  left:0%;
+  top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
-  max-width: 1700px;
-  max-height:1700px;
-  transform-origin: 53% 47%;
-  border-radius: 42%;
+
+  transform-origin: 52% 48%;
+  border-radius: 38%;
  
   animation:wave3   30s linear infinite;
  
@@ -85,6 +81,7 @@ let PageWaveCover3=styled.div<{clicked:string}>`
     75% {transform:  rotate(540deg) ; }
     100%{transform:  rotate(720deg) ;}
   };
+  border:2px white solid;
 transition:top 4s;
 
   
