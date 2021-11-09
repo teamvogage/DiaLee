@@ -26,7 +26,7 @@ const IdAndPassword=({direction}:ComponentProps<any>)=>{
     }
 
     return(<>
-        <Button prefix="/imoticon/Sunflower.png" btn_type="socialNot" onClick={onActive}>일반 로그인</Button>
+        <Button prefix="/Ship.png" btn_type="socialNot" onClick={onActive}>일반 로그인</Button>
         {isActive?<FlexContainer align="center" alignItems="center" direction={direction||"row"}>
             <AnimatedDiv animation="slideInTopAnim" animationTime="1s" animationFill="forwards">
             <StyledDiv>

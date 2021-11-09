@@ -2,10 +2,11 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 class MyDocument extends Document {
+ 
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
-
+    console.log("hi");
     try {
       ctx.renderPage = () =>
         originalRenderPage({

@@ -40,6 +40,7 @@ const StyledDiv=styled.div<IcontainerProps>`
     align-items:${({alignItems}:IcontainerProps)=>{return alignItems||null}};
     background:${({background})=>{return background||null}};
     z-index:${({zIndex})=>{return zIndex||null}};
+    s
 `
 
 const Container =({background,zIndex,alignContent,alignItems,wrap,direction,align,children,margin,flexGrow,width,height}:ComponentProps<any>)=>{

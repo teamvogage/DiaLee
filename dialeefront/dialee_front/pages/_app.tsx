@@ -13,31 +13,20 @@ import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} fr
 import { useState } from 'react'
 import GlobalStyle from '../styles/globalStyle'
 import GlobalFont from '../public/fonts/fonts'
+import StyledBodyContainer from '../components/templates/Body';
 
 axios.defaults.baseURL = BASED_URL;
 axios.defaults.withCredentials = true;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme,setTheme]=useState(springTheme);
+ 
 
   return (<>
   <RecoilRoot>
-    <div id="body_container" onContextMenu={function(e){e.preventDefault()}}>
-      <div id="desk">
-        <ThemeProvider theme={springTheme}>
-          <FlexContainer direction="row"  align="between">
-            <SlideMenu></SlideMenu>
-            <Main>
-                <Component {...pageProps} />
-            </Main>
-            
-        </FlexContainer>
-      
-      </ThemeProvider>
-      <Footer/>
-     </div>
-   
-  </div>
+  <ThemeProvider theme={springTheme}>
+  <Component {...pageProps} />
+        
+  </ThemeProvider>
   <GlobalStyle/>
   <GlobalFont/>
   </RecoilRoot>

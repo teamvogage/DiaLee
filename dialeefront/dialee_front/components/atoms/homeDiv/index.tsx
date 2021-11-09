@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledHomeDiv=styled.div`
     z-index: 3000;
     width:100%;
-    margin-left:57px;
+    margin-left:0px;
     position: absolute;
     overflow: hidden;
     left:0;

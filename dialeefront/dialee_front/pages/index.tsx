@@ -1,15 +1,20 @@
 import type { NextPage } from 'next'
-import { useState,useMemo, useCallback } from 'react'
+import React, { useState,useMemo, useCallback } from 'react'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
+import SlideMenu from '../components/organisms/slidemenu'
+import Main from '../components/templates/Main'
+import FlexContainer from '../components/atoms/flexcontainer'
+import Footer from '../components/organisms/footer'
 import AnimatedDiv from '../components/atoms/animatedDiv'
 import Image from '../components/atoms/image'
+import StyledBodyContainer from '../components/templates/Body'
 let PageWaveCover1=styled.div<{clicked:string}>`
 height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:200vw;
   position:absolute;
-  left:-70%;
+  left:-80%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
@@ -34,7 +39,7 @@ let PageWaveCover2=styled.div<{clicked:string}>`
   height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
   width:200vw;
   position:absolute;
-  left:-40%;
+  left:-50%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background:${({clicked})=>clicked==="true"?'linear-gradient(#590995 ,#03C4A1);':'linear-gradient(#590995 ,#03C4A1);'}; 
   border:2px #03C4A1 solid;
@@ -131,7 +136,9 @@ const Home: NextPage = () => {
   const Moon=useMemo(()=><><MoonDiv clicked={clicked}></MoonDiv><MoonLightDiv clicked={clicked}></MoonLightDiv> <StyledH1 clicked={clicked} >title</StyledH1></>,[clicked]);
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
-        <HomeDiv onClick={function(){setClicked("true")}}>
+    <StyledBodyContainer>
+      <FlexContainer direction="row"  align="between">
+      <HomeDiv onClick={function(){setClicked("true")}}>
             {Moon}
             {Wave1}
           
@@ -139,6 +146,18 @@ const Home: NextPage = () => {
             {Wave2}
             {clicked==="true"?Login:null}
         </HomeDiv>
+      </FlexContainer>
+      <FlexContainer direction="row"  align="between">
+            <SlideMenu></SlideMenu>
+            <Main>
+              
+            </Main>
+            
+        </FlexContainer>
+      <Footer/> 
+     
+        
+      </StyledBodyContainer>
   )
 }
 
