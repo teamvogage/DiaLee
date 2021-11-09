@@ -46,7 +46,7 @@ const StyledInput = styled.input<IinputProps>`
 
 const Input = (props: ComponentProps<any>) => {
     return (
-        <StyledInput id={props.id} name={props.name} autoComplete={"off"}  onChange={props.onChange} {...props}></StyledInput>
+        <StyledInput id={props.id} name={props.name} autoComplete={"off"} maxLength={props.maxlength} onChange={props.onChange} {...props}></StyledInput>
     )
 }
 export default memo(Input,(prev,next)=>prev.onChange===next.onChange);

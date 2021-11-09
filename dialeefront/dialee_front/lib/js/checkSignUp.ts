@@ -1,6 +1,6 @@
 
 
-export const checkId=(Id:string):string=>{
+export const checkUserName=(Id:string):string=>{
    
     Id=Id.trim();
     if(Id.search(/\s/) !=-1)
@@ -30,11 +30,12 @@ export const checkEmail=(email:string):string=>{
      return !reg_email.test(email)?"이메일 형식에 어긋납니다.":"문제 없음";                         
 }
 export const check=(type:string,value:string):string=>{
-    if(type=="Id")
-        return checkId(value);
-    if(type=="Pwd")
+   
+    if(type=="username")
+        return checkUserName(value);
+    if(type=="password1")
         return validatePassword(value);
-    if(type=="Email")
+    if(type=="email")
         return checkEmail(value);
     return "문제 없음";
 }

@@ -9,6 +9,10 @@ export interface ISendAccountData{
 }
 
 export const sendSignUp=async (data:ISendAccountData)=>{
-    const res=await axios.post("/accounts",data);
-    console.log(res.data);
+    try{
+        console.log(data);
+        const res=await axios.post("/accounts",data);
+    console.log(res.data);}catch(error){
+        console.log(error);
+    }
 }
