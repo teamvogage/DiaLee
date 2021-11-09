@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+
 
 import type { AppProps } from 'next/app'
 import {ThemeProvider} from 'styled-components'
@@ -11,7 +11,8 @@ import Main from  '../components/templates/Main'
 import {BASED_URL} from '../lib/constants'
 import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} from '../styles/theme';
 import { useState } from 'react'
-import styled from 'styled-components'
+import GlobalStyle from '../styles/globalStyle'
+import GlobalFont from '../public/fonts/fonts'
 
 axios.defaults.baseURL = BASED_URL;
 axios.defaults.withCredentials = true;
@@ -23,10 +24,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   <RecoilRoot>
     <div id="body_container" onContextMenu={function(e){e.preventDefault()}}>
       <div id="desk">
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={springTheme}>
           <FlexContainer direction="row"  align="between">
             <SlideMenu></SlideMenu>
-           
             <Main>
                 <Component {...pageProps} />
             </Main>
@@ -38,6 +38,8 @@ function MyApp({ Component, pageProps }: AppProps) {
      </div>
    
   </div>
+  <GlobalStyle/>
+  <GlobalFont/>
   </RecoilRoot>
  </> )
 

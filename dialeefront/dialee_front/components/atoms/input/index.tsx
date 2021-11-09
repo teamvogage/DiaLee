@@ -18,7 +18,7 @@ const StyledInput = styled.input<IinputProps>`
             return props.width;
         return "80%"
     }};
-    font-family:${props => props.theme.fontFamily};
+    font-family:"Nanumson";
     margin:10px;
     font-size:20px;
     
@@ -36,7 +36,7 @@ const StyledInput = styled.input<IinputProps>`
     
     background-color:rgba(0,0,0,0);
     border-bottom:2px double black;
-    ${(props) => props.auto ? `autofocus` : ';'};
+  
     maxlength:${props => props.maxlength || ';'};
     value:${props => props.value || ''};
     type:${props => props.type || 'text'};
@@ -46,7 +46,7 @@ const StyledInput = styled.input<IinputProps>`
 
 const Input = (props: ComponentProps<any>) => {
     return (
-        <StyledInput id={props.id} name={props.name} onChange={props.onChange} {...props}></StyledInput>
+        <StyledInput id={props.id} name={props.name} autoComplete={"off"}  onChange={props.onChange} {...props}></StyledInput>
     )
 }
 export default Input;

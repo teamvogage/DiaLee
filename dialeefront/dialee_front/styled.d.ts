@@ -5,7 +5,7 @@ declare module 'styled-components' {
   
     colors:CcolorTheme,
     fontSize:IfontSize,
-    fontFamily:string,
+
     textColor:CtextColor,
   }
 }

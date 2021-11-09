@@ -3,7 +3,7 @@ import React, {  ComponentProps } from 'react';
 import FlexContainer from '../flexcontainer'
 import styled, { DefaultTheme } from 'styled-components';
 import Image from '../image';
-import { urlObjectKeys } from 'next/dist/shared/lib/utils';
+
 import AnimatedDiv from '../animatedDiv';
 interface IbuttonProps{
   btn_type: string;
@@ -18,7 +18,7 @@ const Suffix=styled.div`
 `
 const StyledButton=styled.button<IbuttonProps>`
 z-index:3;
-    font-family:${props=>props.theme.fontFamily};
+    font-family:"nanumson";
     font-size:${(props)=>{
       if(props.btn_type.startsWith('social'))
       return "20px";

@@ -1,22 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Cute+Font&family=Single+Day&display=swap");
-@font-face {
-  font-family: "Cafe24SSurroundAir";
-  src: url("./fonts/Cafe24SsurroundAir.ttf");
-}
-@font-face {
-  font-family: "NanumBrush";
-  src: url("./fonts/NanumBrushScript-Regular.ttf");
-}
-@font-face {
-  font-family: "NanumSon";
-  src: url("./fonts/Nanumson.ttf");
-}
+
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+
+
 html,
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "NanumSon", "NanumBrush", "Cafe24SSurroundAir", "Cute font";
+  font-family: "NanumSon";
   margin: 0;
   padding: 0;
   width: 100%;
@@ -61,6 +54,7 @@ div#home_container {
   height: 100vh;
   border: 5px solid black;
   background-color: aliceblue;
+  font-family: "NanumSon";
 }
 div#body_container {
   border: 3px solid black;
@@ -199,3 +193,7 @@ a {
 header {
   height: 200px;
 }
+
+
+`
+export default GlobalStyle;

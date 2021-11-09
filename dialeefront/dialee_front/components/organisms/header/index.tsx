@@ -30,7 +30,7 @@ const StyledHeaderTop=styled.div`
         width:100%;
 `;
 const StyledHeaderBottom=styled.div`
-        background-color:${props=>props.theme.colors.color1};
+        background-color:${props=>props.theme.colors.color3};
         height:33%;
         width:100%;
 `

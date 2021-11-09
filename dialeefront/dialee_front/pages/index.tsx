@@ -121,6 +121,7 @@ const MoonLightDiv=styled.div<{clicked:string}>`
 
 const StyledH1=styled.h1<{clicked:string}>`
 animation:upAnimation 4s infinite;
+font-family:nanumson;
 `
 const Home: NextPage = () => {
   const [clicked,setClicked]=useState("false");

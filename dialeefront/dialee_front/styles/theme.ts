@@ -1,30 +1,30 @@
 import { DefaultTheme } from "styled-components";
 export class CcolorTheme{
-    main:String="";//어두운 부분 
-    color1:String=""; //다음 
-    color2:String="";//다음
-    color3:String="";
-    color4:String="#F2D0D7";
+    main:string="";//어두운 부분 
+    color1:string=""; //다음 
+    color2:string="";//다음
+    color3:string="";
+    color4:string="#F2D0D7";
    
    
     //가장밝음
 }
 
 export interface IfontSize{
-    small:String;
-    medium:String;
-    large:String;
-    button:String;
+    small:string;
+    medium:string;
+    large:string;
+    button:string;
 }
 export class CtextColor{
-    primary:String="black";
-    secondary:String="black";
-    title:String="black";
+    primary:string="black";
+    secondary:string="black";
+    title:string="black";
 }
 export class CFontfamilies{
-    menu:String="NanumSon";
-    title:String="NanumSon";
-    plain:String="NanumSon";
+    menu:string="NanumSon";
+    title:string="NanumSon";
+    plain:string="NanumSon";
 }
 const standardTextColor=new CtextColor();
 const basicColorTheme:CcolorTheme={
@@ -88,7 +88,7 @@ const basicFontSize:IfontSize={
 const basicTheme: DefaultTheme={
     colors:basicColorTheme,
     fontSize:basicFontSize,
-    fontFamily:`NanumSon`,
+
     textColor:standardTextColor,
 }
 const springTheme: DefaultTheme = {
@@ -121,7 +121,7 @@ const retroTheme:DefaultTheme={
     ...basicTheme,
     colors:retroColorTheme,
     fontSize:retroFontSize,
-    fontFamily:"NanumSon"
+ 
 }
 
 export { springTheme, summerTheme,fallTheme,winterTheme,basicTheme ,retroTheme};
