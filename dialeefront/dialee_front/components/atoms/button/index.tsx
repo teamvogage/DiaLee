@@ -1,5 +1,5 @@
 
-import React, {  ComponentProps } from 'react';
+import React, {  ComponentProps, memo } from 'react';
 import FlexContainer from '../flexcontainer'
 import styled, { DefaultTheme } from 'styled-components';
 import Image from '../image';
@@ -256,7 +256,7 @@ z-index:3;
      transition-duration:0.2s;
      margin-right:${({marginRight})=>marginRight||`0px`};
 `
-export default function Button({marginRight,suffix,prefix,width,height,btn_type,direction,align,wrap,onClick,children,alignItems}:ComponentProps<any>) {
+ const Button=({marginRight,suffix,prefix,width,height,btn_type,direction,align,wrap,onClick,children,alignItems}:ComponentProps<any>) =>{
   return (<AnimatedDiv animation={!btn_type.startsWith("small")?null:"slideInLeftAnim"} animationFill={!btn_type.startsWith("small")?null:"forwards"} animationTime={!btn_type.startsWith("small")?null:"1s"}>
     <StyledButton type="button" marginRight={marginRight} btn_type={btn_type} width={width} height={height} onClick={onClick}>
       <FlexContainer direction={direction} align={btn_type.startsWith("sub")?"between":align?align:"center"} wrap={wrap} alignItems={alignItems?alignItems:"center"}>
@@ -274,3 +274,15 @@ export default function Button({marginRight,suffix,prefix,width,height,btn_type,
     </AnimatedDiv>
   );
 }
+const memoDispatcher=(prev:Readonly<any>,next:Readonly<any>)=>{
+  if(prev.btn_type!==next.btn_type)
+    return false;
+  if(prev.prefix!==next.prefix)
+    return false;
+  if(prev.suffix!==next.suffix)
+    return false;
+  if(prev.children!==next.children)
+    return false;
+  return true;
+}
+export default memo(Button,memoDispatcher);

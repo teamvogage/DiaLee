@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import { ComponentProps,memo } from 'react';
 import styled from 'styled-components';
 import FlexContainer from '../flexcontainer';
 const StyledDiv=styled.div<{width:string,height:string,top:string,left:string,zIndex:number,animated:string,background:string,border:string}>`
@@ -20,4 +20,4 @@ const FixedDiv=({width,height,top,left,zIndex,children,background,border,animate
     </StyledDiv>)
 }
 
-export default FixedDiv
+export default memo(FixedDiv,()=>true)

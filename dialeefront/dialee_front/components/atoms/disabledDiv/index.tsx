@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import { ComponentProps,memo } from 'react';
 import styled from 'styled-components'
 import Image from '../image'
 const StyledDiv=styled.div<{marginLeft:string,height:string}>`
@@ -32,4 +32,4 @@ const disabledDiv=({height,marginLeft,onMouseMove}:ComponentProps<any>)=>{
         </StyledDiv>
     )
 }
-export default disabledDiv;
+export default memo(disabledDiv);

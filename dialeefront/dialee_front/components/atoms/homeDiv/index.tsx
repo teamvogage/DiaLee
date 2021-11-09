@@ -25,4 +25,4 @@ const HomeDiv =({children,onClick,onFocus,onTouchSTart}:ComponentProps<any>)=>{
         </StyledHomeDiv>
     )
 }
-export default memo(HomeDiv);
+export default HomeDiv;

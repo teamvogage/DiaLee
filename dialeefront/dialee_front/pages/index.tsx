@@ -44,7 +44,7 @@ width:1600px;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
 
   background:linear-gradient(#590995 ,#03C4A1);
-  border:2px #03C4A1 solid;
+  border:2px white solid;
   
   transform-origin: 52% 48%;
   border-radius: 38%;
@@ -67,7 +67,7 @@ let PageWaveCover3=styled.div<{clicked:string}>`
   left:0%;
   top:${({clicked})=>clicked==="true"?'-60%':'70%'};
   background: linear-gradient(#590995 ,#03C4A1);
-  border:2px #590995 solid;
+  border:2px white solid;
 
   transform-origin: 52% 48%;
   border-radius: 38%;
@@ -142,7 +142,6 @@ const Home: NextPage = () => {
       <HomeDiv onClick={function(){setClicked("true")}}>
             {Moon}
             {Wave1}
-          
             {Wave3}
             {Wave2}
             {clicked==="true"?Login:null}

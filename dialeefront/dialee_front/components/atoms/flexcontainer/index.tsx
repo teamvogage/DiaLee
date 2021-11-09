@@ -1,5 +1,5 @@
 
-import { ComponentProps } from "react"
+import { ComponentProps,memo } from "react"
 import styled from "styled-components"
 export interface IcontainerProps{
     wrap:string;
@@ -43,7 +43,7 @@ const StyledDiv=styled.div<IcontainerProps>`
     s
 `
 
-const Container =({background,zIndex,alignContent,alignItems,wrap,direction,align,children,margin,flexGrow,width,height}:ComponentProps<any>)=>{
+const FlexContainer =({background,zIndex,alignContent,alignItems,wrap,direction,align,children,margin,flexGrow,width,height}:ComponentProps<any>)=>{
     
     return(
         <StyledDiv zIndex={zIndex} background={background} width={width} height={height} alignContent={alignContent} flexGrow={flexGrow} alignItems={alignItems} wrap={wrap} margin={margin} direction={direction} align={align}>
@@ -52,4 +52,4 @@ const Container =({background,zIndex,alignContent,alignItems,wrap,direction,alig
     )
 }
 
-export default Container
+export default memo(FlexContainer,(prev,next)=>prev.children===next.children)

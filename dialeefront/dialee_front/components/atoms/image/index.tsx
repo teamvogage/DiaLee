@@ -1,7 +1,8 @@
 import NextImage from 'next/image'
-import { ComponentProps } from 'react'
+import { ComponentProps,memo } from 'react'
 import testImg from '../../../public/createBtn.png'
 import styled from 'styled-components'
+import next from 'next'
 const StyledDiv=styled.div<{width:string,height:string,rotate:string,shadow:string}>`
     position:relative;
     width:${props=>props.width||`inherit`};
@@ -27,4 +28,17 @@ const Image=({src,width,height,alt,onClick,rotate,shadow}:ComponentProps<any>)=>
         </NextImage>
     </StyledDiv>)
 }
-export default Image;
+const memoDispatcher =(prevProps:Readonly<any>, nextProps:Readonly<any>)=>{
+    if(prevProps.src !== nextProps.src)
+    return false;
+    if(prevProps.width!==nextProps.width)
+    return false;
+    if(prevProps.height!==nextProps.height)
+    return false;
+    if(prevProps.rotate!==nextProps.rotate)
+    return false;
+    if(prevProps.shadow!==nextProps.shadow)
+    return false;
+    return true;
+}
+export default memo(Image,memoDispatcher);

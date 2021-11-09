@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import { ComponentProps ,memo} from 'react';
 import styled from 'styled-components';
 export interface IinputProps {
     height: string;
@@ -49,4 +49,4 @@ const Input = (props: ComponentProps<any>) => {
         <StyledInput id={props.id} name={props.name} autoComplete={"off"}  onChange={props.onChange} {...props}></StyledInput>
     )
 }
-export default Input;
+export default memo(Input,(prev,next)=>prev.onChange===next.onChange);
