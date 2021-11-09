@@ -11,13 +11,14 @@ import AnimatedDiv from '../components/atoms/animatedDiv'
 import Image from '../components/atoms/image'
 import StyledBodyContainer from '../components/templates/Body'
 let PageWaveCover1=styled.div<{clicked:string}>`
-will-change: transform height; 
-height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
+will-change: top ; 
+height:300vh;
 
   width:200vw;
   position:absolute;
   left:-80%;
-  top:${({clicked})=>clicked==="true"?'-60%':'70%'};
+  top:${({clicked})=>clicked==="true"?'-60% ':'70%'};
+
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
   max-width: 1700px;
@@ -32,18 +33,19 @@ height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
     75% { transform:  rotate(540deg) ; }
     100%{ transform:  rotate(720deg) ;}
   };
-
-  transition:4s;
+ 
+  transition:top 4s;
   
 `
 let PageWaveCover2=styled.div<{clicked:string}>`
-will-change: transform height; 
-  height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
-  width:200vw;
+will-change: top ; 
+  height:300vh;
+  width:300vw;
   position:absolute;
   left:-50%;
-  top:${({clicked})=>clicked==="true"?'-60%':'70%'};
-  background:${({clicked})=>clicked==="true"?'linear-gradient(#590995 ,#03C4A1);':'linear-gradient(#590995 ,#03C4A1);'}; 
+  top:${({clicked})=>clicked==="true"?'-60% ':'70%'};
+
+  background:linear-gradient(#590995 ,#03C4A1);
   border:2px #03C4A1 solid;
   max-width: 1700px;
   max-height:1700px;
@@ -57,23 +59,25 @@ will-change: transform height;
     75% {transform:  rotate(540deg) ; }
     100%{ transform:  rotate(720deg) ;}
   };
-  transition:4s;
-  
+ 
+  transition:top 4s;
 `
 let PageWaveCover3=styled.div<{clicked:string}>`
-  will-change: transform height; 
-  height:${({clicked})=>clicked==="true"?'300vh':'200vw'};
-  width:200vw;
+  will-change: top; 
+  height:300vh;
+  width:300vw;
   position:absolute;
   left:-10%;
-  top:${({clicked})=>clicked==="true"?'-60%':'70%'};
+  top:${({clicked})=>clicked==="true"?'-60% ':'70%'};
   background: linear-gradient(#590995 ,#03C4A1);
   border:2px #590995 solid;
   max-width: 1700px;
   max-height:1700px;
   transform-origin: 53% 47%;
   border-radius: 42%;
+ 
   animation:wave3   30s linear infinite;
+ 
   @keyframes wave3{
     0% { transform: rotate(0deg); }
     25%{  transform: rotate(180deg);}
@@ -81,8 +85,8 @@ let PageWaveCover3=styled.div<{clicked:string}>`
     75% {transform:  rotate(540deg) ; }
     100%{transform:  rotate(720deg) ;}
   };
+transition:top 4s;
 
-  transition:4s;
   
 `
 
@@ -95,8 +99,7 @@ const MoonDiv=styled.div<{clicked:string}>`
   height:70px;
   top:20%;
   left:46%;
-  transform:${({clicked})=>clicked==="true"?'translateY(-2000px) scale(80%)':'none'};
-  transition:3s;
+
   will-change: transform;
   animation:upAnimation 4s infinite;
   @keyframes upAnimation{
@@ -122,8 +125,6 @@ const MoonLightDiv=styled.div<{clicked:string}>`
   height:70px;
   top:20%;
   left:46%;
-   transform:${({clicked})=>clicked==="true"?'translateY(-2000px) scale(80%)':'none'};
-  transition:3s;
   animation:upAnimation 4s infinite;
 `
 
