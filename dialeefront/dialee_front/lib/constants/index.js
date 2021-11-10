@@ -1,2 +1,2 @@
-export const BASED_URL="http://13.125.115.54:8000";
+export const BASED_URL="http://127.0.0.1:8000";
 export const time=""

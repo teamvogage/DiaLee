@@ -80,7 +80,7 @@ const SignUp=()=>{
         <AnimatedDiv animation="slideInTopAnim" animationTime="1s" animationFill="forwards">
             <FlexContainer align="center" alignItems="center" direction={"column"}> 
                 <Span size="15" color={text.username=="문제 없음"?"blue":"red"} id="checkId">{text.username}</Span>
-                <Span size="24" color="black"> 아이디 </Span>
+                <Span size="24" color="black"> 활동명 </Span>
                     <Input name="username" width={"200px"} auto="off"  id="Id"  maxlength="16" onChange={onChange}  ></Input>
                 
                 <Span size="15" color={text.password1=="문제 없음"?"blue":"red"} id="validateSecret">{text.password1}</Span> 
@@ -96,7 +96,7 @@ const SignUp=()=>{
                 <Span size="24" color="black"> 이메일 </Span>
                     <Input name="email" type="email" width={"200px"} auto="off" id="Email" maxlength="50"  onChange={onChange} ></Input>
                    
-                {pass!=4?<Button  btn_type="no" > 회원가입 </Button>:<Button  btn_type="ok" onClick={onSend}> 회원가입 </Button>}
+                {pass!=4?null:<Button  btn_type="ok" onClick={onSend}> 회원가입 </Button>}
             </FlexContainer>  
         </AnimatedDiv>
     )
