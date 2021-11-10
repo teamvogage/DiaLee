@@ -16,6 +16,7 @@ class User(AbstractUser):
     """
     username = models.CharField(
         max_length=150,
+        unique=False,
         help_text=('Required. 150 characters or fewer.'),
     )
 
@@ -26,7 +27,7 @@ class User(AbstractUser):
     )
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
 
     # TODO: 기본 이미지 중에서 선택하는 기능 추가
     profile_image = ProcessedImageField(
