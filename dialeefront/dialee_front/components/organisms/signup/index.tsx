@@ -79,6 +79,10 @@ const SignUp=()=>{
     return(
         <AnimatedDiv animation="slideInTopAnim" animationTime="1s" animationFill="forwards">
             <FlexContainer align="center" alignItems="center" direction={"column"}> 
+                <Span size="15" color={text.email=="문제 없음"?"blue":"red"} id="checkEmail">{text.email}</Span>    
+                <Span size="24" color="black"> 이메일 </Span>
+                    <Input name="email" type="email" width={"200px"} auto="off" id="Email" maxlength="50"  onChange={onChange} ></Input>
+                  
                 <Span size="15" color={text.username=="문제 없음"?"blue":"red"} id="checkId">{text.username}</Span>
                 <Span size="24" color="black"> 활동명 </Span>
                     <Input name="username" width={"200px"} auto="off"  id="Id"  maxlength="16" onChange={onChange}  ></Input>
@@ -92,10 +96,7 @@ const SignUp=()=>{
                     <Input name="password2"   type="password" auto="off" width={"200px"}  maxlength="16"  onChange={onChange} ></Input>
                 
               
-                <Span size="15" color={text.email=="문제 없음"?"blue":"red"} id="checkEmail">{text.email}</Span>    
-                <Span size="24" color="black"> 이메일 </Span>
-                    <Input name="email" type="email" width={"200px"} auto="off" id="Email" maxlength="50"  onChange={onChange} ></Input>
-                   
+               
                 {pass!=4?null:<Button  btn_type="ok" onClick={onSend}> 회원가입 </Button>}
             </FlexContainer>  
         </AnimatedDiv>

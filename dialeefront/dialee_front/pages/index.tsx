@@ -134,7 +134,7 @@ const Home: NextPage = () => {
   const Wave1=useMemo(()=><PageWaveCover1 clicked={clicked}></PageWaveCover1>,[clicked]);
   const Wave2=useMemo(()=><PageWaveCover2 clicked={clicked}></PageWaveCover2>,[clicked]);
   const Wave3=useMemo(()=><PageWaveCover3 clicked={clicked}></PageWaveCover3>,[clicked]);
-  const Moon=useMemo(()=><><MoonDiv clicked={clicked}></MoonDiv><MoonLightDiv clicked={clicked}></MoonLightDiv> <StyledH1 clicked={clicked} >title</StyledH1></>,[clicked]);
+  const Moon=useMemo(()=><><MoonDiv clicked={clicked}></MoonDiv><MoonLightDiv clicked={clicked}></MoonLightDiv> <StyledH1 clicked={clicked} >Voyage</StyledH1></>,[clicked]);
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
     <StyledBodyContainer>
