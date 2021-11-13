@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # TODO: 카카오 소셜 로그인
-    # 'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.kakao',
 
     # Third Party Apps
     'imagekit',
@@ -171,8 +171,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    # ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',

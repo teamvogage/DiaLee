@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MinLengthValidator
 
 
 class User(AbstractUser):
@@ -15,15 +15,16 @@ class User(AbstractUser):
       - profile_image, point 필드 추가
     """
     username = models.CharField(
-        max_length=150,
+        max_length=8,
+        validators=[MinLengthValidator(1)],
         unique=False,
-        help_text=('Required. 150 characters or fewer.'),
+        help_text=('1~8자 사이로 입력해 주세요.'),
     )
 
     email = models.EmailField(
         max_length=200,
         unique=True,
-        help_text=('200 characters or fewer.')
+        help_text=('200자 이내로 입력해 주세요.')
     )
 
     USERNAME_FIELD = 'email'
