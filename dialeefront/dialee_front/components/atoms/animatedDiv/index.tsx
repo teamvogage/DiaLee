@@ -9,7 +9,7 @@ animation-fill-mode:${({animationFill})=>animationFill};
 will-change: transform  opacity; 
 @keyframes slideInTopAnim{
     from{
-        opacity:0;
+       
         transform: translateY(-600px);
     }
     to{
@@ -18,11 +18,11 @@ will-change: transform  opacity;
 };
 @keyframes slideInLeftAnim{
     0%{
-        opacity:0;
+       
         transform: translateX(-600px);
     }
     90%{
-        opacity:1;
+    
         transform: translateX(50px);
     }
    
