@@ -14,3 +14,6 @@ class CustomAccountAdapter(DefaultAccountAdapter):
 
         user.save()
         return user
+    def verify_email(self,request,user,form):
+        data = request.email
+        
