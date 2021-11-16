@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components'
-import headerImageState from '../../../atom/headerImageState';
+
 import Image from '../../atoms/image'
 const StyledHeaderContainer=styled.header`
        
@@ -36,7 +36,7 @@ const StyledHeaderBottom=styled.div`
 `
 
 const Header=()=>{
-    const image=useRecoilValue(headerImageState);
+  
    
     return(
         <StyledHeaderContainer>

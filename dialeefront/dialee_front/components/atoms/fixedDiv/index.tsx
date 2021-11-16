@@ -20,4 +20,4 @@ const FixedDiv=({width,height,top,left,zIndex,children,background,border,animate
     </StyledDiv>)
 }
 
-export default memo(FixedDiv,()=>true)
+export default FixedDiv

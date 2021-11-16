@@ -148,11 +148,10 @@ const Home: NextPage = () => {
         </HomeDiv>
       </FlexContainer>
       <FlexContainer direction="row"  align="between">
-            <SlideMenu></SlideMenu>
+          
             <Main>
               
             </Main>
-            
         </FlexContainer>
       <Footer/> 
       </StyledBodyContainer>

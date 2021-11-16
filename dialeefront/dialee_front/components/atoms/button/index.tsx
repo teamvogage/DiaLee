@@ -274,15 +274,5 @@ z-index:3;
     </AnimatedDiv>
   );
 }
-const memoDispatcher=(prev:Readonly<any>,next:Readonly<any>)=>{
-  if(prev.btn_type!==next.btn_type)
-    return false;
-  if(prev.prefix!==next.prefix)
-    return false;
-  if(prev.suffix!==next.suffix)
-    return false;
-  if(prev.children!==next.children)
-    return false;
-  return true;
-}
-export default memo(Button,memoDispatcher);
+
+export default Button

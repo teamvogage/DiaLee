@@ -40,7 +40,7 @@ const StyledDiv=styled.div<IcontainerProps>`
     align-items:${({alignItems}:IcontainerProps)=>{return alignItems||null}};
     background:${({background})=>{return background||null}};
     z-index:${({zIndex})=>{return zIndex||null}};
-    s
+    
 `
 
 const FlexContainer =({background,zIndex,alignContent,alignItems,wrap,direction,align,children,margin,flexGrow,width,height}:ComponentProps<any>)=>{
@@ -52,4 +52,4 @@ const FlexContainer =({background,zIndex,alignContent,alignItems,wrap,direction,
     )
 }
 
-export default memo(FlexContainer,(prev,next)=>prev.children===next.children)
+export default FlexContainer

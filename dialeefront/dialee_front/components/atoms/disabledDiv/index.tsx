@@ -32,4 +32,4 @@ const disabledDiv=({height,marginLeft,onMouseMove}:ComponentProps<any>)=>{
         </StyledDiv>
     )
 }
-export default memo(disabledDiv);
+export default disabledDiv

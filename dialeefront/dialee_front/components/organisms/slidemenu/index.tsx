@@ -5,16 +5,16 @@ import ButtonList from '../../molecures/buttonlist';
 import FlexContainer from '../../atoms/flexcontainer';
 import disabledMainState from '../../../atom/disabledMainState';
 import {  useState } from 'react';
-import {  useRecoilValue, useSetRecoilState } from 'recoil';
-import headerImageState from '../../../atom/headerImageState';
+import {  useRecoilState } from 'recoil';
+
 const StyledSlideMenu = styled.div<{active:boolean}>`
-    margin-left:${({active})=>active?`-300px`:`90px`};
+    margin-left:${({active})=>active===false?`-300px`:`90px`};
     max-height:min-content;
+    margin-top:100px;
     transition:margin-left 0.5s;
-    margin-top:0;
     display:flex;
     flex-direction:column;
-    justify-content:flex-end;
+    justify-content:center;
 `;
 const MenuButton=styled.div`
  position:absolute;
@@ -40,15 +40,18 @@ const StyledDiv=styled.div`
 `
 
 const SlideMenu=()=>{
-    const [active,setActive]=useState(true);
+
     const [eraser,setEraser]=useState("/Eraser.png");
     const [click,setClick]=useState(0);
-    const isDisabledMain=useRecoilValue(disabledMainState);
-    const disabledMainHandler= useSetRecoilState(disabledMainState);
- 
+    
+    const [isDisabledMain,disabledMainHandler] =useRecoilState(disabledMainState);
+    console.log(isDisabledMain);
     const onClick=()=>{
+       
         disabledMainHandler(!isDisabledMain);
-        if(active===true){
+        
+        
+        if(isDisabledMain===true){
         setClick(click+1);
   
         const random=Math.random()*100+1;
@@ -65,14 +68,13 @@ const SlideMenu=()=>{
         }
         if(click===100){
             setEraser("/Eraser100.png")
-        }else
+        }
         
-        return setActive(!active);
     }
+   
     
     return(
-     <StyledSlideMenu active={active}>
-         
+     <StyledSlideMenu active={isDisabledMain}>
          <MenuButton>
             <Button  type="button"  align="end"  direction="column"  btn_type="slideMenu" onClick={onClick}>
                    
