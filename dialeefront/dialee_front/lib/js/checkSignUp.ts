@@ -8,7 +8,7 @@ export const checkUserName=(Id:string):string=>{
   return Id.length>=1?Id.length<=8?"문제 없음":"8글자를 넘어설 수 없습니다.":"1글자 이상이어야 합니다.";
 }
 export const validatePassword=(pwd:string):string=>{
-        pwd=pwd.trim();
+        
         const checkNumber = pwd.search(/[0-9]/g);
 	    const checkEnglish = pwd.search(/[a-z]/ig);
 	    if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/.test(pwd)){            
@@ -20,8 +20,7 @@ export const validatePassword=(pwd:string):string=>{
         return "문제 없음";
 }
 export const checkPassword=(oripwd:string,chkpwd:string):string=>{
-    oripwd=oripwd.trim();
-    chkpwd=chkpwd.trim();
+ 
     return oripwd==chkpwd?"문제 없음":"같지 않음";
 }
 export const checkEmail=(email:string):string=>{

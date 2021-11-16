@@ -52,7 +52,8 @@ const SignUp=()=>{
         }
        
         newText[name]=value;
-        onChangePass(newText);
+        onChangePass(newText)==true?setPass(4):null;
+        
         setText(newText);
    
     }
@@ -60,12 +61,18 @@ const SignUp=()=>{
         let tPass=0;
         
         for(const i in newText){
-           if(newText[i]=="문제 없음"){
+            if(newText[i]=="문제 없음"){
             tPass+=1;
            }
         }
-        setPass(tPass);
-    
+        if(tPass==4){
+         
+            return true;
+        }
+        if(pass==4)
+        setPass(0);
+        return false;
+        
     }
     const onSend=async()=>{
         const data:ISendAccountData={
