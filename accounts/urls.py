@@ -4,3 +4,4 @@ from . import views
 urlpatterns = [
     path('email-check/', views.check_email_validation),
 ]
+
