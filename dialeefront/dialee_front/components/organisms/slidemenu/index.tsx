@@ -45,7 +45,7 @@ const SlideMenu=()=>{
     const [click,setClick]=useState(0);
     
     const [isDisabledMain,disabledMainHandler] =useRecoilState(disabledMainState);
-    console.log(isDisabledMain);
+ 
     const onClick=()=>{
        
         disabledMainHandler(!isDisabledMain);

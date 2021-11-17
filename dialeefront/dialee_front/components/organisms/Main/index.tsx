@@ -1,6 +1,6 @@
-import Header from "../../organisms/header"
+import Header from "../header"
 import FlexContainer from '../../atoms/flexcontainer'
-import SlideMenu from "../../organisms/slidemenu";
+import SlideMenu from "../slidemenu";
 import disabledMainState from "../../../atom/disabledMainState";
 import DisabledDiv from "../../molecures/mainloading";
 import { ComponentProps } from "react"
@@ -40,7 +40,7 @@ const StyledPaper=styled.div`
 `
 const Main=({children}:ComponentProps<any>)=>{
     const isDisabledMain=useRecoilValue(disabledMainState);
-    console.log(isDisabledMain);
+    
 return (<>
           <SlideMenu></SlideMenu>
 <FlexContainer direction="row" align="start">

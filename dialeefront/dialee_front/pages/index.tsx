@@ -4,12 +4,12 @@ import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
 import SlideMenu from '../components/organisms/slidemenu'
-import Main from '../components/templates/Main'
+import Main from '../components/organisms/Main'
 import FlexContainer from '../components/atoms/flexcontainer'
 import Footer from '../components/organisms/footer'
 import AnimatedDiv from '../components/atoms/animatedDiv'
 import Image from '../components/atoms/image'
-import StyledBodyContainer from '../components/templates/Body'
+import StyledBodyContainer from '../components/organisms/Body'
 let PageWaveCover1=styled.div<{clicked:string}>`
 will-change: top height; 
 height:1600px;
@@ -148,7 +148,6 @@ const Home: NextPage = () => {
         </HomeDiv>
       </FlexContainer>
       <FlexContainer direction="row"  align="between">
-          
             <Main>
               
             </Main>
