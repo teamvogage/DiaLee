@@ -34,10 +34,11 @@ const SignUp=()=>{
        return debounce(onChangeCallback(e),1000);
     }
     const onBlur=async(e:React.FocusEvent<HTMLInputElement>)=>{
-     if(text.email=="문제 없음"){
-      const res= await sendCheckEmail(e.currentTarget.value);
-      console.log(res);
-     }
+        
+    if(userNameRef.current){
+        const res=check("username",userNameRef.current)=="문제 없음"? await sendCheckEmail(userNameRef.current):null; 
+        console.log(res);
+    }
     }
     const onChangeCallback=(e:React.ChangeEvent<HTMLInputElement>)=>{
         const name:string=e.currentTarget.name;
