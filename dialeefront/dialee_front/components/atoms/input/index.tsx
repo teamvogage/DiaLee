@@ -47,7 +47,7 @@ const StyledInput = styled.input<IinputProps>`
 
 const Input = forwardRef((props:ComponentProps<any>,ref) => {
     return (
-        <StyledInput ref={ref} id={props.id} name={props.name} autoComplete={"off"} maxLength={props.maxlength} onBlur={props.onFocusOut} onChange={props.onChange} {...props}></StyledInput>
+        <StyledInput ref={ref} id={props.id} name={props.name} autoComplete={"off"} maxLength={props.maxlength} onBlur={props.onBlur} onChange={props.onChange} {...props}></StyledInput>
     )
 });
 export default Input;

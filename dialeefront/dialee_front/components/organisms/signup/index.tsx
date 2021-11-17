@@ -33,7 +33,7 @@ const SignUp=()=>{
     function onChange(e:React.ChangeEvent<HTMLInputElement>){
        return debounce(onChangeCallback(e),1000);
     }
-    const onFocusOut=async(e:React.FocusEvent<HTMLInputElement>)=>{
+    const onBlur=async(e:React.FocusEvent<HTMLInputElement>)=>{
      if(text.email=="문제 없음"){
       const res= await sendCheckEmail(e.currentTarget.value);
       console.log(res);
@@ -98,7 +98,7 @@ const SignUp=()=>{
             <FlexContainer align="center" alignItems="center" direction={"column"}> 
                 <Span size="15" color={isUnique==true?text.email=="문제 없음"?"blue":"red":"red"} id="checkEmail">{text.email}</Span>    
                 <Span size="24" color="black"> 이메일 </Span>
-                    <Input name="email" type="email" width={"200px"} auto="off" id="Email" maxlength="50" onFocusOut={onFocusOut} onChange={onChange} ></Input>
+                    <Input name="email" type="email" width={"200px"} auto="off" id="Email" maxlength="50" onBlur={onBlur} onChange={onChange} ></Input>
                 <Span size="15" color={text.username=="문제 없음"?"blue":"red"} id="checkId">{text.username}</Span>
                 <Span size="24" color="black"> 활동명 </Span>
                     <Input name="username" width={"200px"} auto="off" id="Id" maxlength="16" onChange={onChange}  ></Input>
