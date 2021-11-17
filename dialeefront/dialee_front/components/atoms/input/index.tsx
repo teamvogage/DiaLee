@@ -1,4 +1,5 @@
-import { ComponentProps ,memo} from 'react';
+import { HtmlProps } from 'next/dist/shared/lib/utils';
+import { ComponentProps ,ForwardedRef,forwardRef,memo} from 'react';
 import styled from 'styled-components';
 export interface IinputProps {
     height: string;
@@ -44,9 +45,9 @@ const StyledInput = styled.input<IinputProps>`
     ::placeholder:{color:red};
 `
 
-const Input = (props: ComponentProps<any>) => {
+const Input = forwardRef((props:ComponentProps<any>,ref) => {
     return (
-        <StyledInput id={props.id} name={props.name} autoComplete={"off"} maxLength={props.maxlength} onChange={props.onChange} {...props}></StyledInput>
+        <StyledInput ref={ref} id={props.id} name={props.name} autoComplete={"off"} maxLength={props.maxlength} onBlur={props.onFocusOut} onChange={props.onChange} {...props}></StyledInput>
     )
-}
-export default memo(Input,(prev,next)=>prev.onChange===next.onChange);
+});
+export default Input;

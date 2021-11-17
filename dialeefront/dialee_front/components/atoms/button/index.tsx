@@ -34,7 +34,7 @@ z-index:3;
         case "cancle":
           return "20px";
         case "small":
-          return "20px";
+          return "15px";
       }
      }
     };
@@ -52,7 +52,7 @@ z-index:3;
         case "secondary":
           return  "180px"
         case "small":
-          return "10px";
+          return "20px";
       }
      }
     };
@@ -80,13 +80,14 @@ z-index:3;
         return 'white'
       }
       if(props.btn_type==="small"){
-        return "white"
+        return "black"
       }
       return props.theme.colors.color3
     
     }};
      box-shadow: ${props=>props.btn_type.startsWith("social")?'':`-2px 8px 1px 0 rgba(0,0,0,0.2), 0 6px 3px 0 rgba(0,0,0,0.19)`};
      :hover{
+     
         color:white;
         background-color:${(props)=>{
           if(props.btn_type.startsWith("sub")){
@@ -132,14 +133,16 @@ z-index:3;
           transition-timing-function: ease-out;
        }
      } 
+    
      :active{
+      box-shadow: ${props=>props.btn_type.startsWith("social")?'':`-0px 4px 0px 0 rgba(0,0,0,0.2), 0 3px 1px 0 rgba(0,0,0,0.19)`};
       background-color:${(props)=>{
         if(props.btn_type==="slideMenu") 
             return `black`;
         if(props.btn_type==="cancle")
             return "yellow"; 
         if(props.btn_type==="small")
-            return "gray";
+            return "skyblue";
         if(props.btn_type==="no")
             return "red";
        return 'black';
@@ -177,7 +180,7 @@ z-index:3;
         case "cancle":
           return "40px";
         case "small":
-          return "30px";
+          return "20px";
          
       }
      }
@@ -212,6 +215,8 @@ z-index:3;
   
     color: ${({btn_type,theme})=>{
       if(btn_type==="cancle")
+      return `white`;
+      if(btn_type==="small")
       return `white`;
       if(btn_type.startsWith("sub")){
         return 'black';

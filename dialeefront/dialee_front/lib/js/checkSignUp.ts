@@ -20,7 +20,7 @@ export const validatePassword=(pwd:string):string=>{
         return "문제 없음";
 }
 export const checkPassword=(oripwd:string,chkpwd:string):string=>{
- 
+    console.log(oripwd,chkpwd);
     return oripwd==chkpwd?"문제 없음":"같지 않음";
 }
 export const checkEmail=(email:string):string=>{
@@ -36,5 +36,7 @@ export const check=(type:string,value:string):string=>{
         return validatePassword(value);
     if(type=="email")
         return checkEmail(value);
+    if(type=="password2")
+        return "";
     return "문제 없음";
 }
