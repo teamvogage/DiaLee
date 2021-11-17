@@ -15,7 +15,7 @@ mint-width:70%;
 width:70%;
 transform:${props=>props.animated=="on"?"translateY(-600px)":"none"};
 height:fit-content;
-animation:${props=>props.animated=="on"?"slideInTopAnim 3s  forwards":"none"};
+animation:${props=>props.animated=="on"?"slideInTopAnim 3s forwards":"none"};
 
     @keyframes slideInTopAnim{
         from{

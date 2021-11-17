@@ -13,7 +13,7 @@ import Head from 'next/head'
 
 axios.defaults.baseURL = BASED_URL;
 axios.defaults.withCredentials = true;
-
+axios.defaults.timeout=3000;
 function MyApp({ Component, pageProps }: AppProps) {
  
 

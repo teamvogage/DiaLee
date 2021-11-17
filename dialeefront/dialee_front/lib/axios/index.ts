@@ -10,9 +10,17 @@ export interface ISendAccountData{
 
 export const sendSignUp=async (data:ISendAccountData)=>{
     try{
-        console.log(data);
         const res=await axios.post(`${api}/accounts/`,data);
-    console.log(res.data);}catch(error){
-        console.log(error);
+        return res.data;
+   }catch(error){
+      return error;
+    }
+}
+export const sendCheckEmail=async(data:string)=>{
+    try{
+        const res=await axios.post(`${api}/accounts/email-check/`,data);
+        return res.data;
+    }catch(error){
+        return error;
     }
 }
