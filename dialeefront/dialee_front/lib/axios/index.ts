@@ -23,6 +23,7 @@ export const sendCheckEmail=async(email:string)=>{
         }
       
         const res=await axios.post(`${api}/accounts/email-check/`,data);
+        console.log(res.data);
         return res.data;
     }catch(error){
         return error;
