@@ -16,12 +16,14 @@ export const sendSignUp=async (data:ISendAccountData)=>{
       return error;
     }
 }
-export const sendCheckEmail=(email:string)=>{
+export const sendCheckEmail=async(email:string)=>{
         const data={
             "email":email
         }
-        axios.post(`${api}/accounts/email-check/`,data)  .then((result) => {
-           if(result.status==200)
+       await axios.post(`${api}/accounts/email-check/`,data).then((result) => {
+        console.log(result.data);
+        console.log(result.status);   
+        if(result.status==200)
             return result.data;
         })
         .catch((error) => {
