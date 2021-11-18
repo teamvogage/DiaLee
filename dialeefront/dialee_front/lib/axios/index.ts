@@ -18,6 +18,7 @@ export const sendSignUp=async (data:ISendAccountData)=>{
 }
 export const sendCheckEmail=async(data:string)=>{
     try{
+        console.log(data);
         const res=await axios.post(`${api}/accounts/email-check/`,data);
         return res.data;
     }catch(error){

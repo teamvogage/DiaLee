@@ -26,19 +26,22 @@ const SignUp=()=>{
     const [text,setText]=useState(defaultText);
     const [pass,setPass]=useState(0);
     const [isUnique,setUnique]=useState(false);
-    const userNameRef=useRef<string>();
-    const emailRef=useRef<string>();
+    const userNameRef=useRef<HTMLInputElement>(null);
+    const emailRef=useRef<HTMLInputElement>(null);
     const pwdRef=useRef<HTMLInputElement>(null);
     const rePwdRef=useRef<HTMLInputElement>(null);
     function onChange(e:React.ChangeEvent<HTMLInputElement>){
        return debounce(onChangeCallback(e),1000);
     }
     const onBlur=async(e:React.FocusEvent<HTMLInputElement>)=>{
-        
-    if(userNameRef.current){
-        const res=check("username",userNameRef.current)=="문제 없음"? await sendCheckEmail(userNameRef.current):null; 
-        console.log(res);
-    }
+    if(emailRef.current){
+            if(check("email",emailRef.current.value)==="문제 없음"){
+            const res=await sendCheckEmail(emailRef.current.value);
+            console.log(res);
+            }
+            else
+            console.log("no")
+        }
     }
     const onChangeCallback=(e:React.ChangeEvent<HTMLInputElement>)=>{
         const name:string=e.currentTarget.name;
@@ -51,20 +54,11 @@ const SignUp=()=>{
                 if(rePwdRef.current.value!="")
                 newText.password2=checkPassword(pwdRef.current.value,rePwdRef.current.value);
             }    
-        }else{
-            if(name=="username")
-            {
-                
-                userNameRef.current=e.currentTarget.value;
-               
-            }
-            if(name=="email"){
-                setUnique(false);
-                emailRef.current=e.currentTarget.value; 
-                if(isUnique==false&&newText.email=="문제 없음"){
-                    newText.email="가입되어 있는 이메일이 있습니다."
-                }
-            }
+        }
+        if(name==="email"){
+            if(newText.email==="문제 없음")
+                if(isUnique===false)
+                    newText.email="이미 가입된 이메일이 존재합니다."
         }
        onChangePass(newText)==true?setPass(4):null;
         setText(newText);
@@ -87,10 +81,10 @@ const SignUp=()=>{
     }
     const onSend=async()=>{
         const data:ISendAccountData={
-            username:userNameRef.current||"",
+            username:userNameRef.current!=null?userNameRef.current.value:"",
             password1:pwdRef.current!=null?pwdRef.current.value:"",
             password2:rePwdRef.current!=null?rePwdRef.current.value:"",
-            email:emailRef.current||"",
+            email:emailRef.current?emailRef.current.value:"",
         }
         await sendSignUp(data);
     }
@@ -99,10 +93,10 @@ const SignUp=()=>{
             <FlexContainer align="center" alignItems="center" direction={"column"}> 
                 <Span size="15" color={isUnique==true?text.email=="문제 없음"?"blue":"red":"red"} id="checkEmail">{text.email}</Span>    
                 <Span size="24" color="black"> 이메일 </Span>
-                    <Input name="email" type="email" width={"200px"} auto="off" id="Email" maxlength="50" onBlur={onBlur} onChange={onChange} ></Input>
+                    <Input ref={emailRef} name="email" type="email" width={"200px"} auto="off" id="Email" maxlength="50" onBlur={onBlur} onChange={onChange} ></Input>
                 <Span size="15" color={text.username=="문제 없음"?"blue":"red"} id="checkId">{text.username}</Span>
                 <Span size="24" color="black"> 활동명 </Span>
-                    <Input name="username" width={"200px"} auto="off" id="Id" maxlength="16" onChange={onChange}  ></Input>
+                    <Input ref={userNameRef} name="username" width={"200px"} auto="off" id="Id" maxlength="16" onChange={onChange}  ></Input>
                 
                 <Span size="15" color={text.password1=="문제 없음"?"blue":"red"} id="validateSecret">{text.password1}</Span> 
                 <Span size="24" color="black"> 비밀번호 </Span>
