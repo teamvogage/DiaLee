@@ -38,8 +38,12 @@ const SignUp=()=>{
             if(check("email",emailRef.current.value)==="문제 없음"){
             const res:any=await sendCheckEmail(emailRef.current.value);
             console.log(res.is_valid)
-            if(res.is_valid==true)
+            if(res.is_valid==true){
+                const newText={...text};
+                newText.email="문제 없음";
+                setText(newText);
                 setUnique(true);   
+            }  
             else
                 setUnique(false);
             }
