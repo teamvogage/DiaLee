@@ -26,18 +26,21 @@ export const sendCheckEmail=(email:string)=>{
         })
         .catch((error) => {
             if (error.response){
-                    if(error.response.status===409)
-                        return error.response.data;
-                    else
-                        return {message:"서버 오류"}
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+                if(error.response.status===409)
+                    return error.response.data;
+                else
+                    return {message:"서버 오류"}
                 
-                }else if(error.request){
+            }else if(error.request){
                     return {message:"통신 오류"}
                     
                 
-                }else if(error.message){
+            }else if(error.message){
                     return {message:"통신 오류"}
                      
-                }
+            }
         })
 }
