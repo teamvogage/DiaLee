@@ -16,9 +16,11 @@ export const sendSignUp=async (data:ISendAccountData)=>{
       return error;
     }
 }
-export const sendCheckEmail=async(data:string)=>{
+export const sendCheckEmail=async(email:string)=>{
     try{
-        console.log(data);
+        const data={
+            email:email
+        }
         const res=await axios.post(`${api}/accounts/email-check/`,data);
         return res.data;
     }catch(error){
