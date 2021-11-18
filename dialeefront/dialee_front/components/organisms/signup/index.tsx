@@ -41,7 +41,7 @@ const SignUp=()=>{
             console.log(res.data)
             if(res.data.is_valid==true){
              
-                newText.email="형식 문제 없음.";
+                newText.email="문제 없음";
                 setText(newText);
                 setUnique(true);   
             }  
@@ -69,7 +69,7 @@ const SignUp=()=>{
             setUnique(false);
             if(newText.email==="문제 없음")
                 if(isUnique===false)
-                    newText.email="형식 문제 없음."
+                    newText.email="형식 문제 없음"
         }
        onChangePass(newText)==true?setPass(4):null;
         setText(newText);
