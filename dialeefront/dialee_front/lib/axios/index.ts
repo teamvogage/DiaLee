@@ -17,7 +17,7 @@ export const sendSignUp=async (data:ISendAccountData)=>{
     }
 }
 export const sendCheckEmail=async(email:string)=>{
-    try{
+   
         const data={
             "email":email
         }
@@ -26,7 +26,5 @@ export const sendCheckEmail=async(email:string)=>{
         return false;
         if(res.status===200)
         return true;
-    }catch(error){
-        return error;
-    }
+   
 }
