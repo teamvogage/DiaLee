@@ -16,15 +16,28 @@ export const sendSignUp=async (data:ISendAccountData)=>{
       return error;
     }
 }
-export const sendCheckEmail=async(email:string)=>{
-   
+export const sendCheckEmail=(email:string)=>{
         const data={
             "email":email
         }
-        const res=await axios.post(`${api}/accounts/email-check/`,data);
-        if(res.status===409)
-        return false;
-        if(res.status===200)
-        return true;
-   
+        axios.post(`${api}/accounts/email-check/`,data)  .then((result) => {
+           if(result.status==200)
+            return result.data;
+        })
+        .catch((error) => {
+            if (error.response){
+                    if(error.response.status===409)
+                        return error.response.data;
+                    else
+                        return {message:"서버 오류"}
+                
+                }else if(error.request){
+                    return {message:"통신 오류"}
+                    
+                
+                }else if(error.message){
+                    return {message:"통신 오류"}
+                     
+                }
+        })
 }
