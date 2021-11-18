@@ -37,7 +37,7 @@ const SignUp=()=>{
     if(emailRef.current){
             if(check("email",emailRef.current.value)==="문제 없음"){
             const res:any=await sendCheckEmail(emailRef.current.value);
-            console.log(res.is_valid)
+            console.log(res)
             if(res.is_valid==true){
                 const newText={...text};
                 newText.email="문제 없음";

@@ -21,7 +21,6 @@ export const sendCheckEmail=async(email:string)=>{
         const data={
             "email":email
         }
-      
         const res=await axios.post(`${api}/accounts/email-check/`,data);
         console.log(res.data);
         return res.data;
