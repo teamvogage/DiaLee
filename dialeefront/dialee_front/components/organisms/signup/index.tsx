@@ -67,10 +67,9 @@ const SignUp=()=>{
             }    
         }
         if(name==="email"){
-            setUnique(false);
             if(newText.email==="문제 없음")
-                if(isUnique===false)
                     newText.email="형식 문제 없음"
+            setUnique(false);
         }
        onChangePass(newText)==true?setPass(4):null;
         setText(newText);
