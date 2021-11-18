@@ -37,14 +37,17 @@ const SignUp=()=>{
     if(emailRef.current){
             if(check("email",emailRef.current.value)==="문제 없음"){
             const res:any=await sendCheckEmail(emailRef.current.value);
-            console.log(res)
-            if(res.is_valid==true){
-                const newText={...text};
+            const newText={...text};
+            console.log(res.data)
+            if(res.data.is_valid==true){
+             
                 newText.email="형식 문제 없음.";
                 setText(newText);
                 setUnique(true);   
             }  
             else
+                newText.email=res.data.message;
+                setText(newText);
                 setUnique(false);
             }
             
