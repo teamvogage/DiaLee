@@ -37,7 +37,8 @@ const SignUp=()=>{
     if(emailRef.current){
             if(check("email",emailRef.current.value)==="문제 없음"){
             const res:any=await sendCheckEmail(emailRef.current.value);
-            if(res.is_valid===true)
+            console.log(res.is_valid)
+            if(res.is_valid==true)
                 setUnique(true);   
             else
                 setUnique(false);
