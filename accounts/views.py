@@ -1,6 +1,7 @@
 from rest_framework import status
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from allauth.account.adapter import get_adapter
 from allauth.utils import email_address_exists
 from allauth.account import app_settings as allauth_settings
@@ -20,6 +21,7 @@ from allauth.account import app_settings as allauth_settings
 
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def check_email_validation(email):
     """
     이메일이 기존 가입 유저의 이메일과 겹치지 않는지 검사한다.
