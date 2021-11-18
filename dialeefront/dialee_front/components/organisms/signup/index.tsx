@@ -36,11 +36,13 @@ const SignUp=()=>{
     const onBlur=async(e:React.FocusEvent<HTMLInputElement>)=>{
     if(emailRef.current){
             if(check("email",emailRef.current.value)==="문제 없음"){
-            const res=await sendCheckEmail(emailRef.current.value);
-            console.log(res);
-            }
+            const res:any=await sendCheckEmail(emailRef.current.value);
+            if(res.is_valid===true)
+                setUnique(true);   
             else
-            console.log("no")
+                setUnique(false);
+            }
+            
         }
     }
     const onChangeCallback=(e:React.ChangeEvent<HTMLInputElement>)=>{
@@ -56,6 +58,7 @@ const SignUp=()=>{
             }    
         }
         if(name==="email"){
+            setUnique(false);
             if(newText.email==="문제 없음")
                 if(isUnique===false)
                     newText.email="이미 가입된 이메일이 존재합니다."
