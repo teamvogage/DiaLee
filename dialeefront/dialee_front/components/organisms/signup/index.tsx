@@ -33,24 +33,25 @@ const SignUp=()=>{
     function onChange(e:React.ChangeEvent<HTMLInputElement>){
        return debounce(onChangeCallback(e),1000);
     }
-    const onBlur=async(e:React.FocusEvent<HTMLInputElement>)=>{
-    if(emailRef.current){
+    const onBlur=async(e:React.FocusEvent<HTMLInputElement>)=>
+    {
+        if(emailRef.current){
             if(check("email",emailRef.current.value)==="문제 없음"){
             const res:any=await sendCheckEmail(emailRef.current.value);
             const newText={...text};
             console.log(res.data)
             if(res.data.is_valid==true){
-             
                 newText.email="문제 없음";
-                setText(newText);
+               
                 setUnique(true);   
             }  
-            else
+            else{
                 newText.email=res.data.message;
-                setText(newText);
                 setUnique(false);
             }
-            
+                setText(newText);
+            }
+           
         }
     }
     const onChangeCallback=(e:React.ChangeEvent<HTMLInputElement>)=>{
