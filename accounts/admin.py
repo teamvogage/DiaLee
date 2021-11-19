@@ -6,7 +6,7 @@ from .models import User
 class UserAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
-        'username',
+        'voyager_name',
         'date_joined',
         'email',
         'profile_image',
