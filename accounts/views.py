@@ -22,11 +22,11 @@ from allauth.account import app_settings as allauth_settings
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def check_email_validation(email):
+def check_email_validation(request):
     """
     이메일이 기존 가입 유저의 이메일과 겹치지 않는지 검사한다.
     """
-    email = get_adapter().clean_email(email)
+    email = get_adapter().clean_email(request['email'])
 
     if allauth_settings.UNIQUE_EMAIL:
         if email and email_address_exists(email):

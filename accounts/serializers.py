@@ -10,10 +10,20 @@ User = get_user_model()
 class CustomRegisterSerializer(RegisterSerializer):
     # 기본 설정 필드: username, password, email
     # 추가 설정 필드: profile_image
+    username = serializers.CharField(
+        max_length=8,
+        min_length=1,
+        required=True,
+        unique=False,
+    )
+
     profile_image = serializers.ImageField(use_url=True, required=False)
 
     def get_cleaned_data(self):
-        data = super().get_cleaned_data()
+        data = {
+            'password': self.validated_data.get('password1', ''),
+            'email': self.validated_data.get('email', ''),
+        }
         data['profile_image'] = self.validated_data.get('profile_image', '')
 
         return data
