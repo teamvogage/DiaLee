@@ -70,8 +70,7 @@ const SignUp=()=>{
             if(newText.email==="문제 없음")
                     newText.email="형식 문제 없음"
             setUnique(false);
-        }
-       onChangePass(newText)==true?setPass(4):null;
+        }       onChangePass(newText)==true?setPass(4):null;
         setText(newText);
     }
     const onChangePass=(newText:TtextType)=>{
@@ -92,7 +91,7 @@ const SignUp=()=>{
     }
     const onSend=async()=>{
         const data:ISendAccountData={
-            username:userNameRef.current!=null?userNameRef.current.value:"",
+            voyager_name:userNameRef.current!=null?userNameRef.current.value:"",
             password1:pwdRef.current!=null?pwdRef.current.value:"",
             password2:rePwdRef.current!=null?rePwdRef.current.value:"",
             email:emailRef.current?emailRef.current.value:"",
