@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios"
 import {api} from "../constants"
 export interface ISendAccountData{
     [index:string]:string;
-    "username": string,
+    "voyager_name": string,
     "email": string,
     "password1": string,
     "password2": string
@@ -24,8 +24,11 @@ export const sendCheckEmail=async(email:string)=>{
         const res=  await axios.post(`${api}/accounts/email-check/`,data);
         return res;
     }catch(error){
+        console.log(error);
+        if(!(error as AxiosError).response)
+        return {data:false,message:"인터넷 문제"}
         if ((error as AxiosError).response?.status === 409) 
-        return (error as AxiosError).response;
+        return {data:false,message:"이메일 중복"};
         else
         return {data:false,message:"서버 오류"}
      }
