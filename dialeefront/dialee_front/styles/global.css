@@ -25,7 +25,7 @@ body {
   width: 100%;
   font-size: 0px;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: visible;
   transition: background 4s;
   height: 100%;
   -webkit-user-drag: none;
