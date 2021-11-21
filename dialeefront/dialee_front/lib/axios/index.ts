@@ -27,7 +27,7 @@ export const sendCheckEmail=async(email:string)=>{
         const res=  await axios.post(`${api}/accounts/email-check/`,data);
         return res;
     }catch(error){
-        console.log(error);
+        console.log((error as AxiosError).response);
         if(!(error as AxiosError).response){
             const NoResponse:ICheckData={
                 is_valid:false,
