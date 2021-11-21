@@ -39,7 +39,7 @@ const SignUp=()=>{
             if(check("email",emailRef.current.value)==="문제 없음"){
             const res:any=await sendCheckEmail(emailRef.current.value);
             const newText={...text};
-            console.log(res.data)
+        
             if(res.data.is_valid==true){
                 newText.email="문제 없음";
                
@@ -50,10 +50,10 @@ const SignUp=()=>{
                 newText.email=res.data.message;
                 setUnique(false);
             }
-            if(res.data==false){
-                newText.email=res.message;
-                setUnique(false);
-            }
+            if(!res)
+                newText.email="인터넷 오류 발생";
+            if(!res.dat)
+                newText.email="인터넷 오류 발생";
             
                 setText(newText);
             }

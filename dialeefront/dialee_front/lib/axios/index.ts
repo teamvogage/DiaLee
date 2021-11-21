@@ -7,7 +7,10 @@ export interface ISendAccountData{
     "password1": string,
     "password2": string
 }
-
+export interface ICheckData{
+    "is_valid":Boolean,
+    "message":string,
+}
 export const sendSignUp=async (data:ISendAccountData)=>{
     try{
         const res=await axios.post(`${api}/accounts/`,data);
@@ -25,11 +28,28 @@ export const sendCheckEmail=async(email:string)=>{
         return res;
     }catch(error){
         console.log(error);
-        if(!(error as AxiosError).response)
-        return {data:false,message:"인터넷 문제"}
-        if ((error as AxiosError).response?.status === 409) 
-        return {data:false,message:"이메일 중복"};
-        else
-        return {data:false,message:"서버 오류"}
+        if(!(error as AxiosError).response){
+            const NoResponse:ICheckData={
+                is_valid:false,
+                message:"인터넷 문제나 서버문제가 발생하였습니다."
+            }
+            return {data:NoResponse}
+        }
+        if ((error as AxiosError).response?.status === 409) {
+            const Conflict:ICheckData={
+                is_valid:false,
+                message:"이메일이 중복입니다."
+            }
+            return {data:Conflict};
+        }
+        else{
+            const ServerError:ICheckData={
+                is_valid:false,
+                message:"서버 오류가 발생하였습니다."
+            }
+            ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`
+            return {data:ServerError};
+        }
+        
      }
 }
