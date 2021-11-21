@@ -1,14 +1,17 @@
 @font-face {
   font-family: "CafeSurrond";
   src: url("./Cafe24SsurroundAir.ttf");
+  font-display: block;
 }
 @font-face {
   font-family: "NanumBrush";
   src: url("./NanumBrushScript-Regular.ttf");
+  font-display: block;
 }
 @font-face {
   font-family: "NanumSon";
   src: url("./Nanumson.ttf");
+  font-display: block;
 }
 
 html,
