@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Cafe24SSurroundAir";
+  font-family: "CafeSurrond";
   src: url("./Cafe24SsurroundAir.ttf");
 }
 @font-face {
@@ -13,7 +13,7 @@
 
 html,
 body {
-  font-family: "Nanum Myeongjo", serif;
+  font-family: "CafeSurrond", serif;
   display: flex;
   justify-content: center;
   align-items: center;

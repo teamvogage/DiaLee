@@ -46,9 +46,15 @@ const SignUp=()=>{
                 setUnique(true);   
             }  
             else{
+                
                 newText.email=res.data.message;
                 setUnique(false);
             }
+            if(res.data==false){
+                newText.email=res.message;
+                setUnique(false);
+            }
+            
                 setText(newText);
             }
            
