@@ -27,7 +27,7 @@ export const sendCheckEmail=async(email:string)=>{
         const res=  await axios.post(`${api}/accounts/email-check/`,data);
         return res;
     }catch(error){
-        console.log((error as AxiosError).response);
+        
         if(!(error as AxiosError).response){
             const NoResponse:ICheckData={
                 is_valid:false,
@@ -36,6 +36,7 @@ export const sendCheckEmail=async(email:string)=>{
             return {data:NoResponse}
         }
         if ((error as AxiosError).response?.status === 409) {
+            console.log(error);
             const Conflict:ICheckData={
                 is_valid:false,
                 message:"이메일이 중복입니다."
