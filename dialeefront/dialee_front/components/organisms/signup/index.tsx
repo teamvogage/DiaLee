@@ -52,7 +52,7 @@ const SignUp=()=>{
             }
             if(!res)
                 newText.email="인터넷 오류 발생";
-            if(!res.dat)
+            if(!res.data)
                 newText.email="인터넷 오류 발생";
             
                 setText(newText);
