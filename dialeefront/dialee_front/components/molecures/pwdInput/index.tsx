@@ -6,7 +6,7 @@ import Button from "../../atoms/button";
 import debounceFunction from "../../../lib/js/debounce";
 const PwdInput=({value,onChangeHandler,goToEmail,goToUserName}:ComponentProps<any>)=>{
     const pwdRef=useRef<HTMLInputElement>(null);
-    const [text,setText]=useState(value===""?"":onChangeHandler("voyager_name",value));
+    const [text,setText]=useState(value===""?"":onChangeHandler("password1",value));
     const [pass,setPass]=useState(value===""?false:true);
     const [inputValue,setInputValue]=useState(value);
     const debouncedChange=useCallback(debounceFunction((name:string,value:string)=>onChangeCallback(name,value),100),[]);

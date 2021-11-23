@@ -5,13 +5,13 @@ import Button from "../../atoms/button";
 const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
     const dataKey=Object.keys(data);
     const datas=dataKey.map((value)=>{
-        console.log(value,data[value]);
+        
         if(value==="voyager_name")
-           return <Span size="18px">{`당신의 활동명은 [${data[value]}]입니다.`}</Span>
+           return <Span key="confirm1" size="18px">{`당신의 활동명은 [${data[value]}]입니다.`}</Span>
         if(value==="email")
-          return  <Span size="18px">{`당신의 이메일은 [${data[value]}] 이구요.`}</Span>
+          return  <Span key="confirm2" size="18px">{`당신의 이메일은 [${data[value]}] 이구요.`}</Span>
         if(value==="password1")
-          return <Span size="18px">당신의 비밀번호는 제가 비밀로 간직해놓겠습니다 .</Span>
+          return <Span key="confirm3" size="18px">당신의 비밀번호는 제가 비밀로 간직해놓겠습니다 .</Span>
     })  
     return(
     <FlexContainer direction="column" align="center" alignItems="center">

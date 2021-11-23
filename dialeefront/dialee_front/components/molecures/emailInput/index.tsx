@@ -9,7 +9,7 @@ import debounceFunction from "../../../lib/js/debounce";
 const EmailInput =({value,onChangeHandler,goToPwd}:ComponentProps<any>) =>{
     const emailRef=useRef<HTMLInputElement>(null);
     const [isUnique,setUnique]=useState(value===""?false:true);
-    const [text,setText]=useState(value===""?"":onChangeHandler("voyager_name",value));
+    const [text,setText]=useState(value===""?"":onChangeHandler("email",value));
     const [inputValue,setInputValue]=useState(value);
     const debouncedChange=useCallback(debounceFunction((name:string,value:string)=>onChangeCallback(name,value),100),[]);
     const onChangeCallback=(name:string,value:string)=>{
