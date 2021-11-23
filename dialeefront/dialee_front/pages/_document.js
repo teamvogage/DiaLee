@@ -19,7 +19,10 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>{this.props.styleTags}</Head>
+        <Head>
+        <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+          {this.props.styleTags}
+          </Head>
      
         <body>
           <Main />

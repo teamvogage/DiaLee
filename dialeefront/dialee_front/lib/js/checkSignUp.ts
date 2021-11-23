@@ -1,7 +1,7 @@
 
 
 export const checkUserName=(Id:string):string=>{
-   
+ 
     Id=Id.trim();
     if(Id.search(/\s/) !=-1)
         return "아이디는 공백이 없어야합니다.";
@@ -30,7 +30,7 @@ export const checkEmail=(email:string):string=>{
 }
 export const check=(type:string,value:string):string=>{
    
-    if(type=="username")
+    if(type=="voyager_name")
         return checkUserName(value);
     if(type=="password1")
         return validatePassword(value);

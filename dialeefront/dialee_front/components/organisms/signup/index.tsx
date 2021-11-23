@@ -4,7 +4,7 @@ import FlexContainer from '../../atoms/flexcontainer'
 import Button from "../../atoms/button"
 import {check} from '../../../lib/js/checkSignUp'
 import {sendSignUp,ISendAccountData} from '../../../lib/axios';
-import UserNameInput from '../../molecures/usernameInput';
+import VoyagerNameInput from '../../molecures/usernameInput';
 import PwdInput from '../../molecures/pwdInput';
 import EmailInput from '../../molecures/emailInput';
 import ConfirmSignUp from "../../molecures/confirmSignUp"
@@ -20,7 +20,7 @@ const SignUp=()=>{
     }
     const [data,setData]=useState(defaultData);
 
-    const [stage,setStage]=useState("username");
+    const [stage,setStage]=useState("email");
    
     const changeText=(name:string,value:string)=>{
         console.log(data);
@@ -38,10 +38,12 @@ const SignUp=()=>{
         setStage("email");
     } 
     const goToUserName=(name:string,value:string)=>{
+        if(name)
         changeText(name,value);
-        setStage("username");
+        setStage("voyager_name");
     }
     const goToConfirm=(name:string,value:string)=>{
+        if(name)
         changeText(name,value);
         setStage("confirm");
     }
@@ -64,8 +66,8 @@ const SignUp=()=>{
             <FlexContainer height="auto" align="center" alignItems="center" direction="column"> 
                 {stage==="email"&&<EmailInput value={data.email} onChangeHandler={onChangeCallback} goToPwd={goToPwd}/>}
                 {stage==="password"&&<PwdInput value={data.password1} onChangeHandler={onChangeCallback} goToUserName={goToUserName} goToEmail={goToEmail}/>}
-                {stage==="username"&&<UserNameInput value={data.voyager_name} onChangeHandler={onChangeCallback} goToPwd={goToPwd} goToConfirm={goToConfirm}/>}
-                {stage==="confirm"&&<ConfirmSignUp data={data}></ConfirmSignUp>}
+                {stage==="voyager_name"&&<VoyagerNameInput value={data.voyager_name} onChangeHandler={onChangeCallback} goToPwd={goToPwd} goToConfirm={goToConfirm}/>}
+                {stage==="confirm"&&<ConfirmSignUp data={data} goToUserName={goToUserName} onDataSend={onDataSend}></ConfirmSignUp>}
             </FlexContainer>  
         </AnimatedDiv>
     )

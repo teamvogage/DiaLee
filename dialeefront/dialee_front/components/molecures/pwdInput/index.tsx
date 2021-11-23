@@ -7,10 +7,11 @@ import debounceFunction from "../../../lib/js/debounce";
 const PwdInput=({value,onChangeHandler,goToEmail,goToUserName}:ComponentProps<any>)=>{
     const pwdRef=useRef<HTMLInputElement>(null);
     const [text,setText]=useState(value===""?"":onChangeHandler("voyager_name",value));
-    const [pass,setPass]=useState(false);
+    const [pass,setPass]=useState(value===""?false:true);
     const [inputValue,setInputValue]=useState(value);
-    const debouncedChange=useCallback(debounceFunction((name:string,value:string)=>onChangeCallback(name,value),200),[]);
+    const debouncedChange=useCallback(debounceFunction((name:string,value:string)=>onChangeCallback(name,value),100),[]);
     const onChangeCallback=(name:string,value:string)=>{
+        setText("");
         setPass(false);
         const result=onChangeHandler(name,value);
         if(result==="문제 없음"){
@@ -19,9 +20,11 @@ const PwdInput=({value,onChangeHandler,goToEmail,goToUserName}:ComponentProps<an
         setText(result);
     }
     const onChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+            
             setInputValue(e.currentTarget.value);
             debouncedChange(e.currentTarget.name,e.currentTarget.value);
     }
+
     return(<>
             <Span size="15" background="rgba(255,255,255,0.5)" color={text=="문제 없음"?"blue":"red"} id="validateSecret">{text}</Span> 
             <Span size="24" color="black"> 비밀번호 </Span>

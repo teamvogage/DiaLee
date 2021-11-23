@@ -8,11 +8,12 @@ import Button from "../../atoms/button";
 import debounceFunction from "../../../lib/js/debounce";
 const EmailInput =({value,onChangeHandler,goToPwd}:ComponentProps<any>) =>{
     const emailRef=useRef<HTMLInputElement>(null);
-    const [isUnique,setUnique]=useState(false);
+    const [isUnique,setUnique]=useState(value===""?false:true);
     const [text,setText]=useState(value===""?"":onChangeHandler("voyager_name",value));
     const [inputValue,setInputValue]=useState(value);
-    const debouncedChange=useCallback(debounceFunction((name:string,value:string)=>onChangeCallback(name,value),200),[]);
+    const debouncedChange=useCallback(debounceFunction((name:string,value:string)=>onChangeCallback(name,value),100),[]);
     const onChangeCallback=(name:string,value:string)=>{
+        setText("");
         setUnique(false);
         let result=onChangeHandler(name,value);
         if(result==="문제 없음")
@@ -20,6 +21,7 @@ const EmailInput =({value,onChangeHandler,goToPwd}:ComponentProps<any>) =>{
         setText(result);
     }
     const onChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+        
             setInputValue(e.currentTarget.value);
             debouncedChange(e.currentTarget.name,e.currentTarget.value);
     }

@@ -268,7 +268,7 @@ z-index:3;
      
      }} ;
      transition-property:background-color;
-     transition-duration:0.2s;
+     transition-duration:1s;
      margin-right:${({marginRight})=>marginRight||`0px`};
 `
  const Button=({marginRight,suffix,prefix,width,height,btn_type,direction,align,wrap,onClick,children,alignItems}:ComponentProps<any>) =>{
