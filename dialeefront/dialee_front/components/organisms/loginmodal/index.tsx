@@ -16,7 +16,7 @@ const LoginModal=()=>{
         return setSignUp(false);
     }
     return (
-    <Modal animationDelay="0.7s" animated="on" top="10%"  width="80%" height="fit-content" title="로그인" confirmBtn={signUp==false?<Button btn_type="ok" onClick={onSignUp}>회원가입</Button>:<Button btn_type="cancle" onClick={onCancleSignUp} >뒤로</Button>}  zIndex={8000} isCancle="no">
+    <Modal animationDelay="0.7s" animated="on" top="10%"  width="80%" height="fit-content" title="로그인" confirmBtn={signUp==false?<Button btn_type="ok" onClick={onSignUp}>회원가입</Button>:<Button btn_type="cancle" onClick={onCancleSignUp} >로그인</Button>}  zIndex={8000} isCancle="no">
         {signUp==true?<SignUp></SignUp>:<>
         <SocialLoginBtns/>
          <IdAndPassword direction="column"> </IdAndPassword>

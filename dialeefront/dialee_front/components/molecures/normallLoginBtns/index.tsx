@@ -26,7 +26,10 @@ const IdAndPassword=({direction}:ComponentProps<any>)=>{
     }
 
     return(<>
-        <Button prefix="/imoticon/SunFlower.png" btn_type="socialNot" onClick={onActive}>일반 로그인</Button>
+        <FlexContainer align="center" direction="column" alignItems="center">
+            <Span size="30" color="black">일반 로그인</Span>
+            <Button prefix="/imoticon/SunFlower.png" btn_type="socialNot" onClick={onActive}>일반 로그인</Button>
+       
         {isActive?<FlexContainer align="center" alignItems="center" direction={direction||"row"}>
             <AnimatedDiv animation="slideInTopAnim" animationTime="1s" animationFill="forwards">
             <StyledDiv>
@@ -43,6 +46,7 @@ const IdAndPassword=({direction}:ComponentProps<any>)=>{
             </StyledDiv>
             </AnimatedDiv>
         </FlexContainer>:null}
+        </FlexContainer>
    </> )
 }
 export default IdAndPassword;

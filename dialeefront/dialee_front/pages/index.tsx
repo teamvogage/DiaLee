@@ -10,6 +10,7 @@ import Footer from '../components/organisms/footer'
 import AnimatedDiv from '../components/atoms/animatedDiv'
 import Image from '../components/atoms/image'
 import StyledBodyContainer from '../components/organisms/Body'
+import MobileKeyBoard from '../components/atoms/mobileKeyboard'
 
 let PageWaveCover=styled.div<{clicked:string}>`
 
@@ -91,11 +92,13 @@ const Home: NextPage = () => {
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
     <StyledBodyContainer>
+    
       <FlexContainer direction="row"  align="between">
       <HomeDiv onClick={function(){setClicked("true")}}>
             {Moon}
             {Waves}
             {clicked==="true"?Login:null}
+           
         </HomeDiv>
       </FlexContainer>
       <FlexContainer direction="row"  align="between">
@@ -104,6 +107,7 @@ const Home: NextPage = () => {
             </Main>
         </FlexContainer>
       <Footer/> 
+      <MobileKeyBoard/>
       </StyledBodyContainer>
   )
 }

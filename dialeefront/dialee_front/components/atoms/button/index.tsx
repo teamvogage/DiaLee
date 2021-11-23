@@ -29,6 +29,7 @@ z-index:3;
           return  "70px"
         case "secondary":
           return  "40px"
+        case "okNotAllowed":
         case "ok":
           return "20px";
         case "cancle":
@@ -71,6 +72,9 @@ z-index:3;
       if(props.btn_type==="no"){
         return 'gray';
       }
+      if(props.btn_type==="okNotAllowed"){
+        return 'gray';
+      }
       if(props.btn_type==="slideMenu") 
       return `none`;
       if(props.btn_type==="socialKakao"){
@@ -100,6 +104,9 @@ z-index:3;
           }
           if(props.btn_type==="ok"){
             return 'skyblue';
+          }
+          if(props.btn_type==="okNotAllowed"){
+            return 'gray';
           }
           if(props.btn_type==="no"){
             return 'gray';
@@ -175,6 +182,7 @@ z-index:3;
         case "slideMenu":
           return "35px";
         case "ok":
+        case "okNotAllowed":
         case "no":  
           return "40px";
         case "cancle":
@@ -203,6 +211,7 @@ z-index:3;
           case "slideMenu":
             return "35px";
           case "ok":
+          case "okNotAllowed":
           case "no":
             return "100px";
           case "cancle":
@@ -247,6 +256,7 @@ z-index:3;
         case "cancle" :
         case "ok": 
         case "no":
+        case "okNotAllowed":
         case "book":
         case "small":
           return "0";

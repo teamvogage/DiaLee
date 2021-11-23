@@ -1,11 +1,12 @@
 import { ComponentProps ,memo} from "react";
 import styled from "styled-components";
 const StyledHomeDiv=styled.div`
-    z-index: 3000;
+    z-index: 400;
     width:100%;
     margin-left:0px;
-    position: absolute;
-    overflow: hidden;
+   
+    overflow-x:hidden;
+    overflow-y:hidden;
     left:0;
     height: 100vh;
     display:flex;

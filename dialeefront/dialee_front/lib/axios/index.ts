@@ -16,7 +16,7 @@ export const sendSignUp=async (data:ISendAccountData)=>{
         const res=await axios.post(`${api}/accounts/`,data);
         return res.data;
    }catch(error){
-      return error;
+      return "error";
     }
 }
 export const sendCheckEmail=async(email:string)=>{

@@ -39,7 +39,7 @@ const StyledInput = styled.input<IinputProps>`
     border-bottom:2px double black;
   
     maxlength:${props => props.maxlength || ';'};
-    value:${props => props.value || ''};
+ 
     type:${props => props.type || 'text'};
     placeholder:${props => props.placeholder || ';'};
     ::placeholder:{color:red};
@@ -47,7 +47,7 @@ const StyledInput = styled.input<IinputProps>`
 
 const Input = forwardRef((props:ComponentProps<any>,ref) => {
     return (
-        <StyledInput ref={ref} id={props.id} name={props.name} autoComplete={"off"} maxLength={props.maxlength} onBlur={props.onBlur} onChange={props.onChange} {...props}></StyledInput>
+        <StyledInput ref={ref} id={props.id} value={props.value} name={props.name} autoComplete={"off"} maxLength={props.maxlength} onBlur={props.onBlur} onChange={props.onChange} {...props}></StyledInput>
     )
 });
 export default Input;

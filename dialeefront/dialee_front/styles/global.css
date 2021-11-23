@@ -24,8 +24,7 @@ body {
   padding: 0;
   width: 100%;
   font-size: 0px;
-  overflow-x: hidden;
-  overflow-y: visible;
+  flex-direction: row;
   transition: background 4s;
   height: 100%;
   -webkit-user-drag: none;

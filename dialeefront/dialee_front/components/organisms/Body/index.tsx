@@ -7,8 +7,8 @@ const StyledBodyContainer=styled.div`
 ##Device = 데스크탑
 ##Screen = 1281px 이상 해상도 데스크탑
 */
-
-
+  
+  
   border: 3px solid black;
   overflow-x: hidden;
   overflow-y: hidden;

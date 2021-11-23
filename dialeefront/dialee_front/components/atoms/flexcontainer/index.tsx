@@ -17,8 +17,7 @@ export interface IcontainerProps{
 
 const StyledDiv=styled.div<IcontainerProps>`
     position:relative;
-    width:${({flexGrow,width})=>flexGrow?width:"100%"};
-    height:${({flexGrow,height})=>flexGrow?height:"100%"};
+
     display:flex;
     margin-left:${({margin}:IcontainerProps)=>{return margin||"0px"}};
     flex-direction:${({direction}:IcontainerProps)=>{return direction||"row"}};

@@ -7,6 +7,7 @@ import { RecoilRoot,useRecoilValue} from 'recoil';
 import {BASED_URL} from '../lib/constants'
 import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} from '../styles/theme';
 import Head from 'next/head'
+import MobileKeyBoard from '../components/atoms/mobileKeyboard'
 
 
 
