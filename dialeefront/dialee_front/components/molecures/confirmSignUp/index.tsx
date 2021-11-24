@@ -15,8 +15,8 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
         if(value==="password1")
           return <Span key="confirm3" size="18px">당신의 비밀번호는 제가 비밀로 간직해놓겠습니다 .</Span>
     }) 
-    const onClick=()=>{
-      const res=onDataSend(data);
+    const onClick=async ()=>{
+      const res=await onDataSend(data);
       if(res.is_valid===true){
         setValid(true);
         setMessage("회원가입이 완료되었습니다! 아래 버튼을 눌러서 로그인을 진행해주세요~!");
