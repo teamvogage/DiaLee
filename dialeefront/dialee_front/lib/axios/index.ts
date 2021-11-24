@@ -14,15 +14,33 @@ export interface ICheckData{
 export interface ILoginData{
     "message":string,
 }
-export const sendSignUp=async (data:ISendAccountData)=>{
+export const sendSignUp=async (data:ISendAccountData)=>{// 회원가입 
     try{
         const res=await axios.post(`${api}/accounts/`,data);
-        return res.data;
+        const goodResponse:ICheckData={
+            is_valid:true,
+            message:"회원가입이 완료되었습니다~! 아래 버튼을 눌러서 로그인을 해주세요.",
+        }
+        return {data:goodResponse}
    }catch(error){
-      return "error";
+   
+    if(!(error as AxiosError).response){
+        const NoResponse:ICheckData={
+            is_valid:false,
+            message:"인터넷 문제나 서버문제가 발생하였습니다."
+        }
+        return {data:NoResponse}
+    }
+        const ServerError:ICheckData={
+            is_valid:false,
+            message:"서버 오류가 발생하였습니다."
+        }
+        ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`
+        return {data:ServerError};
+    
     }
 }
-export const sendCheckEmail=async(email:string)=>{
+export const sendCheckEmail=async(email:string)=>{//이메일체크
         const data={
             "email":email
         }
@@ -32,7 +50,7 @@ export const sendCheckEmail=async(email:string)=>{
                  is_valid:true,
                  message:"",
         }
-        return goodResponse;
+        return {data:goodResponse}
     }catch(error){
         console.log(error);
         if(!(error as AxiosError).response){
@@ -61,7 +79,7 @@ export const sendCheckEmail=async(email:string)=>{
         
      }
 }
-export const sendLogin=async(email:string,pwd:string)=>{
+export const sendLogin=async(email:string,pwd:string)=>{//로그인
     const data={
         email:email,
         password:pwd
@@ -82,7 +100,7 @@ export const sendLogin=async(email:string,pwd:string)=>{
         if ((error as AxiosError).response?.status === 409) {
           
             const Conflict:ILoginData={
-                message:"가입되지 않은 회원입니다."
+                message:"중복입니다."
             }
             return {data:Conflict};
         }
