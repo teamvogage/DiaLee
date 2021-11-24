@@ -27,14 +27,14 @@ export const sendCheckEmail=async(email:string)=>{
             "email":email
         }
      try{
-        const res=  await axios.post(`${api}/accounts/email-check/`,data);
+       await axios.post(`${api}/accounts/email-check/`,data);
         const goodResponse:ICheckData={
                  is_valid:true,
                  message:"",
         }
-        return res;
+        return goodResponse;
     }catch(error){
-        
+        console.log(error);
         if(!(error as AxiosError).response){
             const NoResponse:ICheckData={
                 is_valid:false,
@@ -43,7 +43,7 @@ export const sendCheckEmail=async(email:string)=>{
             return {data:NoResponse}
         }
         if ((error as AxiosError).response?.status === 409) {
-            console.log(error);
+            
             const Conflict:ICheckData={
                 is_valid:false,
                 message:"이메일이 중복입니다."
