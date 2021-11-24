@@ -64,7 +64,7 @@ export const sendLogin=async(email:string,pwd:string)=>{
     }
     try{
         const res=await axios.post(`${api}/accounts/login/`,data);
-        console.log(res.data);
+      
         return res;
     }catch(error){
 
@@ -76,7 +76,7 @@ export const sendLogin=async(email:string,pwd:string)=>{
             return {data:NoResponse}
         }
         if ((error as AxiosError).response?.status === 409) {
-            console.log(error);
+          
             const Conflict:ILoginData={
                 message:"가입되지 않은 회원입니다."
             }
