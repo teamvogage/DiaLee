@@ -1,16 +1,20 @@
-
+import {MAX_PWD_LENGTH,MAX_NAME_LENGTH,MIN_NAME_LENGTH,MIN_PWD_LENGTH} from '../constants'
 
 export const checkUserName=(Id:string):string=>{
  
     Id=Id.trim();
     if(Id.search(/\s/) !=-1)
         return "아이디는 공백이 없어야합니다.";
-  return Id.length>=1?Id.length<=8?"문제 없음":"8글자를 넘어설 수 없습니다.":"1글자 이상이어야 합니다.";
+  return Id.length>=MIN_NAME_LENGTH?Id.length<=MAX_NAME_LENGTH?"문제 없음":"8글자를 넘어설 수 없습니다.":"1글자 이상이어야 합니다.";
 }
 export const validatePassword=(pwd:string):string=>{
         
         const checkNumber = pwd.search(/[0-9]/g);
 	    const checkEnglish = pwd.search(/[a-z]/ig);
+        if(pwd.length<MIN_PWD_LENGTH)
+            return `8글자 이상이어야 합니다.`
+        if(pwd.length>MAX_PWD_LENGTH)
+            return `16글자를 초과하셨습니다.`
 	    if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/.test(pwd)){            
 	        return  `숫자+영문자+특수문자 조합으로 8자리 이상 16자리 이하여야 합니다.`;
 	    }else if(checkNumber <0 || checkEnglish <0){

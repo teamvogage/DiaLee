@@ -4,7 +4,7 @@ const StyledHomeDiv=styled.div`
     z-index: 400;
     width:100%;
     margin-left:0px;
-   
+    
     overflow-x:hidden;
     overflow-y:hidden;
     left:0;

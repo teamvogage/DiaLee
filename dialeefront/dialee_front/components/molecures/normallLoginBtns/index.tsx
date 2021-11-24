@@ -1,11 +1,13 @@
 
-import { ComponentProps, useState } from 'react'
+import { ComponentProps, useState,useRef } from 'react'
 import FlexContainer from '../../atoms/flexcontainer'
 import Input from '../../atoms/input'
 import Span from '../../atoms/span'
 import Button from '../../atoms/button'
 import styled from 'styled-components'
 import AnimatedDiv from '../../atoms/animatedDiv'
+import CheckBox from '../../atoms/checkbox'
+import { sendLogin } from '../../../lib/axios'
 const StyledDiv=styled.div`
     border:2px solid black;
     height:fit-content;
@@ -17,14 +19,19 @@ const StyledDiv=styled.div`
 `
 
 const IdAndPassword=({direction}:ComponentProps<any>)=>{
-    const inputSize="small"
+  
     const [isActive,setActive]=useState(false);
+    const emailRef=useRef<HTMLInputElement>(null);
+    const pwdRef=useRef<HTMLInputElement>(null);
     const onActive=(e:MouseEvent)=>{
         e.preventDefault();
         e.stopPropagation();
         setActive(!isActive);
     }
-
+    const onSendLogin=()=>{
+        if(emailRef.current&&pwdRef.current)
+        sendLogin(emailRef.current?.value,pwdRef.current?.value)
+    }
     return(<>
         <FlexContainer align="center" direction="column" alignItems="center">
             <Span size="30" color="black">일반 로그인</Span>
@@ -36,12 +43,13 @@ const IdAndPassword=({direction}:ComponentProps<any>)=>{
             
             <FlexContainer align="center" alignItems="center" direction={direction||"row"}> 
             
-            <Span size="24" color="black"> 아이디 </Span>
-            <Input name="id"  placeholder="ID" auto="autocomplete"  maxlength="16"   ></Input>
+            <Span size="24" color="black"> 이메일 </Span>
+            <Input ref={emailRef} name="id"  placeholder="email" auto="autocomplete"  maxlength="16"   ></Input>
             <Span size="24" color="black"> 비밀번호 </Span>
-            <Input name="pwd"  placeholder="password" auto="autocomplete" maxlength="16"   ></Input>
-            <Button  btn_type="ok"> 로그인 </Button>
-            <Button  btn_type="small"> 아이디/비밀번호 찾기 </Button>
+            <Input ref={pwdRef} name="pwd"  placeholder="password" auto="autocomplete" maxlength="16"   ></Input>
+            <CheckBox width="20px" height="20px" labelSize="14px">자동 로그인</CheckBox>
+            <Button  btn_type="ok" onClick={onSendLogin}> 로그인 </Button>
+            <Button  btn_type="small"> 비밀번호 찾기 </Button>
             </FlexContainer>
             </StyledDiv>
             </AnimatedDiv>

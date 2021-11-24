@@ -53,7 +53,7 @@ z-index:3;
         case "secondary":
           return  "180px"
         case "small":
-          return "20px";
+          return "13px";
       }
      }
     };
@@ -268,7 +268,7 @@ z-index:3;
      
      }} ;
      transition-property:background-color;
-     transition-duration:1s;
+     transition-duration:0.2s;
      margin-right:${({marginRight})=>marginRight||`0px`};
 `
  const Button=({marginRight,suffix,prefix,width,height,btn_type,direction,align,wrap,onClick,children,alignItems}:ComponentProps<any>) =>{

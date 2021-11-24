@@ -54,3 +54,40 @@ export const sendCheckEmail=async(email:string)=>{
         
      }
 }
+export const sendLogin=async(email:string,pwd:string)=>{
+    const data={
+        email:email,
+        password:pwd
+    }
+    try{
+        const res=await axios.post(`${api}/accounts/email-check/`,data);
+        console.log(res.data);
+        return res;
+    }catch(error){
+        
+        if(!(error as AxiosError).response){
+            const NoResponse:ICheckData={
+                is_valid:false,
+                message:"인터넷 문제나 서버문제가 발생하였습니다."
+            }
+            return {data:NoResponse}
+        }
+        if ((error as AxiosError).response?.status === 409) {
+            console.log(error);
+            const Conflict:ICheckData={
+                is_valid:false,
+                message:"가입되지 않은 회원입니다."
+            }
+            return {data:Conflict};
+        }
+        else{
+            const ServerError:ICheckData={
+                is_valid:false,
+                message:"서버 오류가 발생하였습니다."
+            }
+            ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`
+            return {data:ServerError};
+        }
+    }
+
+}
