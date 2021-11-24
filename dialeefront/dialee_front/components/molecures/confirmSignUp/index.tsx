@@ -17,12 +17,13 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
     }) 
     const onClick=async ()=>{
       const res=await onDataSend(data);
-      if(res.is_valid===true){
+      
+      if(res.data.is_valid===true){
         setValid(true);
         setMessage("회원가입이 완료되었습니다! 아래 버튼을 눌러서 로그인을 진행해주세요~!");
        } else{
         setValid(false);
-        setMessage(res.message);
+        setMessage(res.data.message);
       }
     }
     return(
