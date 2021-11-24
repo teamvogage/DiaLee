@@ -60,11 +60,11 @@ export const sendLogin=async(email:string,pwd:string)=>{
         password:pwd
     }
     try{
-        const res=await axios.post(`${api}/accounts/email-check/`,data);
+        const res=await axios.post(`${api}/accounts/login/`,data);
         console.log(res.data);
         return res;
     }catch(error){
-        
+
         if(!(error as AxiosError).response){
             const NoResponse:ICheckData={
                 is_valid:false,
