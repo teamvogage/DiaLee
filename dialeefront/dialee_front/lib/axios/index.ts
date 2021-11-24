@@ -56,14 +56,14 @@ export const sendCheckEmail=async(email:string)=>{//이메일체크
         return {data:goodResponse}
     }catch(error){
         console.log(error);
-        if(!(error as AxiosError).response){
+        if(!(error as AxiosError).response){//인터넷 문제 아예 요청이 안보내짐 
             const NoResponse:ICheckData={
                 is_valid:false,
                 message:"인터넷 문제나 서버문제가 발생하였습니다."
             }
             return {data:NoResponse}
         }
-        if ((error as AxiosError).response?.status === 409) {
+        if ((error as AxiosError).response?.status === 409) {//중복 
             
             const Conflict:ICheckData={
                 is_valid:false,
@@ -72,7 +72,7 @@ export const sendCheckEmail=async(email:string)=>{//이메일체크
             return {data:Conflict};
         }
         else{
-            const ServerError:ICheckData={
+            const ServerError:ICheckData={//그 외 알 수 없는 이유 
                 is_valid:false,
                 message:"서버 오류가 발생하였습니다."
             }
@@ -99,7 +99,7 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
         return goodResponse;
     }catch(error){
 
-        if(!(error as AxiosError).response){
+        if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
             const NoResponse:ILoginData={
                 status:false,
                 access_token:null,
@@ -107,6 +107,15 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
                 message:"인터넷 문제나 서버문제가 발생하였습니다."
             }
             return {data:NoResponse}
+        }
+        if((error as AxiosError).response?.status===400){//필드가 비어있음.
+            const ServerError:ILoginData={
+                status:false,
+                access_token:null,
+                refresh_token:null,
+                message:"이메일이나 비밀번호가 맞지 않습니다."
+            }
+            return {data:ServerError};
         }
             const ServerError:ILoginData={
                 status:false,
