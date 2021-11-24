@@ -9,7 +9,7 @@ import PwdInput from '../../molecures/pwdInput';
 import EmailInput from '../../molecures/emailInput';
 import ConfirmSignUp from "../../molecures/confirmSignUp"
 
-const SignUp=({onSendSignUp}:ComponentProps<any>)=>{
+const SignUp=()=>{
   
     const defaultData:ISendAccountData={
         email:"",
@@ -54,20 +54,21 @@ const SignUp=({onSendSignUp}:ComponentProps<any>)=>{
        return check(name,value);
         
     }
-   
     const onDataSend=async()=>{
-       const newData={...data};
-       newData.password2=newData.password1;
-       setData(newData);
-        await sendSignUp(newData);
-    }
+        const newData={...data};
+        newData.password2=newData.password1;
+        setData(newData);
+         const res=await sendSignUp(newData);
+         return res;
+     }
+   
     return(
         <AnimatedDiv animation="slideInTopAnim" animationTime="1s">
             <FlexContainer height="auto" align="center" alignItems="center" direction="column"> 
                 {stage==="email"&&<EmailInput value={data.email} onChangeHandler={onChangeCallback} goToPwd={goToPwd}/>}
                 {stage==="password"&&<PwdInput value={data.password1} onChangeHandler={onChangeCallback} goToUserName={goToUserName} goToEmail={goToEmail}/>}
                 {stage==="voyager_name"&&<VoyagerNameInput value={data.voyager_name} onChangeHandler={onChangeCallback} goToPwd={goToPwd} goToConfirm={goToConfirm}/>}
-                {stage==="confirm"&&<ConfirmSignUp data={data} goToUserName={goToUserName} onDataSend={onDataSend} onSendSignUp={onSendSignUp}></ConfirmSignUp>}
+                {stage==="confirm"&&<ConfirmSignUp data={data} onDataSend={onDataSend} goToUserName={goToUserName} ></ConfirmSignUp>}
             </FlexContainer>  
         </AnimatedDiv>
     )
