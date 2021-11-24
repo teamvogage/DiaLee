@@ -17,14 +17,11 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
     }) 
     const onClick=async ()=>{
       const res=await onDataSend(data);
-      console.log(res);
-      if(res.data.is_valid===true){
-        setValid(true);
-        setMessage("회원가입이 완료되었습니다! 아래 버튼을 눌러서 로그인을 진행해주세요~!");
-       } else{
-        setValid(false);
+      if(res==="error")
+        return setMessage("문제가 생겼어요. 다시 시도해주세요.")
+        setValid(res.data.is_valid);
         setMessage(res.data.message);
-      }
+      
     }
     return(
     <FlexContainer direction="column" align="center" alignItems="center">

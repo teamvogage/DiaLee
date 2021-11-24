@@ -28,6 +28,10 @@ export const sendCheckEmail=async(email:string)=>{
         }
      try{
         const res=  await axios.post(`${api}/accounts/email-check/`,data);
+        const goodResponse:ICheckData={
+                 is_valid:true,
+                 message:"",
+        }
         return res;
     }catch(error){
         
@@ -64,11 +68,11 @@ export const sendLogin=async(email:string,pwd:string)=>{
     }
     try{
         const res=await axios.post(`${api}/accounts/login/`,data);
-      
+        
         return res;
     }catch(error){
 
-        if(!(error as AxiosError).response){
+        if((error as AxiosError).response===null){
             const NoResponse:ILoginData={
                 
                 message:"인터넷 문제나 서버문제가 발생하였습니다."
@@ -90,6 +94,7 @@ export const sendLogin=async(email:string,pwd:string)=>{
             ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`
             return {data:ServerError};
         }
+    
     }
 
 }
