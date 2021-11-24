@@ -17,6 +17,7 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
     }) 
     const onClick=async ()=>{
       const res=await onDataSend(data);
+      console.log(res);
       if(res==="error")
         return setMessage("문제가 생겼어요. 다시 시도해주세요.")
         setValid(res.data.is_valid);
