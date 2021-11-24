@@ -58,8 +58,9 @@ const SignUp=()=>{
         const newData={...data};
         newData.password2=newData.password1;
         setData(newData);
-         const res=await sendSignUp(newData);
-         return res;
+        const res=await sendSignUp(newData);
+        console.log(res);
+        return res;
      }
    
     return(
