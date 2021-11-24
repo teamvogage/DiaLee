@@ -2,7 +2,7 @@ import { ComponentProps } from "react";
 import FlexContainer from "../../atoms/flexcontainer";
 import Span from "../../atoms/span";
 import Button from "../../atoms/button";
-const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
+const ConfirmSignUp=({data,onDataSend,goToUserName,onSendSignUp}:ComponentProps<any>)=>{
     const dataKey=Object.keys(data);
     const datas=dataKey.map((value)=>{
         
@@ -21,7 +21,7 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
         <br/>
         {datas}
         <br/>
-        <Button btn_type="ok" onClick={()=>onDataSend(data)} >회원가입</Button>
+        <Button btn_type="ok" onClick={()=>{onDataSend(data);return onSendSignUp()}} >회원가입</Button>
     </FlexContainer>
     )
 }

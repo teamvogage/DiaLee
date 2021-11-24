@@ -1,4 +1,4 @@
-import React, { MutableRefObject, RefObject, useRef, useState } from "react"
+import React, { ComponentProps, MutableRefObject, RefObject, useRef, useState } from "react"
 import AnimatedDiv from "../../atoms/animatedDiv"
 import FlexContainer from '../../atoms/flexcontainer'
 import Button from "../../atoms/button"
@@ -9,7 +9,7 @@ import PwdInput from '../../molecures/pwdInput';
 import EmailInput from '../../molecures/emailInput';
 import ConfirmSignUp from "../../molecures/confirmSignUp"
 
-const SignUp=()=>{
+const SignUp=({onSendSignUp}:ComponentProps<any>)=>{
   
     const defaultData:ISendAccountData={
         email:"",
@@ -67,7 +67,7 @@ const SignUp=()=>{
                 {stage==="email"&&<EmailInput value={data.email} onChangeHandler={onChangeCallback} goToPwd={goToPwd}/>}
                 {stage==="password"&&<PwdInput value={data.password1} onChangeHandler={onChangeCallback} goToUserName={goToUserName} goToEmail={goToEmail}/>}
                 {stage==="voyager_name"&&<VoyagerNameInput value={data.voyager_name} onChangeHandler={onChangeCallback} goToPwd={goToPwd} goToConfirm={goToConfirm}/>}
-                {stage==="confirm"&&<ConfirmSignUp data={data} goToUserName={goToUserName} onDataSend={onDataSend}></ConfirmSignUp>}
+                {stage==="confirm"&&<ConfirmSignUp data={data} goToUserName={goToUserName} onDataSend={onDataSend} onSendSignUp={onSendSignUp}></ConfirmSignUp>}
             </FlexContainer>  
         </AnimatedDiv>
     )
