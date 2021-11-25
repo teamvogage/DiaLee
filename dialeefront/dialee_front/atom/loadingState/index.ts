@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 let loadingState= atom({
-  key: 'loginState',
+  key: 'loadingState',
   default: false, 
 });
 

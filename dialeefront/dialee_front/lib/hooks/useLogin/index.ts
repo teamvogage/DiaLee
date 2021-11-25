@@ -1,7 +1,7 @@
 import {useRecoilState} from 'recoil'
 import loginState from '../../../atom/loginState';
 import { sendLogin, sendLogout } from '../../axios';
-import useLoading from '../useLoading';
+
 interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;

@@ -24,7 +24,7 @@ const MainLoading =()=>{
     const isLoading=useRecoilValue(loadingState);
 
     return(<>
-        {isLoading===true&&<DisabledDiv height="800px">
+        {isLoading===true&&<DisabledDiv height="100vh">
             <FlexContainer direction="column" align="center " alignItems="center">
                 <StyledLoadingImg>
                     <Image src="/imoticon/Ship.png" width="100px" height="100px"></Image>

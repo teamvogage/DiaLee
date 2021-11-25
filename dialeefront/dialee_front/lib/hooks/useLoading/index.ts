@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import loadingState from "../../../atom/loadingState";
-const useLoading=(maxTime:number)=>{
+const useLoading=(maxTime:number|null)=>{
     
     const [isLoading,setLoading]=useRecoilState(loadingState);
     setLoading(!isLoading);
