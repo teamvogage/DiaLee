@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 let loginState= atom({
   key: 'loginState',
-  default: 0, 
+  default: false, 
 });
 
 export default loginState;
