@@ -18,7 +18,7 @@ const StyledDiv=styled.div`
   
 `
 
-const IdAndPassword=({direction,onSendLogin}:ComponentProps<any>)=>{
+const IdAndPassword=({direction,onLogin}:ComponentProps<any>)=>{
   
     const [isActive,setActive]=useState(false);
     const emailRef=useRef<HTMLInputElement>(null);
@@ -29,7 +29,7 @@ const IdAndPassword=({direction,onSendLogin}:ComponentProps<any>)=>{
         setActive(!isActive);
     }
     const onClick=async()=>{
-        const res=onSendLogin(emailRef.current?.value,pwdRef.current?.value);
+        const res=onLogin(emailRef.current?.value,pwdRef.current?.value);
         console.log(res);
     }
     return(<>
