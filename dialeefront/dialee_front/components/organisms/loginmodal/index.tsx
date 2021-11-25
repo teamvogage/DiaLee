@@ -8,6 +8,7 @@ import SignUp from "../signup";
 import useLogin from "../../../lib/hooks/useLogin";
 const LoginModal=()=>{
     const [signUp,setSignUp]=useState(false);
+    const [isNormal,setNormal]=useState(false);
     const {login} =useLogin();
     const onLogin=async(email:string,password:string)=>{
         const res=await login(email,password);
@@ -23,8 +24,8 @@ const LoginModal=()=>{
     return (
     <Modal animationDelay="0.7s" animated="on" top="10%"  width="80%" height="fit-content" title="로그인" confirmBtn={signUp==false?<Button btn_type="ok" onClick={onSignUp}>회원가입</Button>:<Button btn_type="cancle" onClick={onCancleSignUp} >그만두고 로그인 하기</Button>}  zIndex={8000} isCancle="no">
         {signUp==true?<SignUp ></SignUp>:<>
-        <NormalLogin direction="column" onLogin={onLogin}> </NormalLogin>
-        <SocialLogin onLogin={onLogin}/>
+        <NormalLogin direction="column" onLogin={onLogin} onClickHandler={()=>setNormal(!isNormal)}> </NormalLogin>
+        {isNormal===false&&<SocialLogin onLogin={onLogin}/>}
      
         </>}
 

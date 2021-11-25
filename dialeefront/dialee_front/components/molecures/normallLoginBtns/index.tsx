@@ -18,24 +18,26 @@ const StyledDiv=styled.div`
   
 `
 
-const IdAndPassword=({direction,onLogin}:ComponentProps<any>)=>{
-  
+const IdAndPassword=({direction,onLogin,onClickHandler}:ComponentProps<any>)=>{
+    const [text,setText]=useState("");
     const [isActive,setActive]=useState(false);
     const emailRef=useRef<HTMLInputElement>(null);
     const pwdRef=useRef<HTMLInputElement>(null);
     const onActive=(e:MouseEvent)=>{
         e.preventDefault();
         e.stopPropagation();
+        onClickHandler();
         setActive(!isActive);
     }
     const onClick=async()=>{
-      const msg= onLogin(emailRef.current?.value,pwdRef.current?.value);
+      const msg= await onLogin(emailRef.current?.value,pwdRef.current?.value);
+      setText(msg);
     }
     return(<>
         <FlexContainer align="center" direction="column" alignItems="center">
             <Span size="30" color="black">일반 로그인</Span>
             <Button prefix="/imoticon/SunFlower.png" btn_type="socialNot" onClick={onActive}>일반 로그인</Button>
-       
+            <Span size="15" color="red">{text}</Span>
         {isActive?<FlexContainer align="center" alignItems="center" direction={direction||"row"}>
             <AnimatedDiv animation="slideInTopAnim" animationTime="1s" animationFill="forwards">
             <StyledDiv>

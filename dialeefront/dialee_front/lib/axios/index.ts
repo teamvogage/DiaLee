@@ -89,7 +89,7 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
     }
     try{
         const res:AxiosResponse<any>=await axios.post(`${api}/accounts/login/`,data);
-        console.log(res.data);
+       
         const goodResponse:ILoginData={
             status:true,
             access_token:res.data?.access_token,

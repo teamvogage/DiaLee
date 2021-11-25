@@ -11,7 +11,7 @@ import StyledBodyContainer from '../components/organisms/Body'
 import loginState from '../atom/loginState'
 import {useRecoilValue} from 'recoil'
 import MainLoading from '../components/molecures/mainloading'
-import useLoading from '../lib/hooks/useLoading'
+
 let PageWaveCover=styled.div`
 
 height:1600px;

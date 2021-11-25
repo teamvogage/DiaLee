@@ -20,6 +20,7 @@ const StyledLoadingImg=styled.div`
         }
     }
 `
+
 const MainLoading =()=>{
     const isLoading=useRecoilValue(loadingState);
 
@@ -27,7 +28,7 @@ const MainLoading =()=>{
         {isLoading===true&&
         <DisabledDiv height="100vh">
             <FlexContainer direction="column" align="center" alignItems="center">
-                로딩중
+               
                 <StyledLoadingImg>
                     <Image src="/imoticon/SunFlower.png" width="100px" height="100px"></Image>
                 </StyledLoadingImg>
