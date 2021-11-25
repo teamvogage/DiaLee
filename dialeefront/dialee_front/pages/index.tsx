@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import React, { useState,useMemo, useCallback } from 'react'
+import React, { useState,useMemo, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
@@ -85,11 +85,14 @@ animation:upAnimation 4s infinite;
 const Home: NextPage = () => {
   
   const isLogin =useRecoilValue(loginState);
-  const [clicked,setClicked]=useState(isLogin);
+  const [clicked,setClicked]=useState(false);
+  useEffect(()=>{
+    if(isLogin===false)
+      setClicked(false);
+  },[isLogin]);
   const Waves=useMemo(()=><WaveDiv clicked={clicked}>
     <PageWaveCover onClick={function(){setClicked(!clicked)}}/>
     </WaveDiv>,[clicked]);
- 
   const Moon=useMemo(()=><><MoonDiv ></MoonDiv><MoonLightDiv ></MoonLightDiv> <StyledH1  >Voyage</StyledH1></>,[clicked]);
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
@@ -100,7 +103,6 @@ const Home: NextPage = () => {
             {Moon}
             {Waves}
             {clicked===true?Login:null}
-           
         </HomeDiv>
       </FlexContainer>}
       <FlexContainer direction="row"  align="between">
