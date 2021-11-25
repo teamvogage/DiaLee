@@ -3,7 +3,8 @@ import Button from "../../atoms/button"
 import Span from "../../atoms/span"
 import FlexContainer from "../../atoms/flexcontainer"
 import { ComponentProps } from "react"
-const SocialLoginBtns=({direction}:ComponentProps<any>)=>{
+const SocialLoginBtns=({direction,onLogin}:ComponentProps<any>)=>{
+    
     return(
         <FlexContainer align="center" alignItems="center" direction={direction||"column"}>
             <Span size="30" color="black">소셜 로그인</Span>

@@ -2,6 +2,7 @@ import { ComponentProps, useState } from "react";
 import FlexContainer from "../../atoms/flexcontainer";
 import Span from "../../atoms/span";
 import Button from "../../atoms/button";
+import useLoading from "../../../lib/hooks/useLoading";
 const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
     const dataKey=Object.keys(data);
     const [message,setMessage]=useState("당신의 회원가입 정보입니다.");
@@ -16,7 +17,9 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
           return <Span key="confirm3" size="18px">당신의 비밀번호는 제가 비밀로 간직해놓겠습니다 .</Span>
     }) 
     const onClick=async ()=>{
+      useLoading(null);
       const res=await onDataSend(data);
+      useLoading(null);
       console.log(res);
       if(res==="error")
         return setMessage("문제가 생겼어요. 다시 시도해주세요.")
