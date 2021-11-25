@@ -6,6 +6,7 @@ import FlexContainer from '../../atoms/flexcontainer';
 import disabledMainState from '../../../atom/disabledMainState';
 import {  useState } from 'react';
 import {  useRecoilState } from 'recoil';
+import useLogin from '../../../lib/hooks/useLogin';
 
 const StyledSlideMenu = styled.div<{active:boolean}>`
     margin-left:${({active})=>active===false?`-300px`:`90px`};
@@ -43,7 +44,7 @@ const SlideMenu=()=>{
 
     const [eraser,setEraser]=useState("/Eraser.png");
     const [click,setClick]=useState(0);
-    
+    const {logout}=useLogin();
     const [isDisabledMain,disabledMainHandler] =useRecoilState(disabledMainState);
  
     const onClick=()=>{
@@ -95,8 +96,9 @@ const SlideMenu=()=>{
                     <Button marginRight="17px" align="between" width="170px"  alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu3">
                                 메뉴
                     </Button> 
-                    <Button marginRight="22px" align="between" width="170px" alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu4">
-                                메뉴
+                    <Button marginRight="22px" align="between" width="170px" alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu4" onClick={logout}>;
+                
+                                로그아웃
                     </Button> 
         </ButtonList>
        
