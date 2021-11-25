@@ -18,7 +18,7 @@ const StyledDiv=styled.div<{marginLeft:string,height:string}>`
     
     @keyframes anim{
         100%{
-            background-color:rgba(0,0,0,0.8);
+            background-color:rgba(0,0,0,1);
         }
     }
     animation:anim 0.3s forwards;

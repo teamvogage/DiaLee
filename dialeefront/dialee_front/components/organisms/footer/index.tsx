@@ -1,23 +1,29 @@
 import styled from "styled-components";
+import Button from "../../atoms/button";
+import FlexContainer from "../../atoms/flexcontainer";
+import Image from "../../atoms/image";
 const StyledFooterContainer=styled.footer`
-     position:sticky;
+     position:absolute;
      height:30px;
-     width:100vw;
-     display:flex;
-     z-index:2999;
-     margin:0;
-    left:0px;
+     width:100%;
+     left:0%;
+     z-index:900;
+     bottom:0;
      border-top:2px solid black;
-     
-     bottom:0px; 
      background-color:ghostwhite;   
-`
+        & :active{
+            background-color:black;
+        }
+     transition:background-color 3s;
+     `
 
 
 const Footer=()=>{
     return(
-        <StyledFooterContainer onClick={function(){window.scrollTo(0,2000);console.log("hi")}}>
-              
+        <StyledFooterContainer >
+            <FlexContainer align="center" alignItems="center" >
+
+            </FlexContainer>
         </StyledFooterContainer>
     )
 }

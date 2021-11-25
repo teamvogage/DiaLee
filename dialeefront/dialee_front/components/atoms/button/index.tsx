@@ -163,7 +163,7 @@ z-index:3;
       border-radius:${({btn_type}:IbuttonProps)=>{if(btn_type==="menu")return 0;}};
     };
     
-     height:${({height,btn_type}:IbuttonProps)=>{
+     min-height:${({height,btn_type}:IbuttonProps)=>{
       if(height)
         return height;
       if(btn_type.startsWith("social"))
@@ -188,6 +188,7 @@ z-index:3;
         case "cancle":
           return "auto";
         case "small":
+        case "icon":
           return "20px";
          
       }
@@ -217,6 +218,7 @@ z-index:3;
           case "cancle":
             return "100px";
           case "small":
+          case "icon":
             return  "fit-content";
       }
      }
@@ -259,6 +261,7 @@ z-index:3;
         case "okNotAllowed":
         case "book":
         case "small":
+        case "icon":
           return "0";
         case "slideMenu":
           return "5%";

@@ -22,8 +22,9 @@ export default class MyDocument extends Document {
         <Head>
         <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
           {this.props.styleTags}
+  
           </Head>
-     
+      
         <body>
           <Main />
           <NextScript />

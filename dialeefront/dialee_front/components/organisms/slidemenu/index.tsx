@@ -45,11 +45,11 @@ const SlideMenu=()=>{
     const [eraser,setEraser]=useState("/Eraser.png");
     const [click,setClick]=useState(0);
     const {logout}=useLogin();
-    const [isDisabledMain,disabledMainHandler] =useRecoilState(disabledMainState);
+    const [isDisabledMain,setDisabled] =useRecoilState(disabledMainState);
  
     const onClick=()=>{
        
-        disabledMainHandler(!isDisabledMain);
+        setDisabled(!isDisabledMain);
         
         
         if(isDisabledMain===true){

@@ -1,16 +1,17 @@
 import Header from "../header"
+import Footer from "../footer";
 import FlexContainer from '../../atoms/flexcontainer'
 import SlideMenu from "../slidemenu";
 import disabledMainState from "../../../atom/disabledMainState";
-import DisabledDiv from "../../molecures/mainloading";
+import DisabledDiv from "../../atoms/disabledDiv"
 import { ComponentProps } from "react"
 
 import styled from 'styled-components';
 import { useRecoilValue } from "recoil";
 
-const StyledMain =styled.main<{isDisabledMain:boolean}>`
-height:800px;
-
+const StyledMain =styled.main`
+height:100vh;
+position:relative;
 margin-top:-2px;
 overflow:visible;
 
@@ -41,20 +42,21 @@ const StyledPaper=styled.div`
 const Main=({children}:ComponentProps<any>)=>{
     const isDisabledMain=useRecoilValue(disabledMainState);
     
-return (<>
-          <SlideMenu></SlideMenu>
-<FlexContainer direction="row" align="start">
-            <StyledPaper/>
-            <FlexContainer direction= "column" align="start">
-                    <StyledMain isDisabledMain={!isDisabledMain}>
-                    <Header/>
-                    {isDisabledMain?<DisabledDiv></DisabledDiv>:null} 
-                        <section>
-                        {children}    
-                        </section>
-                    </StyledMain>                             
-            </FlexContainer> 
-        </FlexContainer>   
-  </>  )   
-}
+      return (<>
+                <SlideMenu></SlideMenu>
+                <FlexContainer direction="row" align="start">
+                  <StyledPaper/>
+                  <FlexContainer direction= "column" align="start">
+                          <StyledMain >
+                          <Header/>
+                          {isDisabledMain===true?<DisabledDiv></DisabledDiv>:null} 
+                              <section>
+                              {children}    
+                              </section>
+                              {<Footer/>} 
+                          </StyledMain>                             
+                  </FlexContainer> 
+                </FlexContainer>   
+        </>  )   
+      }
 export default Main;

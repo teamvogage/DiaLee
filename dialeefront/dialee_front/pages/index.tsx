@@ -100,20 +100,23 @@ const Home: NextPage = () => {
   return (
     <StyledBodyContainer>
       <MainLoading/>
-      {isLogin===false&&<FlexContainer direction="row"  align="between">
+      {isLogin===true&&<FlexContainer direction="row"  align="between">
         <HomeDiv onClick={function(){setClicked(true);}}>
             {Moon}
             {Waves}
             {clicked===true?Login:null}
+            
         </HomeDiv>
+      
       </FlexContainer>}
       <FlexContainer direction="row"  align="between">
+     
             <Main>
               
             </Main>
+             
         </FlexContainer>
-      <Footer/> 
-
+            
       </StyledBodyContainer>
   )
 }
