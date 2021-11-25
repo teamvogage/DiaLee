@@ -7,7 +7,7 @@ import Main from '../components/organisms/Main'
 import FlexContainer from '../components/atoms/flexcontainer'
 import Footer from '../components/organisms/footer'
 import StyledBodyContainer from '../components/organisms/Body'
-import MobileKeyBoard from '../components/atoms/mobileKeyboard'
+
 import loginState from '../atom/loginState'
 import {useRecoilValue} from 'recoil'
 
@@ -107,7 +107,7 @@ const Home: NextPage = () => {
             </Main>
         </FlexContainer>
       <Footer/> 
-      <MobileKeyBoard/>
+    
       </StyledBodyContainer>
   )
 }
