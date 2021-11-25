@@ -93,7 +93,7 @@ const Home: NextPage = () => {
       setClicked(false);
   },[isLogin]);
   const Waves=useMemo(()=><WaveDiv clicked={clicked}>
-    <PageWaveCover onClick={function(){setClicked(true);}}/>
+    <PageWaveCover />
     </WaveDiv>,[clicked]);
   const Moon=useMemo(()=><><MoonDiv ></MoonDiv><MoonLightDiv ></MoonLightDiv> <StyledH1  >Voyage</StyledH1></>,[clicked]);
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
@@ -101,7 +101,7 @@ const Home: NextPage = () => {
     <StyledBodyContainer>
       <MainLoading/>
       {isLogin===false&&<FlexContainer direction="row"  align="between">
-        <HomeDiv >
+        <HomeDiv onClick={function(){setClicked(true);}}>
             {Moon}
             {Waves}
             {clicked===true?Login:null}
