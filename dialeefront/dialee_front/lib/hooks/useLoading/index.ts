@@ -4,6 +4,7 @@ import { MIN_LOADING_TIME } from "../../constants";
 interface IUseLoading{
     loadingOn:()=>void;
     loadingOff:()=>void;
+    loadingFake:(time:number)=>void;
 }
 const useLoading=():IUseLoading=>{
 
@@ -14,6 +15,10 @@ const useLoading=():IUseLoading=>{
     const loadingOff=():void=>{
             setTimeout(()=>setLoading(false),MIN_LOADING_TIME)
     }
-    return {loadingOn,loadingOff}
+    const loadingFake=(time:number):void=>{
+        setLoading(true);
+        setTimeout(()=>setLoading(false),time);
+    }
+    return {loadingOn,loadingOff,loadingFake}
 }
 export default useLoading;
