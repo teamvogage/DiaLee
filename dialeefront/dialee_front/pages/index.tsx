@@ -11,7 +11,7 @@ import StyledBodyContainer from '../components/organisms/Body'
 import loginState from '../atom/loginState'
 import {useRecoilValue} from 'recoil'
 
-let PageWaveCover=styled.div<{clicked:string}>`
+let PageWaveCover=styled.div`
 
 height:1600px;
 width:1600px;
@@ -33,14 +33,14 @@ width:1600px;
   
 `
 
-const WaveDiv=styled.div<{clicked:string}>`
+const WaveDiv=styled.div<{clicked:boolean}>`
 will-change: top height; 
-top:${({clicked})=>clicked==="true"?'-60%':'70%'};
+top:${({clicked})=>clicked===true?'-60%':'70%'};
 position:absolute;
 transition:top 4s;
 
 `
-const MoonDiv=styled.div<{clicked:string}>`
+const MoonDiv=styled.div`
   border-radius:100%;
   background:linear-gradient(rgba(255,255,255,0.01),rgba(255,255,255,0.9));
   position:absolute;
@@ -64,7 +64,7 @@ const MoonDiv=styled.div<{clicked:string}>`
     }
   }
 `
-const MoonLightDiv=styled.div<{clicked:string}>`
+const MoonLightDiv=styled.div`
   border-radius:100%;
   width:70px;
   height:70px;
@@ -78,27 +78,27 @@ const MoonLightDiv=styled.div<{clicked:string}>`
   animation:upAnimation 4s infinite;
 `
 
-const StyledH1=styled.h1<{clicked:string}>`
+const StyledH1=styled.h1`
 animation:upAnimation 4s infinite;
 
 `
 const Home: NextPage = () => {
-  const [clicked,setClicked]=useState("false");
+  const [clicked,setClicked]=useState(false);
   const isLogin =useRecoilValue(loginState);
   const Waves=useMemo(()=><WaveDiv clicked={clicked}>
-    <PageWaveCover clicked={clicked}/>
+    <PageWaveCover />
     </WaveDiv>,[clicked]);
  
-  const Moon=useMemo(()=><><MoonDiv clicked={clicked}></MoonDiv><MoonLightDiv clicked={clicked}></MoonLightDiv> <StyledH1 clicked={clicked} >Voyage</StyledH1></>,[clicked]);
+  const Moon=useMemo(()=><><MoonDiv ></MoonDiv><MoonLightDiv ></MoonLightDiv> <StyledH1  >Voyage</StyledH1></>,[clicked]);
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
     <StyledBodyContainer>
     
       {isLogin===false&&<FlexContainer direction="row"  align="between">
-        <HomeDiv onClick={function(){setClicked("true")}}>
+        <HomeDiv onClick={function(){setClicked(!clicked)}}>
             {Moon}
             {Waves}
-            {clicked==="true"?Login:null}
+            {clicked===true?Login:null}
            
         </HomeDiv>
       </FlexContainer>}
