@@ -18,7 +18,7 @@ const StyledDiv=styled.div`
   
 `
 
-const IdAndPassword=({direction}:ComponentProps<any>)=>{
+const IdAndPassword=({direction,onSendLogin}:ComponentProps<any>)=>{
   
     const [isActive,setActive]=useState(false);
     const emailRef=useRef<HTMLInputElement>(null);
@@ -28,9 +28,9 @@ const IdAndPassword=({direction}:ComponentProps<any>)=>{
         e.stopPropagation();
         setActive(!isActive);
     }
-    const onSendLogin=()=>{
-        if(emailRef.current&&pwdRef.current)
-        sendLogin(emailRef.current?.value,pwdRef.current?.value)
+    const onClick=async()=>{
+        const res=onSendLogin(emailRef.current?.value,pwdRef.current?.value);
+        console.log(res);
     }
     return(<>
         <FlexContainer align="center" direction="column" alignItems="center">
@@ -48,7 +48,7 @@ const IdAndPassword=({direction}:ComponentProps<any>)=>{
             <Span size="24" color="black"> 비밀번호 </Span>
             <Input ref={pwdRef} name="pwd"  placeholder="password" auto="autocomplete" maxlength="16"   ></Input>
             <CheckBox width="20px" height="20px" labelSize="14px">자동 로그인</CheckBox>
-            <Button  btn_type="ok" onClick={onSendLogin}> 로그인 </Button>
+            <Button  btn_type="ok" onClick={onClick}> 로그인 </Button>
             <Button  btn_type="small"> 비밀번호 찾기 </Button>
             </FlexContainer>
             </StyledDiv>

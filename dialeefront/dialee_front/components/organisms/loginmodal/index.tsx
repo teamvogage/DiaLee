@@ -1,13 +1,17 @@
 import Modal from "../../molecures/modal";
-import IdAndPassword from "../../molecures/normallLoginBtns";
+import NormalLogin from "../../molecures/normallLoginBtns";
 import Button from '../../atoms/button';
-import SocialLoginBtns from "../../molecures/socialLoginBtns";
+import SocialLogin from "../../molecures/socialLoginBtns";
 
 import { useState } from "react";
 import SignUp from "../signup";
-
+import { sendLogin } from "../../../lib/axios";
 const LoginModal=()=>{
     const [signUp,setSignUp]=useState(false);
+    const onLogin=async(email:string,password:string)=>{
+        const res=await sendLogin(email,password);
+        return res;
+    }
     const onSignUp=()=>{
         
         return setSignUp(true);
@@ -18,8 +22,8 @@ const LoginModal=()=>{
     return (
     <Modal animationDelay="0.7s" animated="on" top="10%"  width="80%" height="fit-content" title="로그인" confirmBtn={signUp==false?<Button btn_type="ok" onClick={onSignUp}>회원가입</Button>:<Button btn_type="cancle" onClick={onCancleSignUp} >그만두고 로그인 하기</Button>}  zIndex={8000} isCancle="no">
         {signUp==true?<SignUp ></SignUp>:<>
-        <IdAndPassword direction="column"> </IdAndPassword>
-        <SocialLoginBtns/>
+        <NormalLogin direction="column" onLogin={onLogin}> </NormalLogin>
+        <SocialLogin onLogin={onLogin}/>
      
         </>}
 
