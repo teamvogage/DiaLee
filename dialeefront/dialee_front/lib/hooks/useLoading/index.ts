@@ -1,11 +1,19 @@
 import { useRecoilState } from "recoil";
 import loadingState from "../../../atom/loadingState";
-const useLoading=(maxTime:number|null)=>{
+import { MIN_LOADING_TIME } from "../../constants";
+interface IUseLoading{
+    loadingOn:()=>void;
+    loadingOff:()=>void;
+}
+const useLoading=():IUseLoading=>{
 
     const [isLoading,setLoading]=useRecoilState(loadingState);
-    setLoading(!isLoading);
-    if(maxTime)
-    setTimeout(()=>setLoading(false),maxTime);
-    return isLoading
+    const loadingOn=():void=>{
+        setLoading(true);
+    }
+    const loadingOff=():void=>{
+            setTimeout(()=>setLoading(false),MIN_LOADING_TIME)
+    }
+    return {loadingOn,loadingOff}
 }
 export default useLoading;

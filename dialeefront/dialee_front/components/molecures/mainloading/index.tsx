@@ -10,11 +10,11 @@ const StyledLoadingImg=styled.div`
     z-index:10000;
 
     @keyframes imgRotationAnim{
-        from:
+        from
         {
             transform:rotate(0deg);
         }
-        to:
+        to
         {   
             transform:rotate(360deg);
         }
@@ -24,10 +24,12 @@ const MainLoading =()=>{
     const isLoading=useRecoilValue(loadingState);
 
     return(<>
-        {isLoading===true&&<DisabledDiv height="100vh">
-            <FlexContainer direction="column" align="center " alignItems="center">
+        {isLoading===true&&
+        <DisabledDiv height="100vh">
+            <FlexContainer direction="column" align="center" alignItems="center">
+                로딩중
                 <StyledLoadingImg>
-                    <Image src="/imoticon/Ship.png" width="100px" height="100px"></Image>
+                    <Image src="/imoticon/SunFlower.png" width="100px" height="100px"></Image>
                 </StyledLoadingImg>
             </FlexContainer>
         </DisabledDiv>}

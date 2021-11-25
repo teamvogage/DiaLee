@@ -25,10 +25,10 @@ const StyledDiv=styled.div<{marginLeft:string,height:string}>`
     
 `
 
-const disabledDiv=({height,marginLeft,onMouseMove}:ComponentProps<any>)=>{
+const disabledDiv=({height,marginLeft,onMouseMove,children}:ComponentProps<any>)=>{
     return(
         <StyledDiv height={height} marginLeft={marginLeft} onMouseMove={onMouseMove}>
-
+            {children}
         </StyledDiv>
     )
 }

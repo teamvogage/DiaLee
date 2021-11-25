@@ -11,7 +11,7 @@ import StyledBodyContainer from '../components/organisms/Body'
 import loginState from '../atom/loginState'
 import {useRecoilValue} from 'recoil'
 import MainLoading from '../components/molecures/mainloading'
-
+import useLoading from '../lib/hooks/useLoading'
 let PageWaveCover=styled.div`
 
 height:1600px;
@@ -87,12 +87,13 @@ const Home: NextPage = () => {
   
   const isLogin =useRecoilValue(loginState);
   const [clicked,setClicked]=useState(false);
+  
   useEffect(()=>{
     if(isLogin===false)
       setClicked(false);
   },[isLogin]);
   const Waves=useMemo(()=><WaveDiv clicked={clicked}>
-    <PageWaveCover onClick={function(){setClicked(true)}}/>
+    <PageWaveCover onClick={function(){setClicked(true);}}/>
     </WaveDiv>,[clicked]);
   const Moon=useMemo(()=><><MoonDiv ></MoonDiv><MoonLightDiv ></MoonLightDiv> <StyledH1  >Voyage</StyledH1></>,[clicked]);
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);

@@ -5,3 +5,4 @@ export const MIN_NAME_LENGTH=1;
 export const MAX_NAME_LENGTH=8;
 export const MIN_PWD_LENGTH=8;
 export const MAX_PWD_LENGTH=16;
+export const MIN_LOADING_TIME=1000;

@@ -1,18 +1,19 @@
 import {useRecoilState} from 'recoil'
 import loginState from '../../../atom/loginState';
 import { sendLogin, sendLogout } from '../../axios';
-
+import useLoading from '../useLoading'
 interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;
 }
 const useLogin=():IUseLogin=>{
     const [isLogin,setLogin]=useRecoilState(loginState);
+    const {loadingOn,loadingOff}=useLoading();
     const login=async(email:string,password:string)=>{
         try{
-            
+            loadingOn();
             const res=await sendLogin(email,password);
-         
+            loadingOff();
             if(res.data.status===true){
                 setLogin(true);
             }else{
@@ -26,9 +27,9 @@ const useLogin=():IUseLogin=>{
     }
     const logout=async()=>{
         try{
-         
+            loadingOn();
             const res=await sendLogout();
-        
+            loadingOff();
             if(res.data.status===true){
                 setLogin(false);
             }
