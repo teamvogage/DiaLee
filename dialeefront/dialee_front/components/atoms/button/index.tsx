@@ -194,7 +194,7 @@ z-index:3;
      }
     };
     width:auto;
-    min-width:${({width,btn_type}:IbuttonProps)=>{
+    min-width: ${({width,btn_type}:IbuttonProps)=>{
       if(width)
         return width;
       if(btn_type.startsWith("social"))
