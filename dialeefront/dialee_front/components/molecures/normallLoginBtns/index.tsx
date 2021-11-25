@@ -29,7 +29,7 @@ const IdAndPassword=({direction,onLogin}:ComponentProps<any>)=>{
         setActive(!isActive);
     }
     const onClick=async()=>{
-        const res=onLogin(emailRef.current?.value,pwdRef.current?.value);
+        const res=await onLogin(emailRef.current?.value,pwdRef.current?.value);
         console.log(res);
     }
     return(<>
