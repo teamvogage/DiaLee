@@ -10,6 +10,7 @@ import StyledBodyContainer from '../components/organisms/Body'
 
 import loginState from '../atom/loginState'
 import {useRecoilValue} from 'recoil'
+import MainLoading from '../components/molecures/mainloading'
 
 let PageWaveCover=styled.div`
 
@@ -97,7 +98,7 @@ const Home: NextPage = () => {
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
     <StyledBodyContainer>
-    
+      <MainLoading/>
       {isLogin===false&&<FlexContainer direction="row"  align="between">
         <HomeDiv >
             {Moon}
@@ -111,7 +112,7 @@ const Home: NextPage = () => {
             </Main>
         </FlexContainer>
       <Footer/> 
-    
+
       </StyledBodyContainer>
   )
 }
