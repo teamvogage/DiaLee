@@ -83,10 +83,11 @@ animation:upAnimation 4s infinite;
 
 `
 const Home: NextPage = () => {
-  const [clicked,setClicked]=useState(false);
+  
   const isLogin =useRecoilValue(loginState);
+  const [clicked,setClicked]=useState(isLogin);
   const Waves=useMemo(()=><WaveDiv clicked={clicked}>
-    <PageWaveCover />
+    <PageWaveCover onClick={function(){setClicked(!clicked)}}/>
     </WaveDiv>,[clicked]);
  
   const Moon=useMemo(()=><><MoonDiv ></MoonDiv><MoonLightDiv ></MoonLightDiv> <StyledH1  >Voyage</StyledH1></>,[clicked]);
@@ -95,7 +96,7 @@ const Home: NextPage = () => {
     <StyledBodyContainer>
     
       {isLogin===false&&<FlexContainer direction="row"  align="between">
-        <HomeDiv onClick={function(){setClicked(!clicked)}}>
+        <HomeDiv >
             {Moon}
             {Waves}
             {clicked===true?Login:null}
