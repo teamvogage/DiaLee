@@ -106,10 +106,10 @@ const SlideMenu=()=>{
         
         <FlexContainer direction="row" align="end">
             <StyledImage left="-50px" bottom="40px" rotate="-10deg">
-                <Image rotate={"no"} src="/Pencil.png" width="40px" height="500px"></Image>
+                <Image rotate={"no"} src="/Pencil.png" width="40px" height="500px" alt="연필"></Image>
             </StyledImage>
             <StyledImage left="-30px" bottom="-100px" rotate="-10deg" >
-                <Image src={eraser} width="150px" height="200px" ></Image>
+                <Image src={eraser} width="150px" height="200px" alt="지우개"></Image>
             </StyledImage>
            
         </FlexContainer>

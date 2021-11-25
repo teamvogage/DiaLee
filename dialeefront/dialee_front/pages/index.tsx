@@ -99,8 +99,11 @@ const Home: NextPage = () => {
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
     <StyledBodyContainer>
-      <MainLoading/>
-      {isLogin===true&&<FlexContainer direction="row"  align="between">
+      <FlexContainer direction="row" align="between">
+       <MainLoading/>
+      </FlexContainer>
+     
+      {isLogin===false&&<FlexContainer direction="row"  align="between">
         <HomeDiv onClick={function(){setClicked(true);}}>
             {Moon}
             {Waves}

@@ -39,6 +39,7 @@ img {
   -moz-user-select: none;
   user-select: none;
 }
+
 @keyframes backgroundAnim {
   from {
     background-color: white;

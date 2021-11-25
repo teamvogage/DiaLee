@@ -3,7 +3,7 @@ import Footer from "../footer";
 import FlexContainer from '../../atoms/flexcontainer'
 import SlideMenu from "../slidemenu";
 import disabledMainState from "../../../atom/disabledMainState";
-import DisabledDiv from "../../atoms/disabledDiv"
+import CoverDiv from "../../molecures/coverDiv";
 import { ComponentProps } from "react"
 
 import styled from 'styled-components';
@@ -49,7 +49,7 @@ const Main=({children}:ComponentProps<any>)=>{
                   <FlexContainer direction= "column" align="start">
                           <StyledMain >
                           <Header/>
-                          {isDisabledMain===true?<DisabledDiv></DisabledDiv>:null} 
+                          {isDisabledMain===true?<CoverDiv></CoverDiv>:null} 
                               <section>
                               {children}    
                               </section>
