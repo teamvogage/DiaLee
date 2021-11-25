@@ -13,7 +13,7 @@ height:800px;
 
 margin-top:-2px;
 overflow:visible;
-width:100vw;
+
 display:flex;
 justify-content:center;
 
