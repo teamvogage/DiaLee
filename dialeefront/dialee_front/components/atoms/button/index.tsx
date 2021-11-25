@@ -186,15 +186,15 @@ z-index:3;
         case "no":  
           return "40px";
         case "cancle":
-          return "40px";
+          return "auto";
         case "small":
           return "20px";
          
       }
      }
     };
-
-    width:${({width,btn_type}:IbuttonProps)=>{
+    width:auto;
+    min-width:${({width,btn_type}:IbuttonProps)=>{
       if(width)
         return width;
       if(btn_type.startsWith("social"))
