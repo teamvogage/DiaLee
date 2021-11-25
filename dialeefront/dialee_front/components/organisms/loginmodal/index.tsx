@@ -2,7 +2,7 @@ import Modal from "../../molecures/modal";
 import NormalLogin from "../../molecures/normallLoginBtns";
 import Button from '../../atoms/button';
 import SocialLogin from "../../molecures/socialLoginBtns";
-
+import CheckBox from "../../atoms/checkbox";
 import { useState } from "react";
 import SignUp from "../signup";
 import useLogin from "../../../lib/hooks/useLogin";
@@ -26,7 +26,7 @@ const LoginModal=()=>{
         {signUp==true?<SignUp ></SignUp>:<>
         <NormalLogin direction="column" onLogin={onLogin} onClickHandler={()=>setNormal(!isNormal)}> </NormalLogin>
         {isNormal===false&&<SocialLogin onLogin={onLogin}/>}
-     
+        <CheckBox width="20px" height="20px" labelSize="14px">자동 로그인</CheckBox>
         </>}
 
     </Modal>

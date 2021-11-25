@@ -48,7 +48,7 @@ const IdAndPassword=({direction,onLogin,onClickHandler}:ComponentProps<any>)=>{
             <Input ref={emailRef} name="id"  placeholder="email" auto="autocomplete"  maxlength="16"   ></Input>
             <Span size="24" color="black"> 비밀번호 </Span>
             <Input ref={pwdRef} name="pwd"  placeholder="password" auto="autocomplete" maxlength="16"   ></Input>
-            <CheckBox width="20px" height="20px" labelSize="14px">자동 로그인</CheckBox>
+            
             <Button  btn_type="ok" onClick={onClick}> 로그인 </Button>
             <Button  btn_type="small"> 비밀번호 찾기 </Button>
             </FlexContainer>
