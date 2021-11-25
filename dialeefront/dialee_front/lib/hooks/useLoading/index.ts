@@ -3,7 +3,7 @@ import loadingState from "../../../atom/loadingState";
 import { MIN_LOADING_TIME } from "../../constants";
 interface IUseLoading{
     loadingOn:()=>void;
-    loadingOff:()=>void;
+    loadingOff:(time:number)=>void;
     loadingFake:(time:number)=>void;
 }
 const useLoading=():IUseLoading=>{
@@ -12,8 +12,8 @@ const useLoading=():IUseLoading=>{
     const loadingOn=():void=>{
         setLoading(true);
     }
-    const loadingOff=():void=>{
-            setTimeout(()=>setLoading(false),MIN_LOADING_TIME)
+    const loadingOff=(time:number):void=>{
+            setTimeout(()=>setLoading(false),time?time:MIN_LOADING_TIME)
     }
     const loadingFake=(time:number):void=>{
         setLoading(true);
