@@ -19,7 +19,7 @@ justify-content:center;
 
         border-bottom:2px solid black;
         border-top:2px solid black;
-        border-right:4px solid black;
+      
         white-space:pre-line;
         overflow:visible;
         background-color:white;
