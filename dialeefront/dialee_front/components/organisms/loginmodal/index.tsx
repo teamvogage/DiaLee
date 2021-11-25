@@ -5,12 +5,13 @@ import SocialLogin from "../../molecures/socialLoginBtns";
 
 import { useState } from "react";
 import SignUp from "../signup";
-import { sendLogin } from "../../../lib/axios";
+import useLogin from "../../../lib/hooks/useLogin";
 const LoginModal=()=>{
     const [signUp,setSignUp]=useState(false);
+    const {login} =useLogin();
     const onLogin=async(email:string,password:string)=>{
-        const res=await sendLogin(email,password);
-        return res;
+        const res=await login(email,password);
+        return res||"error";
     }
     const onSignUp=()=>{
         

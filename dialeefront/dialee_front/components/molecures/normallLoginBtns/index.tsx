@@ -29,8 +29,7 @@ const IdAndPassword=({direction,onLogin}:ComponentProps<any>)=>{
         setActive(!isActive);
     }
     const onClick=async()=>{
-        const res=await onLogin(emailRef.current?.value,pwdRef.current?.value);
-        console.log(res);
+      const msg= onLogin(emailRef.current?.value,pwdRef.current?.value);
     }
     return(<>
         <FlexContainer align="center" direction="column" alignItems="center">

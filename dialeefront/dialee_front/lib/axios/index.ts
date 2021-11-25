@@ -96,7 +96,7 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
             refresh_token:res.data?.refresh_token,
             message:"로그인이 성공하였습니다."
         }
-        return goodResponse;
+        return {data:goodResponse};
     }catch(error){
 
         if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
@@ -113,7 +113,7 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
                 status:false,
                 access_token:null,
                 refresh_token:null,
-                message:"이메일이나 비밀번호가 맞지 않습니다."
+                message:"이메일이나 비밀번호가 맞지 않습니다.::400"
             }
             return {data:ServerError};
         }
@@ -127,4 +127,44 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
             return {data:ServerError};
     }
 
+}
+export const sendLogout=async()=>{
+    try{
+        await axios.post(`${api}/accounts/logout/`);
+        const goodResponse:ILoginData={
+            status:true,
+            access_token:null,
+            refresh_token:null,
+            message:"로그아웃에 성공하였습니다. "
+        }
+        return {data:goodResponse}
+    }catch(error){
+            if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
+                const NoResponse:ILoginData={
+                    status:false,
+                    access_token:null,
+                    refresh_token:null,
+                    message:"인터넷 문제나 서버문제가 발생하였습니다."
+                }
+                return {data:NoResponse}
+            }
+            if((error as AxiosError).response?.status===400){//필드가 비어있음.
+                const ServerError:ILoginData={
+                    status:false,
+                    access_token:null,
+                    refresh_token:null,
+                    message:"잘못된 요청입니다. 다시 시도해주세요.::400"
+                }
+                return {data:ServerError};
+            }
+            const ServerError:ILoginData={
+                    status:false,
+                    access_token:null,
+                    refresh_token:null,
+                    message:"서버 오류가 발생하였습니다."
+                }
+            ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`
+            return {data:ServerError};
+    }
+    
 }

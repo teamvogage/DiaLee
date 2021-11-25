@@ -3,14 +3,13 @@ import React, { useState,useMemo, useCallback } from 'react'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
-import SlideMenu from '../components/organisms/slidemenu'
 import Main from '../components/organisms/Main'
 import FlexContainer from '../components/atoms/flexcontainer'
 import Footer from '../components/organisms/footer'
-import AnimatedDiv from '../components/atoms/animatedDiv'
-import Image from '../components/atoms/image'
 import StyledBodyContainer from '../components/organisms/Body'
 import MobileKeyBoard from '../components/atoms/mobileKeyboard'
+import loginState from '../atom/loginState'
+import {useRecoilValue} from 'recoil'
 
 let PageWaveCover=styled.div<{clicked:string}>`
 
@@ -85,6 +84,7 @@ animation:upAnimation 4s infinite;
 `
 const Home: NextPage = () => {
   const [clicked,setClicked]=useState("false");
+  const isLogin =useRecoilValue(loginState);
   const Waves=useMemo(()=><WaveDiv clicked={clicked}>
     <PageWaveCover clicked={clicked}/>
     </WaveDiv>,[clicked]);
@@ -93,14 +93,14 @@ const Home: NextPage = () => {
   return (
     <StyledBodyContainer>
     
-      <FlexContainer direction="row"  align="between">
-      <HomeDiv onClick={function(){setClicked("true")}}>
+      {isLogin===false&&<FlexContainer direction="row"  align="between">
+        <HomeDiv onClick={function(){setClicked("true")}}>
             {Moon}
             {Waves}
             {clicked==="true"?Login:null}
            
         </HomeDiv>
-      </FlexContainer>
+      </FlexContainer>}
       <FlexContainer direction="row"  align="between">
             <Main>
               
