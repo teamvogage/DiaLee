@@ -5,7 +5,7 @@ import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
 import Main from '../components/organisms/Main'
 import FlexContainer from '../components/atoms/flexcontainer'
-import Footer from '../components/organisms/footer'
+import axios from 'axios'
 import StyledBodyContainer from '../components/organisms/Body'
 import useCookie from '../lib/hooks/useCookie'
 import loginState from '../atom/loginState'
@@ -89,9 +89,12 @@ const Home: NextPage = () => {
   const [clicked,setClicked]=useState(false);
   
   useEffect(()=>{
-    removeCookie("access_token")
+   
     const cookie=getCookie("access_token");
-    console.log(cookie+"cookie");
+    if(cookie!==undefined){
+      axios.defaults.headers.common["Authorization"]=`Bearer ${cookie}`
+    }
+    console.log(axios.defaults.headers.common["Authorization"]);
   },[]);
   const Waves=<WaveDiv clicked={clicked}>
     <PageWaveCover />
