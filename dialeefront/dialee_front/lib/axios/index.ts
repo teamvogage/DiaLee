@@ -169,14 +169,15 @@ export const sendLogout=async()=>{
     }
     
 }
-export const sendAutoLogin=async(refresh:string)=>{
+export const sendRefresh=async(refresh:string)=>{
     try{
         const res:AxiosResponse<any>=await axios.post(`${api}/accounts/token/refresh/`,{refresh:refresh});
+        axios.defaults.headers.common["Authorization"]=`Bearer ${res.data?.access}`;
         const goodResponse:ILoginData={
             status:true,
             access_token:res.data?.access,
             refresh_token:refresh,
-            message:"로그아웃에 성공하였습니다. "
+            message:"성공."
         }
         return {data:goodResponse};
     }catch(error){

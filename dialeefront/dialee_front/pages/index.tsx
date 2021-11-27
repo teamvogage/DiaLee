@@ -12,6 +12,7 @@ import useLogin from "../lib/hooks/useLogin"
 import loginState from '../atom/loginState'
 import {useRecoilValue} from 'recoil'
 import MainLoading from '../components/molecures/mainloading'
+import { sendRefresh } from '../lib/axios'
 
 let PageWaveCover=styled.div`
 
@@ -91,8 +92,14 @@ const Home: NextPage = () => {
   const {login,logout,autoLogin}=useLogin();
   useEffect(()=>{
     const auto=getCookie("auto_login")
-    if(auto==="true"){
+    const accessToken=getCookie("access_token");
+    const refreshToken=getCookie("refresh_token");
+    if(accessToken!==undefined){
+      axios.defaults.headers.common["Authorization"]=`Bearer ${accessToken}`;
       autoLogin();
+    }
+    if(auto==="true"){
+      
     }
   },[]);
   useEffect(()=>{

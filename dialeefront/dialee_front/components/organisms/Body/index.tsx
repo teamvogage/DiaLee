@@ -20,5 +20,6 @@ const StyledBodyContainer=styled.div`
   font-size: 0px;
   background-color: black;
 
+ 
 `
 export default StyledBodyContainer;

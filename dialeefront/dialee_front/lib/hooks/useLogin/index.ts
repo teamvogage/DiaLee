@@ -1,6 +1,6 @@
 import {useRecoilState} from 'recoil'
 import loginState from '../../../atom/loginState';
-import { sendLogin, sendLogout,sendAutoLogin } from '../../axios';
+import { sendLogin, sendLogout,sendRefresh } from '../../axios';
 import useLoading from '../useLoading'
 import useCookie from '../useCookie'
 
@@ -54,8 +54,8 @@ const useLogin=():IUseLogin=>{
             loadingOff(2000);
             if(res.data.status===true){
                 setLogin(false);
-                removeCookie("refresh-token");
-                removeCookie("auto-login")
+                removeCookie("refresh_token");
+                removeCookie("auto_login")
             }
             return res.data.message;
         }catch(error){
@@ -67,13 +67,14 @@ const useLogin=():IUseLogin=>{
         try{
             loadingOn();
             const refresh_token=getCookie("refresh_token")
-            const res=await sendAutoLogin(refresh_token);
+            const res=await sendRefresh(refresh_token);
             console.log(res);
             loadingOff(2000);
             if(res.data.status===true){
                 const now =new Date();
                 const oneMonth=new Date();
                 oneMonth.setMonth(now.getMonth()+1);
+               
                 setCookie("refresh_token",res.data.access_token||"no-token",{expires:oneMonth});
                 setCookie("access_token",res.data.refresh_token||"no-token",{maxAge:3600});
                 setLogin(true);
