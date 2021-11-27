@@ -3,7 +3,7 @@ import loginState from '../../../atom/loginState';
 import { sendLogin, sendLogout,sendRefresh } from '../../axios';
 import useLoading from '../useLoading'
 import useCookie from '../useCookie'
-
+import {oneMonth} from '../../js/setDate'
 interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;
@@ -24,10 +24,8 @@ const useLogin=():IUseLogin=>{
                 const auto=getCookie("auto_login");
                
                 if(auto==="true"){
-                    const now =new Date();
-                    const oneMonth=new Date();
-                    oneMonth.setMonth(now.getMonth()+1);
-                    setCookie("refresh_token",res.data.access_token||"no-token",{expires:oneMonth});
+                    const expires=oneMonth()
+                    setCookie("refresh_token",res.data.access_token||"no-token",{expires:expires});
                     setCookie("access_token",res.data.refresh_token||"no-token",);  
                 }else{
                     setCookie("refresh_token",res.data.access_token||"no-token",);
@@ -72,11 +70,9 @@ const useLogin=():IUseLogin=>{
           
             loadingOff(2000);
             if(res.data.status===true){
-                const now =new Date();
-                const oneMonth=new Date();
-                oneMonth.setMonth(now.getMonth()+1);
                
-                setCookie("refresh_token",res.data.access_token||"no-token",{expires:oneMonth});
+                const expires=oneMonth()
+                setCookie("refresh_token",res.data.access_token||"no-token",{expires:expires});
                 setCookie("access_token",res.data.refresh_token||"no-token",);
                 setLogin(true);
             }else{
