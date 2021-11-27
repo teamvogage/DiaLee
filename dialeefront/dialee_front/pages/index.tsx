@@ -91,15 +91,14 @@ const Home: NextPage = () => {
   const [clicked,setClicked]=useState(false);
   const {login,logout,autoLogin}=useLogin();
   useEffect(()=>{
-    const auto=getCookie("auto_login")
     const accessToken=getCookie("access_token");
     const refreshToken=getCookie("refresh_token");
-    if(accessToken!==undefined){
+    if(accessToken!==undefined||null){
       axios.defaults.headers.common["Authorization"]=`Bearer ${accessToken}`;
       setLogin(true);
     }
-    if(auto==="true"){
-      console.log(auto);
+    if(refreshToken!==undefined||null){
+      console.log(refreshToken);
       autoLogin();
     }
   },[]);
