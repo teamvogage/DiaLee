@@ -98,8 +98,8 @@ const Home: NextPage = () => {
       axios.defaults.headers.common["Authorization"]=`Bearer ${accessToken}`;
       setLogin(true);
     }
-    if(refreshToken!=="undefined"){
-      
+    if(auto==="true"){
+      autoLogin();
     }
   },[]);
   useEffect(()=>{
