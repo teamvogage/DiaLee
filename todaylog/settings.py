@@ -156,10 +156,10 @@ INTERNAL_IPS = [
 AUTH_USER_MODEL = 'accounts.User'
 
 SIMPLE_JWT = {
-    # 액세스 토큰의 유효 시간
+    # 액세스 토큰의 유효 시간 = 1시간
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
-    # 리프레시 토큰의 유효 시간
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
+    # 리프레시 토큰의 유효 시간 = 1년
+    'REFRESH_TOKEN_LIFETIME': timedelta(weeks=52, days=1),
 }
 
 REST_USE_JWT = True
@@ -171,9 +171,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-    # ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
