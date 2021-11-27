@@ -23,7 +23,7 @@ const StyledLoadingImg=styled.div`
 
 const MainLoading =()=>{
     const isLoading=useRecoilValue(loadingState);
-    const srcs=["Anchor.png","Gift.png","Star.png","SunFlower.png","Heart.png"]
+    const srcs=["Anchor.png","Gift.png","FairyBall.png","SunFlower.png","Heart.png"]
     const randomSrc=Math.floor(Math.random()*srcs.length);
     return(<>
         {isLoading===true&&

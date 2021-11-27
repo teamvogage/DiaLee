@@ -14,7 +14,7 @@ export interface ICheckData{
 export interface ILoginData{
     "status":boolean,
     "access_token":string|null,
-    "refresh_token":String|null,
+    "refresh_token":string|null,
     "message":string,
 }
 export const sendSignUp=async (data:ISendAccountData)=>{// 회원가입 

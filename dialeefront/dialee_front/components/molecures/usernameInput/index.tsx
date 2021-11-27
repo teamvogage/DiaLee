@@ -29,7 +29,7 @@ const VoyagerNameInput=({value,onChangeHandler,goToPwd,goToConfirm}:ComponentPro
     return(<>
         <Span size="15" background="rgba(255,255,255,0.5)" color={text=="문제 없음"?"blue":"red"} id="checkId">{text}</Span>
         <Span size="24" color="black"> 활동명 </Span>
-        <Input ref={voyagerNameRef} name="voyager_name" value={inputValue} type="text" width={"200px"} auto="off" id="Id" maxlength="16" onChange={onChange}  ></Input>
+        <Input ref={voyagerNameRef} name="voyager_name" value={inputValue} type="text" width={"200px"} auto="off" id="Id"  onChange={onChange}  ></Input>
         <FlexContainer align ="center" direction="column" alignItems="center"> 
             <Span size="18"  color="black">활동명을 입력해주세요.</Span>
             <Span size="18"  color="black">활동명은 1글자 이상 8글자 이하여야해요.</Span> 

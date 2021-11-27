@@ -45,9 +45,9 @@ const IdAndPassword=({direction,onLogin,onClickHandler}:ComponentProps<any>)=>{
             <FlexContainer align="center" alignItems="center" direction={direction||"row"}> 
             
             <Span size="24" color="black"> 이메일 </Span>
-            <Input ref={emailRef} name="id"  placeholder="email" auto="autocomplete"  maxlength="16"   ></Input>
+            <Input ref={emailRef} name="id"  placeholder="email" auto="autocomplete"   ></Input>
             <Span size="24" color="black"> 비밀번호 </Span>
-            <Input ref={pwdRef} name="pwd"  placeholder="password" auto="autocomplete" maxlength="16"   ></Input>
+            <Input ref={pwdRef} name="pwd" type="password"  placeholder="password" auto="autocomplete"  ></Input>
             
             <Button  btn_type="ok" onClick={onClick}> 로그인 </Button>
             <Button  btn_type="small"> 비밀번호 찾기 </Button>

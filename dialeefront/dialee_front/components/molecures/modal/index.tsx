@@ -12,7 +12,8 @@ z-index:100;
 position:absolute;
 width:100%;
 overflow-y:auto;
-height:60%;
+height:70%;
+
 transform:translateY(-700px);
 animation:slideInTopAnim 3s forwards 1.7s;
 `
@@ -28,25 +29,18 @@ const Modal=({title,confirmBtn,additionalBtns,children,isCancle,animated,animati
     return(<>
         {isActive?<>
                 <StyledModal > 
-               
-                    <FlexContainer direction="column" align="center" alignItems="stretch" alignContent="center">
-                        
+                    <FlexContainer direction="column" align="center" alignItems="center" alignContent="center">
                             <FlexContainer height="auto" align="center" direction="column" alignItems="center" flexGrow={2}>   
                                 <Span size="30">{title}</Span>
-                           
                                 {children}
                                 <FlexContainer direction="row" align="center" alignItems="center">
-                    
-                                {confirmBtn?confirmBtn :null}
-                            
+                                {confirmBtn?confirmBtn:null}
                                 {allowCancle?<Button btn_type="cancle" onClick={onCancle} >취소</Button>:null}
                                 </FlexContainer>
                                 <br/><br/>
                                 {additionalBtns?additionalBtns:<Image src="/imoticon/Anchorpink.png" width="30px"height="30px"/>}
                             </FlexContainer>
-                         
-                    </FlexContainer>  
-                   
+                    </FlexContainer>                
                 </StyledModal>
     </>:null}
     </>)

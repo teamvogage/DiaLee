@@ -28,7 +28,7 @@ const PwdInput=({value,onChangeHandler,goToEmail,goToUserName}:ComponentProps<an
     return(<>
             <Span size="15" background="rgba(255,255,255,0.5)" color={text=="문제 없음"?"blue":"red"} id="validateSecret">{text}</Span> 
             <Span size="24" color="black"> 비밀번호 </Span>
-                <Input ref={pwdRef} name="password1" value={inputValue} type="password" auto="off" width={"200px"} id="Pwd" maxlength="16" onChange={onChange}  ></Input>
+                <Input ref={pwdRef} name="password1" value={inputValue} type="password" auto="off" width={"200px"} id="Pwd"  onChange={onChange}  ></Input>
                 <FlexContainer align ="center" direction="column" alignItems="center"> 
             <Span size="18"  color="black">비밀번호를 입력해주세요.</Span>
             <Span size="18"  color="black">비밀번호는 특수문자 포함</Span> 

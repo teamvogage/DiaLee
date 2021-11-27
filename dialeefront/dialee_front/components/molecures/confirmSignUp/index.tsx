@@ -20,7 +20,7 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
     const onClick=async ()=>{
       loadingOn();
       const res=await onDataSend(data);
-      loadingOff();
+      loadingOff(null);
      
       if(res==="error")
         return setMessage("문제가 생겼어요. 다시 시도해주세요.")

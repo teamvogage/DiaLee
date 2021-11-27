@@ -63,7 +63,7 @@ const EmailInput =({value,onChangeHandler,goToPwd}:ComponentProps<any>) =>{
     <> 
         <Span size="15" background="rgba(255,255,255,0.5)" color={isUnique==true?text=="문제 없음"?"blue":"red":"red"} id="checkEmail">{text}</Span>    
         <Span size="24" color="black"> 이메일 </Span>
-        <Input ref={emailRef} name="email" type="email"  width={"200px"} auto="off" value={inputValue} id="Email" maxlength="50" onChange={onChange} onBlur={onBlur} ></Input>
+        <Input ref={emailRef} name="email" type="email"  width={"200px"} auto="off" value={inputValue} id="Email"  onChange={onChange} onBlur={onBlur} ></Input>
         <FlexContainer align ="center" direction="column" alignItems="center"> 
             <Span size="18"  color="black">이메일을 입력해주세요.</Span>
             <Span size="18"  color="black">이메일은 로그인할 때 사용됩니다.</Span> 
