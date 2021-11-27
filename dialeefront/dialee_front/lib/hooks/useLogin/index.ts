@@ -8,6 +8,7 @@ interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;
     autoLogin:()=>void;
+    checkLogin:()=>Promise<boolean>;
 }
 const useLogin=():IUseLogin=>{
     const [isLogin,setLogin]=useRecoilState(loginState);
@@ -16,6 +17,8 @@ const useLogin=():IUseLogin=>{
    
     const login=async(email:string,password:string)=>{
         try{
+            removeCookie("access_token")
+            removeCookie("refresh_token")
             loadingOn();
             const res=await sendLogin(email,password);
             loadingOff(2000);
@@ -58,6 +61,10 @@ const useLogin=():IUseLogin=>{
             }
             return res.data.message;
         }catch(error){
+            removeCookie("access_token");
+            removeCookie("refresh_token");
+            removeCookie("auto_login")
+            setLogin(false);
             if(error)
             return "다시 시도해주세요.(error occured!)"
         }
@@ -88,6 +95,18 @@ const useLogin=():IUseLogin=>{
            setLogin(false);
         }
     }
-    return {login,logout,autoLogin}
+    const checkLogin=async()=>{
+        const access=getCookie("access_token");
+        if(access!==undefined||null){
+            setLogin(true);
+            return true;
+        }
+            
+        else{
+            setLogin(false);
+            return false;
+        }
+    }
+    return {login,logout,autoLogin,checkLogin}
 }
 export default useLogin;

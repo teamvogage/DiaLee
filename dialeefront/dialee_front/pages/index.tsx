@@ -89,20 +89,18 @@ const Home: NextPage = () => {
   const {getCookie,setCookie,removeCookie}=useCookie();
   const [isLogin,setLogin] =useRecoilState(loginState);
   const [clicked,setClicked]=useState(false);
-  const {login,logout,autoLogin}=useLogin();
+  const {checkLogin,autoLogin}=useLogin();
   useEffect(()=>{
     const auto=getCookie("auto_login")
-    const accessToken=getCookie("access_token");
-    const refreshToken=getCookie("refresh_token");
-    console.log(accessToken,refreshToken,auto);
-    if(accessToken!==undefined){
-      axios.defaults.headers.common["Authorization"]=`Bearer ${accessToken}`;
-      setLogin(true);
-    }
-    if(auto==="true"){
-     
-      autoLogin();
-    }
+    checkLogin().then(
+      (val)=>
+      {
+        return  val===true?setLogin(true):auto==="true"?autoLogin():setLogin(false);
+      }
+    ).catch((err)=>{
+       return setLogin(false);
+    })
+
   },[]);
   useEffect(()=>{
     setClicked(isLogin);

@@ -31,6 +31,7 @@ const MainLoading =()=>{
             <FlexContainer direction="column" align="center" alignItems="center">
                 <StyledLoadingImg>
                     <Image src={`/imoticon/${srcs[randomSrc]}`} width="40px" height="40px"></Image>
+                  
                 </StyledLoadingImg>
             </FlexContainer>
         </DisabledDiv>}
