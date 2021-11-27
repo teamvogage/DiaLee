@@ -53,10 +53,11 @@ const useLogin=():IUseLogin=>{
             const res=await sendLogout();
             loadingOff(2000);
             if(res.data.status===true){
-                setLogin(false);
                 removeCookie("access_token");
                 removeCookie("refresh_token");
                 removeCookie("auto_login")
+                setLogin(false);
+                
             }
             return res.data.message;
         }catch(error){
