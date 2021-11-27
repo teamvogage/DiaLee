@@ -94,6 +94,7 @@ const Home: NextPage = () => {
     const auto=getCookie("auto_login")
     const accessToken=getCookie("access_token");
     const refreshToken=getCookie("refresh_token");
+    console.log(accessToken,refreshToken,auto);
     if(accessToken!==undefined){
       axios.defaults.headers.common["Authorization"]=`Bearer ${accessToken}`;
       setLogin(true);
