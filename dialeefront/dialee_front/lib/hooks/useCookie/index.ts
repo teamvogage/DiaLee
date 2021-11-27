@@ -1,6 +1,6 @@
 import { Cookies } from "react-cookie";
 interface IuseCookie{
-    getCookie:(name:string)=>void,
+    getCookie:(name:string)=>string,
     setCookie:(name:string,value:string,options?:any)=>void,
     removeCookie:(name:string,options?:any)=>void
 }

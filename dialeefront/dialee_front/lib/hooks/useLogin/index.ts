@@ -38,6 +38,8 @@ const useLogin=():IUseLogin=>{
             loadingOff(null);
             if(res.data.status===true){
                 setLogin(false);
+                removeCookie("refresh-token");
+                removeCookie("auto-login")
             }
             return res.data.message;
         }catch(error){

@@ -91,9 +91,10 @@ const Home: NextPage = () => {
   const {login,logout}=useLogin();
   useEffect(()=>{
     const email=getCookie("email")
-    const password=getCookie("password");
-    if(email!==undefined&&password!=undefined){
-      login(email,password);
+    const auto=getCookie("auto-login")
+    removeCookie("passoword");
+    if(auto==="true"){
+      
     }
   },[]);
   const Waves=<WaveDiv clicked={clicked}>

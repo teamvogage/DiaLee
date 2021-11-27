@@ -96,6 +96,7 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
             refresh_token:res.data?.refresh_token,
             message:"로그인이 성공하였습니다."
         }
+        axios.defaults.headers.common["Authorization"]=`Bearer ${res.data?.access_token}`;
         return {data:goodResponse};
     }catch(error){
 

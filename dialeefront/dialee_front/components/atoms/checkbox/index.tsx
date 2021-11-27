@@ -1,4 +1,4 @@
-import { Children, ComponentProps } from "react";
+import { forwardRef, ComponentProps,ForwardedRef } from "react";
 import styled from "styled-components";
 import FlexContainer from "../flexcontainer";
 interface ICheckBoxProps{
@@ -54,13 +54,14 @@ const StyledLabel=styled.label<ILabel>`
         return 'black';
     }};
 `
-const CheckBox=(props:ICheckBoxProps|ComponentProps<any>)=>{
+const CheckBox=forwardRef((props:ICheckBoxProps|ComponentProps<any>,ref:ForwardedRef<HTMLInputElement>)=>{
+   
     return(
     <FlexContainer direction="row" align="center" alignItems="center">
-        <StyledCheckBox name={props.name} type="checkbox" width={props.width} height={props.height} border={props.border} backgroundColor={props.backgroundColor} defaultChecked={props.checked}></StyledCheckBox>   
+        <StyledCheckBox ref={ref} onChange={props.onChange}  name={props.name} type="checkbox" width={props.width} height={props.height} border={props.border} backgroundColor={props.backgroundColor} defaultChecked={props.checked}></StyledCheckBox>   
         <StyledLabel labelSize={props.labelSize} labelColor={props.labelColor}>{props.children}</StyledLabel>
     </FlexContainer>
     )
-}
+});
 
 export default CheckBox;
