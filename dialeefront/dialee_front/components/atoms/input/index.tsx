@@ -68,7 +68,7 @@ const Input = forwardRef((props:ComponentProps<any>,ref:ForwardedRef<HTMLInputEl
     return (
     <StyledInputDiv >
         {props.type==="password"?passwordInput():normalInput()}
-        {props.type==="password"?<StyledImage onClick={onClick}>{type==="password"?<Image alt="visibleBtn" height="30px" width="30px" src="/imoticon/Gift.png"></Image>:<Image height="30px" width="30px" src="/imoticon/Tube.png"></Image>}</StyledImage>:null}
+        {props.type==="password"?<StyledImage onClick={onClick}>{type==="password"?<Image alt="unvisible" height="30px" width="30px" src="/imoticon/CantWatch.png"></Image>:<Image height="30px" width="30px" alt="visible" src="/imoticon/CanWatch.png"></Image>}</StyledImage>:null}
     </StyledInputDiv>
     )
 });
