@@ -10,7 +10,7 @@ import StyledBodyContainer from '../components/organisms/Body'
 import useCookie from '../lib/hooks/useCookie'
 import useLogin from "../lib/hooks/useLogin"
 import loginState from '../atom/loginState'
-import {useRecoilValue} from 'recoil'
+import {useRecoilState} from 'recoil'
 import MainLoading from '../components/molecures/mainloading'
 import { sendRefresh } from '../lib/axios'
 
@@ -87,7 +87,7 @@ animation:upAnimation 4s infinite;
 `
 const Home: NextPage = () => {
   const {getCookie,setCookie,removeCookie}=useCookie();
-  const isLogin =useRecoilValue(loginState);
+  const [isLogin,setLogin] =useRecoilState(loginState);
   const [clicked,setClicked]=useState(false);
   const {login,logout,autoLogin}=useLogin();
   useEffect(()=>{
@@ -96,7 +96,7 @@ const Home: NextPage = () => {
     const refreshToken=getCookie("refresh_token");
     if(accessToken!==undefined){
       axios.defaults.headers.common["Authorization"]=`Bearer ${accessToken}`;
-      autoLogin();
+      setLogin(true);
     }
     if(auto==="true"){
       
