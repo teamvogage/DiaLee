@@ -4,6 +4,7 @@ import { sendLogin, sendLogout,sendRefresh } from '../../axios';
 import useLoading from '../useLoading'
 import useCookie from '../useCookie'
 import {oneMonth} from '../../js/setDate'
+
 interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;
@@ -21,7 +22,7 @@ const useLogin=():IUseLogin=>{
             removeCookie("refresh_token")
             loadingOn();
             const res=await sendLogin(email,password);
-            loadingOff(2000);
+            loadingOff();
 
             if(res.data.status===true){
                 const auto=getCookie("auto_login");
@@ -52,7 +53,7 @@ const useLogin=():IUseLogin=>{
         try{
             loadingOn();
             const res=await sendLogout();
-            loadingOff(2000);
+            loadingOff();
             if(res.data.status===true){
                 removeCookie("access_token");
                 removeCookie("refresh_token");
@@ -75,7 +76,7 @@ const useLogin=():IUseLogin=>{
             const refresh_token=getCookie("refresh_token")
             const res=await sendRefresh(refresh_token);
           
-            loadingOff(2000);
+            loadingOff();
             if(res.data.status===true){
                
                 const expires=oneMonth()

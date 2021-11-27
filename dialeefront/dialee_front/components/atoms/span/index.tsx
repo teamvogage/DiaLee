@@ -13,7 +13,7 @@ const StyledSpan=styled.span<{size:number,color:string,background:string}>`
 const Span=(props:ComponentProps<any>)=>{
     
    
-    return (<StyledSpan size={props.size}  background={props.background} color={props.color}>{props.children}</StyledSpan>
+    return (<StyledSpan size={props.size} onClick={props.onClick}  background={props.background} color={props.color}>{props.children}</StyledSpan>
     )
 }
 

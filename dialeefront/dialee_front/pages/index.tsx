@@ -92,6 +92,7 @@ const Home: NextPage = () => {
   const {checkLogin,autoLogin}=useLogin();
   useEffect(()=>{
     const auto=getCookie("auto_login")
+    
     checkLogin().then(
       (val)=>
       {
