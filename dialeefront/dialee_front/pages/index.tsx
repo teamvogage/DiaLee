@@ -98,7 +98,7 @@ const Home: NextPage = () => {
       axios.defaults.headers.common["Authorization"]=`Bearer ${accessToken}`;
       setLogin(true);
     }
-    if(auto==="true"){
+    if(refreshToken!=="undefined"){
       
     }
   },[]);

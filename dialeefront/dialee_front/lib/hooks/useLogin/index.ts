@@ -28,10 +28,10 @@ const useLogin=():IUseLogin=>{
                     const oneMonth=new Date();
                     oneMonth.setMonth(now.getMonth()+1);
                     setCookie("refresh_token",res.data.access_token||"no-token",{expires:oneMonth});
-                    setCookie("access_token",res.data.refresh_token||"no-token",{maxAge:3600});  
+                    setCookie("access_token",res.data.refresh_token||"no-token",);  
                 }else{
                     setCookie("refresh_token",res.data.access_token||"no-token",);
-                    setCookie("access_token",res.data.refresh_token||"no-token",{maxAge:3600});
+                    setCookie("access_token",res.data.refresh_token||"no-token",);
                 }
                
                 setLogin(true);
@@ -77,7 +77,7 @@ const useLogin=():IUseLogin=>{
                 oneMonth.setMonth(now.getMonth()+1);
                
                 setCookie("refresh_token",res.data.access_token||"no-token",{expires:oneMonth});
-                setCookie("access_token",res.data.refresh_token||"no-token",{maxAge:3600});
+                setCookie("access_token",res.data.refresh_token||"no-token",);
                 setLogin(true);
             }else{
                 removeCookie("refresh_token");
