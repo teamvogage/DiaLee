@@ -95,7 +95,7 @@ const Home: NextPage = () => {
     if(email!==undefined&&password!=undefined){
       login(email,password);
     }
-  },[s]);
+  },[]);
   const Waves=<WaveDiv clicked={clicked}>
     <PageWaveCover />
     </WaveDiv>;
