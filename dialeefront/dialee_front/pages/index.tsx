@@ -99,6 +99,7 @@ const Home: NextPage = () => {
       setLogin(true);
     }
     if(auto==="true"){
+      console.log(auto);
       autoLogin();
     }
   },[]);
