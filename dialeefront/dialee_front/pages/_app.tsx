@@ -7,7 +7,7 @@ import { RecoilRoot,useRecoilValue} from 'recoil';
 import {BASED_URL} from '../lib/constants'
 import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} from '../styles/theme';
 import Head from 'next/head'
-
+import {CookiesProvider} from 'react-cookie'
 
 
 
@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
  
 
   return (<>
+  <CookiesProvider>
   <RecoilRoot>
   <Head><link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
@@ -29,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   </ThemeProvider>
   </RecoilRoot>
+  </CookiesProvider>
  </> )
 
 }

@@ -7,7 +7,7 @@ import Main from '../components/organisms/Main'
 import FlexContainer from '../components/atoms/flexcontainer'
 import Footer from '../components/organisms/footer'
 import StyledBodyContainer from '../components/organisms/Body'
-
+import useCookie from '../lib/hooks/useCookie'
 import loginState from '../atom/loginState'
 import {useRecoilValue} from 'recoil'
 import MainLoading from '../components/molecures/mainloading'
@@ -84,13 +84,14 @@ animation:upAnimation 4s infinite;
 
 `
 const Home: NextPage = () => {
-  
+  const {getCookie,setCookie,removeCookie}=useCookie();
   const isLogin =useRecoilValue(loginState);
   const [clicked,setClicked]=useState(false);
   
   useEffect(()=>{
     if(isLogin===false)
       setClicked(false);
+    console.log(getCookie("access_token"));
   },[isLogin]);
   const Waves=<WaveDiv clicked={clicked}>
     <PageWaveCover />
