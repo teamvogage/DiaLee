@@ -54,6 +54,7 @@ const useLogin=():IUseLogin=>{
             loadingOff(2000);
             if(res.data.status===true){
                 setLogin(false);
+                removeCookie("access_token");
                 removeCookie("refresh_token");
                 removeCookie("auto_login")
             }
