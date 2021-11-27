@@ -57,7 +57,6 @@ const useLogin=():IUseLogin=>{
                 removeCookie("refresh_token");
                 removeCookie("auto_login")
                 setLogin(false);
-                
             }
             return res.data.message;
         }catch(error){

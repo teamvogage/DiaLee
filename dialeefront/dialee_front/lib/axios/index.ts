@@ -142,7 +142,7 @@ export const sendLogout=async()=>{
     }catch(error){
             if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
                 const NoResponse:ILoginData={
-                    status:false,
+                    status:true,
                     access_token:null,
                     refresh_token:null,
                     message:"인터넷 문제나 서버문제가 발생하였습니다."
@@ -151,7 +151,7 @@ export const sendLogout=async()=>{
             }
             if((error as AxiosError).response?.status===400){//필드가 비어있음.
                 const ServerError:ILoginData={
-                    status:false,
+                    status:true,
                     access_token:null,
                     refresh_token:null,
                     message:"잘못된 요청입니다. 다시 시도해주세요.::400"
@@ -159,7 +159,7 @@ export const sendLogout=async()=>{
                 return {data:ServerError};
             }
             const ServerError:ILoginData={
-                    status:false,
+                    status:true,
                     access_token:null,
                     refresh_token:null,
                     message:"서버 오류가 발생하였습니다."
