@@ -27,7 +27,7 @@ const MainLoading =()=>{
     const randomSrc=Math.floor(Math.random()*srcs.length);
     return(<>
         {isLoading===true&&
-        <DisabledDiv height="100vh">
+        <DisabledDiv height="100vh" zIndex="10000">
             <FlexContainer direction="column" align="center" alignItems="center">
                 <StyledLoadingImg>
                     <Image src={`/imoticon/${srcs[randomSrc]}`} width="40px" height="40px"></Image>

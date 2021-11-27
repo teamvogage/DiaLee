@@ -92,11 +92,14 @@ const Home: NextPage = () => {
   useEffect(()=>{
     const email=getCookie("email")
     const auto=getCookie("auto-login")
-    removeCookie("passoword");
     if(auto==="true"){
       
     }
   },[]);
+  useEffect(()=>{
+    setClicked(isLogin);
+  },[isLogin])
+ 
   const Waves=<WaveDiv clicked={clicked}>
     <PageWaveCover />
     </WaveDiv>;
@@ -110,12 +113,10 @@ const Home: NextPage = () => {
      
       {isLogin===false&&<FlexContainer direction="row"  align="between">
         <HomeDiv onClick={function(){setClicked(true);}}>
-            {Moon}
-            {Waves}
-            {clicked===true?Login:null}
-            
+          {Moon}
+          {Waves}
+          {clicked===true?Login:null}
         </HomeDiv>
-      
       </FlexContainer>}
       <FlexContainer direction="row"  align="between">
      
