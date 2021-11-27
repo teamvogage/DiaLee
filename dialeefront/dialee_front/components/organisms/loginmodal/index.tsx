@@ -23,6 +23,7 @@ const LoginModal=()=>{
         return setSignUp(true);
     }
     const onCancleSignUp=()=>{
+        setNormal(false);
         return setSignUp(false);
     }
     const onChecked=()=>{
