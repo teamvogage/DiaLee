@@ -169,3 +169,42 @@ export const sendLogout=async()=>{
     }
     
 }
+export const sendAutoLogin=async(refresh:string)=>{
+    try{
+        const res:AxiosResponse<any>=await axios.post(`${api}/accounts/token/`,{refresh:refresh});
+        const goodResponse:ILoginData={
+            status:true,
+            access_token:res.data?.access,
+            refresh_token:refresh,
+            message:"로그아웃에 성공하였습니다. "
+        }
+        return {data:goodResponse};
+    }catch(error){
+        if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
+            const NoResponse:ILoginData={
+                status:false,
+                access_token:null,
+                refresh_token:null,
+                message:"인터넷 문제나 서버문제가 발생하였습니다."
+            }
+            return {data:NoResponse}
+        }
+        if((error as AxiosError).response?.status===400){//필드가 비어있음.
+            const ServerError:ILoginData={
+                status:false,
+                access_token:null,
+                refresh_token:null,
+                message:"이메일이나 비밀번호가 맞지 않습니다.::400"
+            }
+            return {data:ServerError};
+        }
+            const ServerError:ILoginData={
+                status:false,
+                access_token:null,
+                refresh_token:null,
+                message:"서버 오류가 발생하였습니다."
+            }
+            ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`
+            return {data:ServerError};
+    }
+}

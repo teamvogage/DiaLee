@@ -88,12 +88,11 @@ const Home: NextPage = () => {
   const {getCookie,setCookie,removeCookie}=useCookie();
   const isLogin =useRecoilValue(loginState);
   const [clicked,setClicked]=useState(false);
-  const {login,logout}=useLogin();
+  const {login,logout,autoLogin}=useLogin();
   useEffect(()=>{
-    const email=getCookie("email")
-    const auto=getCookie("auto-login")
+    const auto=getCookie("auto_login")
     if(auto==="true"){
-      
+      autoLogin();
     }
   },[]);
   useEffect(()=>{
