@@ -91,7 +91,7 @@ const Home: NextPage = () => {
   useEffect(()=>{
     removeCookie("access_token")
     const cookie=getCookie("access_token");
-    console.log(cookie);
+    console.log(cookie+"cookie");
   },[]);
   const Waves=<WaveDiv clicked={clicked}>
     <PageWaveCover />
