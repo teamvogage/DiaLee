@@ -38,7 +38,7 @@ const VoyagerNameInput=({value,onChangeHandler,goToPwd,goToConfirm}:ComponentPro
             <br/>
             <FlexContainer direction="row">
                 <Button btn_type="ok" onClick={()=>goToPwd("voyager_name",voyagerNameRef.current?.value)}>비밀번호</Button>
-                {pass===true?<Button btn_type="ok" onClick={()=>goToConfirm("voyager_name",voyagerNameRef.current?.value)}>회원가입</Button>:<Button btn_type="okNotAllowed">확인하기</Button>}
+                {pass===true?<Button btn_type="ok" onClick={()=>goToConfirm("voyager_name",voyagerNameRef.current?.value)}>최종 확인</Button>:<Button btn_type="okNotAllowed">확인하기</Button>}
             </FlexContainer>
         </FlexContainer>
     </>)

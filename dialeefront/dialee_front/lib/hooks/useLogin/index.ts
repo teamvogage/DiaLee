@@ -17,7 +17,6 @@ const useLogin=():IUseLogin=>{
             const res=await sendLogin(email,password);
             loadingOff(null);
             if(res.data.status===true){
-                console.log(res.data);
                 setCookie("refresh_token",res.data.access_token||"no-token");
                 setCookie("access_token",res.data.refresh_token||"no-token");
                 setLogin(true);

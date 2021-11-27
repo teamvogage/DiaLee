@@ -11,9 +11,9 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
     const datas=dataKey.map((value)=>{
         
         if(value==="voyager_name")
-           return <Span key="confirm1" size="18px">{`당신의 활동명은 [${data[value]}]입니다.`}</Span>
+           return <Span key="confirm1" color="yellow" size="18px">{`당신의 활동명은 [${data[value]}]입니다.`}</Span>
         if(value==="email")
-          return  <Span key="confirm2" size="18px">{`당신의 이메일은 [${data[value]}] 이구요.`}</Span>
+          return  <Span key="confirm2" color="yellow" size="18px">{`당신의 이메일은 [${data[value]}] 이구요.`}</Span>
         if(value==="password1")
           return <Span key="confirm3" size="18px">당신의 비밀번호는 제가 비밀로 간직해놓겠습니다 .</Span>
     }) 
@@ -30,7 +30,7 @@ const ConfirmSignUp=({data,onDataSend,goToUserName}:ComponentProps<any>)=>{
     }
     return(
     <FlexContainer direction="column" align="center" alignItems="center">
-        {isValid===false?<Button btn_type="ok" onClick={()=>goToUserName()}> 뒤로 </Button>:null}
+        
         <br/>
         {message==="당신의 회원가입 정보입니다."?datas:message}
         <br/>
