@@ -68,6 +68,7 @@ const useLogin=():IUseLogin=>{
             loadingOn();
             const refresh_token=getCookie("refresh_token")
             const res=await sendAutoLogin(refresh_token);
+            console.log(res);
             loadingOff(2000);
             if(res.data.status===true){
                 const now =new Date();
