@@ -19,6 +19,8 @@ const useLogin=():IUseLogin=>{
             if(res.data.status===true){
                 setCookie("refresh_token",res.data.access_token||"no-token");
                 setCookie("access_token",res.data.refresh_token||"no-token");
+                setCookie("email",email);
+                setCookie("password",password);
                 setLogin(true);
             }else{
 

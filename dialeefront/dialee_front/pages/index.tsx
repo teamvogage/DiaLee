@@ -8,6 +8,7 @@ import FlexContainer from '../components/atoms/flexcontainer'
 import axios from 'axios'
 import StyledBodyContainer from '../components/organisms/Body'
 import useCookie from '../lib/hooks/useCookie'
+import useLogin from "../lib/hooks/useLogin"
 import loginState from '../atom/loginState'
 import {useRecoilValue} from 'recoil'
 import MainLoading from '../components/molecures/mainloading'
@@ -87,15 +88,14 @@ const Home: NextPage = () => {
   const {getCookie,setCookie,removeCookie}=useCookie();
   const isLogin =useRecoilValue(loginState);
   const [clicked,setClicked]=useState(false);
-  
+  const {login,logout}=useLogin();
   useEffect(()=>{
-   
-    const cookie=getCookie("access_token");
-    if(cookie!==undefined){
-      axios.defaults.headers.common["Authorization"]=`Bearer ${cookie}`
+    const email=getCookie("email")
+    const password=getCookie("password");
+    if(email!==undefined&&password!=undefined){
+      login(email,password);
     }
-    console.log(axios.defaults.headers.common["Authorization"]);
-  },[]);
+  },[s]);
   const Waves=<WaveDiv clicked={clicked}>
     <PageWaveCover />
     </WaveDiv>;
