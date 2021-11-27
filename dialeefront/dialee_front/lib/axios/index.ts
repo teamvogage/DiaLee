@@ -171,7 +171,7 @@ export const sendLogout=async()=>{
 }
 export const sendAutoLogin=async(refresh:string)=>{
     try{
-        const res:AxiosResponse<any>=await axios.post(`${api}/accounts/token/`,{refresh:refresh});
+        const res:AxiosResponse<any>=await axios.post(`${api}/accounts/token/refresh`,{refresh:refresh});
         const goodResponse:ILoginData={
             status:true,
             access_token:res.data?.access,
