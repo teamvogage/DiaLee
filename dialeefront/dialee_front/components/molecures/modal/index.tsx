@@ -12,8 +12,9 @@ z-index:100;
 position:absolute;
 width:100%;
 overflow-y:auto;
-height:70%;
-min-width:600em;
+height:100%;
+
+padding-top:50px;
 transform:translateY(-700px);
 animation:slideInTopAnim 3s forwards 1.7s;
 `

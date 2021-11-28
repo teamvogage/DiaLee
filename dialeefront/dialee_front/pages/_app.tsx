@@ -16,7 +16,7 @@ axios.defaults.baseURL = BASED_URL;
 axios.defaults.withCredentials = true;
 axios.defaults.timeout=3000;
 function MyApp({ Component, pageProps }: AppProps) {
- 
+
 
   return (<>
   <CookiesProvider>
@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   <Head><link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Myeongjo&display=swap" rel="stylesheet"/></Head>
+    
   <ThemeProvider theme={springTheme}>
  
   <Component {...pageProps} />

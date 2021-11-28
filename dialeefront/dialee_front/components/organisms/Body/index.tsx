@@ -17,6 +17,8 @@ const StyledBodyContainer=styled.div`
   max-width: 700px;
   width: 100vw;
   height: 100vh;
+  min-height:600em;
+  
   font-size: 0px;
   background-color: black;
 
