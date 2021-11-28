@@ -11,7 +11,7 @@ will-change: transform  opacity;
 @keyframes slideInTopAnim{
     from{
        
-        transform: translateY(-600px);
+        transform: translateY(-100vh);
     }
     to{
         transform: translateY(0px);
@@ -20,11 +20,11 @@ will-change: transform  opacity;
 @keyframes slideInLeftAnim{
     0%{
        
-        transform: translateX(-600px);
+        transform: translateX(-100vw);
     }
-    90%{
+    100%{
     
-        transform: translateX(50px);
+        transform: translateX(0px);
     }
    
 }
