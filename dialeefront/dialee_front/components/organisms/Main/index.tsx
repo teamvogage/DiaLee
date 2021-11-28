@@ -44,9 +44,9 @@ const Main=({children}:ComponentProps<any>)=>{
     const [isCover,setCover]=useState(false);
     useEffect(()=>{
       if(isCover===false)
-        setTimeout(()=>setCover(true),500)
+        setTimeout(()=>setCover(isDisabledMain),500)
       else
-      setCover(false)
+      setCover(isDisabledMain)
     },[isDisabledMain])
       return (<>
                 <SlideMenu></SlideMenu>
