@@ -10,7 +10,7 @@ import useLogin from '../../../lib/hooks/useLogin';
 
 const StyledSlideMenu = styled.div`
     
-    margin-left:-300px
+    margin-left:-300px;
    
     max-height:min-content;
     margin-top:100px;
