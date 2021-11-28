@@ -15,7 +15,7 @@ overflow-y:auto;
 height:100%;
 padding-bottom:10vh;
 padding-top:10vh;
-transform:translateY(-700px);
+transform:translateY(-100vh);
 animation:slideInTopAnim 3s forwards 1.7s;
 `
 
