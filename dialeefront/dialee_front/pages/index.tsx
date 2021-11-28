@@ -3,7 +3,7 @@ import React, { useState,useMemo, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
-import Main from '../components/organisms/Main'
+import Main from '../components/templates/Main'
 import FlexContainer from '../components/atoms/flexcontainer'
 import axios from 'axios'
 import StyledBodyContainer from '../components/organisms/Body'
@@ -130,7 +130,7 @@ const Home: NextPage = () => {
        <MainLoading/>
       </FlexContainer>
      
-      {isLogin===false?<FlexContainer direction="row"  align="between">
+      {isLogin===true?<FlexContainer direction="row"  align="between">
         <HomeDiv onClick={function(){setClicked(true);}}>
           {Moon}
           {Waves}

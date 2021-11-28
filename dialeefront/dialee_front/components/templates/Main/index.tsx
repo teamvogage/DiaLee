@@ -1,18 +1,26 @@
-import Header from "../header"
-import Footer from "../footer";
+import Header from "../../organisms/header"
+import Footer from "../../organisms/footer";
 import FlexContainer from '../../atoms/flexcontainer'
-import SlideMenu from "../slidemenu";
+import SlideMenu from "../../organisms/slidemenu";
 import disabledMainState from "../../../atom/disabledMainState";
 import CoverDiv from "../../molecures/coverDiv";
 import { ComponentProps, useEffect, useState } from "react"
 
 import styled from 'styled-components';
 import { useRecoilValue } from "recoil";
-
+const MainContainer=styled.div<{active:boolean}>`
+display:flex;
+flex-direction:row;
+height:200%;
+width:100%;
+transform:translateX(${({active})=>active===false?`-300px`:`150px`});
+transition:transform 1s;
+`
 const StyledMain =styled.main`
 height:100vh;
 max-height:800px;
-
+min-width:700px;
+width:100vh;
 position:relative;
 margin-top:1vh;
 overflow:visible;
@@ -46,7 +54,7 @@ const StyledPaper=styled.div`
 const Main=({children}:ComponentProps<any>)=>{
     const isDisabledMain=useRecoilValue(disabledMainState);
    
-      return (<>
+      return (<MainContainer active={isDisabledMain}>
                 <SlideMenu></SlideMenu>
                 <FlexContainer direction="row" align="start">
                   <StyledPaper/>
@@ -61,6 +69,6 @@ const Main=({children}:ComponentProps<any>)=>{
                           </StyledMain>                             
                   </FlexContainer> 
                 </FlexContainer>   
-        </>  )   
+        </MainContainer>  )   
       }
 export default Main;

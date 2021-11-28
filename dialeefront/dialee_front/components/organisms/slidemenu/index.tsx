@@ -8,10 +8,8 @@ import {  useState } from 'react';
 import {  useRecoilState } from 'recoil';
 import useLogin from '../../../lib/hooks/useLogin';
 
-const StyledSlideMenu = styled.div<{active:boolean}>`
+const StyledSlideMenu = styled.div`
     will-change:left;
-    margin-left:${({active})=>active===false?`-300px`:`90px`};
-   
     max-height:min-content;
     margin-top:100px;
     transition:margin-left 1s;
@@ -19,11 +17,13 @@ const StyledSlideMenu = styled.div<{active:boolean}>`
     flex-direction:column;
     justify-content:center;
 `;
-const MenuButton=styled.div`
+const MenuButton=styled.div<{active:boolean}>`
  position:absolute;
  z-index:3;
-    top:1vh;
+    top:0;
  left:0;
+ transform:translateX(${({active})=>active===false?`300px`:`-150px`});
+ transition:transform 0.5s;
  width:33px;
  height:33px;
  background-color:white;
@@ -78,8 +78,8 @@ const SlideMenu=()=>{
    
     
     return(
-     <StyledSlideMenu active={isDisabledMain}>
-         <MenuButton>
+     <StyledSlideMenu >
+         <MenuButton active={isDisabledMain}>
             <Button  type="button"  align="end"  direction="column"  btn_type="slideMenu" onClick={onClick}>
                    
             </Button>  
