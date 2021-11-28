@@ -21,10 +21,10 @@ const StyledDiv=styled.div<{marginLeft:string,height:string,zIndex:number}>`
     background:${(props)=>{
         return `linear-gradient(180deg, ${props.theme.colors.color1} 7%, ${props.theme.colors.color3} 87%, ${props.theme.colors.main} 100%)`}};
     
-    animation:loading 0.5s forwards
+    animation:loading 0.5s forwards;
         @keyframes loading{
             from{
-                transform:translateY(-700px);
+                transform:translateY(-100vh);
             }
             to{
                 transfrom:translateY(0px);
