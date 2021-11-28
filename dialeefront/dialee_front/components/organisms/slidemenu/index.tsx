@@ -14,7 +14,7 @@ const StyledSlideMenu = styled.div<{active:boolean}>`
    
     max-height:min-content;
     margin-top:100px;
-   
+    transition:margin-left 1s;
     display:flex;
     flex-direction:column;
     justify-content:center;

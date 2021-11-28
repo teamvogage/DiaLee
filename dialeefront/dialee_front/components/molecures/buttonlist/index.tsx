@@ -1,4 +1,4 @@
-import { ComponentProps, ReactChild, ReactComponentElement } from 'react';
+import { ComponentProps, memo, ReactComponentElement } from 'react';
 import styled from 'styled-components';
 import FlexContainer from '../../atoms/flexcontainer';
 
@@ -39,7 +39,7 @@ const ButtonList =({listType,children}:ComponentProps<any>)=>{
        
     )
 }
-export default ButtonList;
+export default memo(ButtonList);
 
 interface IbuttonListProps{
     direction:String;
