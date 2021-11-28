@@ -3,11 +3,10 @@ import Button from "../../atoms/button";
 import FlexContainer from "../../atoms/flexcontainer";
 import Image from "../../atoms/image";
 const StyledFooterContainer=styled.footer`
-     position:fixed;
+     position:absolute;
      height:30px;
      width:100%;
      max-width:700px;
-   
      z-index:900;
      bottom:0;
      border-top:2px solid black;
