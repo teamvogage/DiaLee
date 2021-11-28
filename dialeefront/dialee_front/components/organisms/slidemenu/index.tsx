@@ -9,11 +9,11 @@ import {  useRecoilState } from 'recoil';
 import useLogin from '../../../lib/hooks/useLogin';
 
 const StyledSlideMenu = styled.div<{active:boolean}>`
-    will-change:margin-left;
-    margin-left:${({active})=>active===false?`-300px`:`90px`};
+    will-change:left;
+    left:${({active})=>active===false?`-300px`:`90px`};
     max-height:min-content;
     margin-top:100px;
-    transition:margin-left 0.5s;
+    transition:margin-left 1s;
     display:flex;
     flex-direction:column;
     justify-content:center;
