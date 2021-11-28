@@ -13,7 +13,7 @@ position:absolute;
 width:100%;
 overflow-y:auto;
 height:70%;
-
+min-width:600em;
 transform:translateY(-700px);
 animation:slideInTopAnim 3s forwards 1.7s;
 `

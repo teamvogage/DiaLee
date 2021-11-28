@@ -41,9 +41,9 @@ const IdAndPassword=({direction,onLogin,onClickHandler}:ComponentProps<any>)=>{
         {isActive?<FlexContainer align="center" alignItems="center" direction={direction||"row"}>
             <AnimatedDiv animation="slideInTopAnim" animationTime="1s" animationFill="forwards">
             <StyledDiv>
-            
+            <form action={undefined}>
             <FlexContainer align="center" alignItems="center" direction={direction||"row"}> 
-            
+           
             <Span size="24" color="black"> 이메일 </Span>
             <Input ref={emailRef} name="id"  placeholder="email" auto="autocomplete"   ></Input>
             <Span size="24" color="black"> 비밀번호 </Span>
@@ -51,7 +51,9 @@ const IdAndPassword=({direction,onLogin,onClickHandler}:ComponentProps<any>)=>{
             
             <Button  btn_type="ok" onClick={onClick}> 로그인 </Button>
             <Button  btn_type="small"> 비밀번호 찾기 </Button>
+            
             </FlexContainer>
+            </form>
             </StyledDiv>
             </AnimatedDiv>
         </FlexContainer>:null}

@@ -67,6 +67,18 @@ const MoonDiv=styled.div`
     }
   }
 `
+const FlexDiv=styled.div`
+position:relative;
+width:100%;
+display:flex;
+margin-left:"0px";
+flex-direction:"row";
+flex-wrap:no-wrap;
+justify-content:space-between;
+flex-grow:1;
+
+
+`
 const MoonLightDiv=styled.div`
   border-radius:100%;
   width:70px;
