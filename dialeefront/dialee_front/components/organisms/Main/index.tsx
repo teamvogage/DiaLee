@@ -12,7 +12,7 @@ import { useRecoilValue } from "recoil";
 const StyledMain =styled.main`
 height:100%;
 max-height:800px;
-min-height:700px;
+
 position:relative;
 margin-top:1vh;
 overflow:visible;
@@ -33,7 +33,7 @@ const StyledPaper=styled.div`
   width:40px;
   height:100%;
   max-height:800px;
-  min-height:700px;
+ 
   margin-top:1vh;
   positon:absolute;
   margin-left:-40px;
