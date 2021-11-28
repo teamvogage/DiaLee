@@ -10,9 +10,9 @@ import styled from 'styled-components';
 import { useRecoilValue } from "recoil";
 
 const StyledMain =styled.main`
-height:95vh;
+height:800px;
 position:relative;
-margin-top:5vh;
+margin-top:1vh;
 overflow:visible;
 margin-bottom:5vh;
 display:flex;
@@ -30,7 +30,7 @@ const StyledPaper=styled.div`
   
   width:40px;
   height:800px;
-  margin-top:5vh;
+  margin-top:1vh;
   positon:absolute;
   margin-left:-40px;
   z-index:2;
