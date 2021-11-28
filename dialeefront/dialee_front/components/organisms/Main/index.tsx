@@ -45,13 +45,7 @@ const StyledPaper=styled.div`
 `
 const Main=({children}:ComponentProps<any>)=>{
     const isDisabledMain=useRecoilValue(disabledMainState);
-    const [isCover,setCover]=useState(false);
-    useEffect(()=>{
-      if(isCover===false)
-        setTimeout(()=>setCover(isDisabledMain),500)
-      else
-      setCover(isDisabledMain)
-    },[isDisabledMain])
+   
       return (<>
                 <SlideMenu></SlideMenu>
                 <FlexContainer direction="row" align="start">
@@ -59,7 +53,7 @@ const Main=({children}:ComponentProps<any>)=>{
                   <FlexContainer direction= "column" align="start">
                           <StyledMain >
                           <Header/>
-                          {isCover===true?<CoverDiv></CoverDiv>:null} 
+                          {isDisabledMain===true?<CoverDiv></CoverDiv>:null} 
                               <section>
                               {children}    
                               </section>

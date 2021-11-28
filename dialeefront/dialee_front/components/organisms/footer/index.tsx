@@ -3,10 +3,11 @@ import Button from "../../atoms/button";
 import FlexContainer from "../../atoms/flexcontainer";
 import Image from "../../atoms/image";
 const StyledFooterContainer=styled.footer`
-     position:absolute;
+     position:fixed;
      height:30px;
      width:100%;
-     left:0%;
+     max-width:700px;
+   
      z-index:900;
      bottom:0;
      border-top:2px solid black;
@@ -19,12 +20,13 @@ const StyledFooterContainer=styled.footer`
 
 
 const Footer=()=>{
-    return(
+    return(<FlexContainer align="center" alignItems="center" >
         <StyledFooterContainer >
-            <FlexContainer align="center" alignItems="center" >
+            
 
-            </FlexContainer>
+          
         </StyledFooterContainer>
+        </FlexContainer>
     )
 }
 
