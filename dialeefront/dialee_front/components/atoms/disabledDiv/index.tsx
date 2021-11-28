@@ -1,6 +1,6 @@
 import { ComponentProps,memo, useEffect, useState } from 'react';
 import styled from 'styled-components'
-import Image from '../image'
+
 const StyledDiv=styled.div<{marginLeft:string,height:string,zIndex:number}>`
     position:absolute;
     width:100%;

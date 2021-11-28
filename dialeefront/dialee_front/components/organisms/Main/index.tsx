@@ -4,7 +4,7 @@ import FlexContainer from '../../atoms/flexcontainer'
 import SlideMenu from "../slidemenu";
 import disabledMainState from "../../../atom/disabledMainState";
 import CoverDiv from "../../molecures/coverDiv";
-import { ComponentProps } from "react"
+import { ComponentProps, useEffect, useState } from "react"
 
 import styled from 'styled-components';
 import { useRecoilValue } from "recoil";
@@ -12,7 +12,7 @@ import { useRecoilValue } from "recoil";
 const StyledMain =styled.main`
 height:700px;
 position:relative;
-margin-top:1vh;
+margin-top:0;
 overflow:visible;
 margin-bottom:5vh;
 display:flex;
@@ -41,7 +41,10 @@ const StyledPaper=styled.div`
 `
 const Main=({children}:ComponentProps<any>)=>{
     const isDisabledMain=useRecoilValue(disabledMainState);
-    
+    const [isCover,setCover]=useState(false);
+    useEffect(()=>{
+        setTimeout(()=>setCover(!isCover),1000)
+    },[isDisabledMain])
       return (<>
                 <SlideMenu></SlideMenu>
                 <FlexContainer direction="row" align="start">
@@ -49,7 +52,7 @@ const Main=({children}:ComponentProps<any>)=>{
                   <FlexContainer direction= "column" align="start">
                           <StyledMain >
                           <Header/>
-                          {isDisabledMain===true?<CoverDiv></CoverDiv>:null} 
+                          {isCover===true?<CoverDiv></CoverDiv>:null} 
                               <section>
                               {children}    
                               </section>
