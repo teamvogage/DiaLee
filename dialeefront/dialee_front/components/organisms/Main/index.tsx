@@ -12,7 +12,7 @@ import { useRecoilValue } from "recoil";
 const StyledMain =styled.main`
 height:700px;
 position:relative;
-margin-top:0;
+margin-top:1vh;
 overflow:visible;
 margin-bottom:5vh;
 display:flex;

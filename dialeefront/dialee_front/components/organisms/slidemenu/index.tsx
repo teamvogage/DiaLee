@@ -21,7 +21,7 @@ const StyledSlideMenu = styled.div<{active:boolean}>`
 const MenuButton=styled.div`
  position:absolute;
  z-index:3;
-    top:0;
+    top:1vh;
  left:0;
  width:33px;
  height:33px;
