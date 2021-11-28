@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { useRecoilValue } from "recoil";
 
 const StyledMain =styled.main`
-height:100%;
+height:100vh;
 max-height:800px;
 
 position:relative;
@@ -31,7 +31,7 @@ justify-content:center;
 const StyledPaper=styled.div`
   
   width:40px;
-  height:100%;
+  height:100vh;
   max-height:800px;
  
   margin-top:1vh;
