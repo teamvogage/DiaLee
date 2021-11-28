@@ -13,8 +13,8 @@ position:absolute;
 width:100%;
 overflow-y:auto;
 height:100%;
-
-padding-top:50px;
+padding-bottom:10vh;
+padding-top:10vh;
 transform:translateY(-700px);
 animation:slideInTopAnim 3s forwards 1.7s;
 `
