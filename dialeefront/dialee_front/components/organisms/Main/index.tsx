@@ -29,7 +29,7 @@ justify-content:center;
 const StyledPaper=styled.div`
   
   width:40px;
-  height:800px;
+  height:700px;
   margin-top:1vh;
   positon:absolute;
   margin-left:-40px;
