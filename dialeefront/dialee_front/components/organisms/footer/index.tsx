@@ -6,7 +6,7 @@ const StyledFooterContainer=styled.footer`
      position:absolute;
      height:30px;
      width:100%;
-     max-width:700px;
+     left:0%;
      z-index:900;
      bottom:0;
      border-top:2px solid black;
@@ -21,11 +21,10 @@ const StyledFooterContainer=styled.footer`
 const Footer=()=>{
     return(
         <StyledFooterContainer >
-            
+            <FlexContainer align="center" alignItems="center" >
 
-          
+            </FlexContainer>
         </StyledFooterContainer>
-     
     )
 }
 
