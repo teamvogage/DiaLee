@@ -14,7 +14,7 @@ height:95vh;
 position:relative;
 margin-top:5vh;
 overflow:visible;
-
+margin-bottom:5vh;
 display:flex;
 justify-content:center;
 
