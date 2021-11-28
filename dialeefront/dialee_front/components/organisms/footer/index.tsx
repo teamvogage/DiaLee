@@ -10,6 +10,7 @@ const StyledFooterContainer=styled.footer`
      z-index:900;
      bottom:0;
      border-top:2px solid black;
+     border-bottom:2px solid black;
      background-color:ghostwhite;   
         & :active{
             background-color:black;
