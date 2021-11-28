@@ -10,7 +10,8 @@ import styled from 'styled-components';
 import { useRecoilValue } from "recoil";
 
 const StyledMain =styled.main`
-height:700px;
+height:100%;
+min-height:700px;
 position:relative;
 margin-top:1vh;
 overflow:visible;
