@@ -130,7 +130,7 @@ const Home: NextPage = () => {
        <MainLoading/>
       </FlexContainer>
      
-      {isLogin===true?<FlexContainer direction="row"  align="between">
+      {isLogin===false?<FlexContainer direction="row"  align="between">
         <HomeDiv onClick={function(){setClicked(true);}}>
           {Moon}
           {Waves}
