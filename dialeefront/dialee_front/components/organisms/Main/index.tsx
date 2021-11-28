@@ -8,7 +8,11 @@ import { ComponentProps, useEffect, useState } from "react"
 
 import styled from 'styled-components';
 import { useRecoilValue } from "recoil";
+const MenuContainer=styled.div<{isActive:boolean}>`
+  transform:${({isActive})=>{if(isActive===true) return `translateX(-300px);` 
+                            return `translateX(0px)`}};
 
+`
 const StyledMain =styled.main`
 height:100vh;
 max-height:800px;
@@ -46,7 +50,7 @@ const StyledPaper=styled.div`
 const Main=({children}:ComponentProps<any>)=>{
     const isDisabledMain=useRecoilValue(disabledMainState);
    
-      return (<>
+      return (<MenuContainer isActive={isDisabledMain}>
                 <SlideMenu></SlideMenu>
                 <FlexContainer direction="row" align="start">
                   <StyledPaper/>
@@ -61,6 +65,6 @@ const Main=({children}:ComponentProps<any>)=>{
                           </StyledMain>                             
                   </FlexContainer> 
                 </FlexContainer>   
-        </>  )   
+        </MenuContainer>  )   
       }
 export default Main;
