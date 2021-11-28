@@ -20,13 +20,13 @@ const StyledFooterContainer=styled.footer`
 
 
 const Footer=()=>{
-    return(<FlexContainer align="center" alignItems="center" >
+    return(
         <StyledFooterContainer >
             
 
           
         </StyledFooterContainer>
-        </FlexContainer>
+     
     )
 }
 
