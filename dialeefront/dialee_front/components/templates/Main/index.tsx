@@ -16,6 +16,10 @@ width:100%;
 transform:translateX(${({active})=>active===false?`-191px`:`100px`});
 transition:transform 1s;
 `
+const StyledSection=styled.section`
+font-size:30px;
+width:90%;
+`
 const StyledMain =styled.main`
 height:100vh;
 max-height:800px;
@@ -64,9 +68,9 @@ const Main=({children}:ComponentProps<any>)=>{
                           <StyledMain >
                           <Header/>
                           {isDisabledMain===true?<CoverDiv></CoverDiv>:null} 
-                              <section>
+                              <StyledSection>
                               {children}    
-                              </section>
+                              </StyledSection>
                               {<Footer/>} 
                           </StyledMain>                             
                   </FlexContainer> 
