@@ -27,6 +27,7 @@ const MenuButton=styled.div<{active:boolean}>`
  width:33px;
  height:33px;
  background-color:white;
+ font-size:0px;
 
 `
 const StyledImage=styled.div<{left:string,bottom:string,rotate:string}>`
