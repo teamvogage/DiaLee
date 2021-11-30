@@ -140,7 +140,7 @@ const Home: NextPage = () => {
       <FlexContainer direction="row"  align="between">
      
             <Main>
-              
+              하이
             </Main>
              
         </FlexContainer>
