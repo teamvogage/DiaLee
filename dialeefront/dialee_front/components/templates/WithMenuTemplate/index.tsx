@@ -13,7 +13,7 @@ display:flex;
 flex-direction:row;
 height:200%;
 width:100%;
-transform:translateX(${({active})=>active===false?`-191px`:`100px`});
+transform:translateX(${({active})=>active===true?`-191px`:`100px`});
 transition:transform 1s;
 `
 const StyledSection=styled.section`
@@ -59,7 +59,7 @@ const StyledPaper=styled.div`
   
   background-image:url("/Paper.png");
 `
-const Main=({children}:ComponentProps<any>)=>{
+const WithMenuTemplate=({children}:ComponentProps<any>)=>{
     const isDisabledMain=useRecoilValue(disabledMainState);
    
       return (<MainContainer active={isDisabledMain}>
@@ -79,4 +79,4 @@ const Main=({children}:ComponentProps<any>)=>{
                 </FlexContainer>   
         </MainContainer>  )   
       }
-export default Main;
+export default WithMenuTemplate;

@@ -1,10 +1,11 @@
 import StyledBodyContainer from "../components/organisms/Body";
-import Main from "../components/templates/Main"
+import WithMenuTemplate from "../components/templates/WithMenuTemplate"
 const MainPage=()=>{
-    return(<StyledBodyContainer>
-            <Main>
+    return(
+        <StyledBodyContainer>
+            <WithMenuTemplate>
 
-            </Main>
+            </WithMenuTemplate>
         </StyledBodyContainer>
     )
 }
