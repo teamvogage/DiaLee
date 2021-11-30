@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import React, { useState,useMemo, useCallback, useEffect } from 'react'
-import {SetRecoilState} from 'recoil'
+
 import disabledMainState from '../atom/disabledMainState'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
