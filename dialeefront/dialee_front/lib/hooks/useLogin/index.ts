@@ -74,8 +74,8 @@ const useLogin=():IUseLogin=>{
         try{
             loadingOn();
             const refresh_token=getCookie("refresh_token")
+            removeCookie("refresh_token");
             const res=await sendRefresh(refresh_token);
-          
             loadingOff();
             if(res.data.status===true){
                
