@@ -22,7 +22,7 @@ const MenuButton=styled.div<{active:boolean}>`
  z-index:3;
     top:0;
  left:0;
- transform:translateX(${({active})=>active===false?`191px`:`100px`});
+ transform:translateX(${({active})=>active===false?`191px`:`-100px`});
  transition:transform 0.5s;
  width:33px;
  height:33px;
