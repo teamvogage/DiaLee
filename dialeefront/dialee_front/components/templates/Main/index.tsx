@@ -13,14 +13,15 @@ display:flex;
 flex-direction:row;
 height:200%;
 width:100%;
-transform:translateX(${({active})=>active===false?`-191px`:`0px`});
+transform:translateX(${({active})=>active===false?`191px`:`0px`});
 transition:transform 1s;
 `
 const StyledMain =styled.main`
 height:100vh;
 max-height:800px;
 min-width:700px;
-width:100vh;
+max-width:100vh;
+
 position:relative;
 margin-top:1vh;
 overflow:visible;
