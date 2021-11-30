@@ -13,7 +13,7 @@ display:flex;
 flex-direction:row;
 height:200%;
 width:100%;
-transform:translateX(${({active})=>active===false?`0px`:`-191px`});
+transform:translateX(${({active})=>active===false?`-191px`:`0px`});
 transition:transform 1s;
 `
 const StyledMain =styled.main`
