@@ -1,5 +1,7 @@
 import axios, { AxiosError,AxiosResponse } from "axios"
 import {api} from "../constants"
+import useCookie from "../hooks/useCookie";
+import {oneMonth} from '../js/setDate'
 export interface ISendAccountData{
     [index:string]:string;
     "voyager_name": string,
@@ -17,6 +19,7 @@ export interface ILoginData{
     "refresh_token":string|null,
     "message":string,
 }
+const {getCookie,removeCookie,setCookie}=useCookie()
 export const sendSignUp=async (data:ISendAccountData)=>{// 회원가입 
     try{
         await axios.post(`${api}/accounts/`,data);
@@ -88,7 +91,8 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
         password:pwd
     }
     try{
-        
+        removeCookie("access_token")
+        removeCookie("refresh_token")
         const res:AxiosResponse<any>=await axios.post(`${api}/accounts/login/`,data);
        
         const goodResponse:ILoginData={
@@ -172,6 +176,7 @@ export const sendLogout=async()=>{
 }
 export const sendRefresh=async(refresh:string)=>{
     try{
+        removeCookie("refresh_token");
         const res:AxiosResponse<any>=await axios.post(`${api}/accounts/token/refresh/`,{refresh:refresh});
         axios.defaults.headers.common["Authorization"]=`Bearer ${res.data?.access}`;
         const goodResponse:ILoginData={
@@ -180,6 +185,9 @@ export const sendRefresh=async(refresh:string)=>{
             refresh_token:refresh,
             message:"성공."
         }
+        const expires=oneMonth()
+        setCookie("access_token",goodResponse.access_token||"no-token",{expires:expires});
+        setCookie("refresh_token",goodResponse.refresh_token||"no-token",);
         return {data:goodResponse};
     }catch(error){
         if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 

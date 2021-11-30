@@ -14,12 +14,10 @@ interface IUseLogin{
 const useLogin=():IUseLogin=>{
     const [isLogin,setLogin]=useRecoilState(loginState);
     const {loadingOn,loadingOff}=useLoading();
-    const {getCookie,setCookie,removeCookie}=useCookie();
-   
+    const {getCookie,removeCookie,setCookie}=useCookie()
     const login=async(email:string,password:string)=>{
         try{
-            removeCookie("access_token")
-            removeCookie("refresh_token")
+           
             loadingOn();
             const res=await sendLogin(email,password);
             loadingOff();
@@ -74,14 +72,13 @@ const useLogin=():IUseLogin=>{
         try{
             loadingOn();
             const refresh_token=getCookie("refresh_token")
-            removeCookie("refresh_token");
+         
             const res=await sendRefresh(refresh_token);
             loadingOff();
             if(res.data.status===true){
                
-                const expires=oneMonth()
-                setCookie("access_token",res.data.access_token||"no-token",{expires:expires});
-                setCookie("refresh_token",res.data.refresh_token||"no-token",);
+               
+           
                 setLogin(true);
             }else{
                 removeCookie("refresh_token");
