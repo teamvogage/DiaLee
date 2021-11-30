@@ -19,9 +19,9 @@ transition:transform 1s;
 const StyledMain =styled.main`
 height:100vh;
 max-height:800px;
-min-width:700px;
-max-width:100vh;
 
+max-width:700px;
+width:100vw;
 position:relative;
 margin-top:1vh;
 overflow:visible;
