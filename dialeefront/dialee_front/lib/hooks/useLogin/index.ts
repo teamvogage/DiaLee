@@ -27,8 +27,8 @@ const useLogin=():IUseLogin=>{
                
                 if(auto==="true"){
                     const expires=oneMonth()
-                    setCookie("access_token",res.data.access_token||"no-token",{expires:expires});
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",);  
+                    setCookie("access_token",res.data.access_token||"no-token",);
+                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires});  
                 }else{
                     setCookie("access_token",res.data.access_token||"no-token",);
                     setCookie("refresh_token",res.data.refresh_token||"no-token",);
@@ -76,8 +76,8 @@ const useLogin=():IUseLogin=>{
             loadingOff();
             if(res.data.status===true){
                 const expires=oneMonth()
-                setCookie("access_token",res.data.access_token||"no-token",{expires:expires});
-                setCookie("refresh_token",res.data.refresh_token||"no-token",);  
+                setCookie("access_token",res.data.access_token||"no-token");
+                setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires});  
            
                 setLogin(true);
             }else{
