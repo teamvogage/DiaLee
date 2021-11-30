@@ -1,5 +1,7 @@
 import type { NextPage } from 'next'
 import React, { useState,useMemo, useCallback, useEffect } from 'react'
+import {SetRecoilState} from 'recoil'
+import disabledMainState from '../atom/disabledMainState'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
@@ -12,7 +14,7 @@ import useLogin from "../lib/hooks/useLogin"
 import loginState from '../atom/loginState'
 import {useRecoilState} from 'recoil'
 import MainLoading from '../components/molecures/mainloading'
-import { sendRefresh } from '../lib/axios'
+
 
 let PageWaveCover=styled.div`
 
@@ -102,13 +104,15 @@ const Home: NextPage = () => {
   const [isLogin,setLogin] =useRecoilState(loginState);
   const [clicked,setClicked]=useState(false);
   const {checkLogin,autoLogin}=useLogin();
+  const [isDisabled,setDisabled]=useRecoilState(disabledMainState);
   useEffect(()=>{
     const auto=getCookie("auto_login")
-    
+    setDisabled(false);
     checkLogin().then(
       (val)=>
       {
         return  val===true?setLogin(true):auto==="true"?autoLogin():setLogin(false);
+        //checklogin 에서 accesstoken을 체크함 체크한후 true 면 바로 로그인유지 아니면 auto를 체크해서 true일 경우 자동로그인 
       }
     ).catch((err)=>{
        return setLogin(false);
