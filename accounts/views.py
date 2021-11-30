@@ -35,7 +35,7 @@ def check_email_validation(request):
                 'is_valid': False,
                 'message': '해당 이메일 주소는 이미 가입되어 있습니다.'
                 },
-                status=status.HTTP_409
+                status=status.HTTP_409_CONFLICT
             )
 
     return Response({'is_valid': True}, status=status.HTTP_200_OK)
