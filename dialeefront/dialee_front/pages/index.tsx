@@ -107,7 +107,7 @@ const Home: NextPage = () => {
   const [isDisabled,setDisabled]=useRecoilState(disabledMainState);
   useEffect(()=>{
     const auto=getCookie("auto_login")
-    setDisabled(false);
+   
     checkLogin().then(
       (val)=>
       {
@@ -135,7 +135,7 @@ const Home: NextPage = () => {
       </FlexContainer>
      
       {isLogin===false?<FlexContainer direction="row"  align="between">
-        <HomeDiv onClick={function(){setClicked(true);}}>
+        <HomeDiv onClick={function(){ setDisabled(false);setClicked(true);}}>
           {Moon}
           {Waves}
           {clicked===true?Login:null}
