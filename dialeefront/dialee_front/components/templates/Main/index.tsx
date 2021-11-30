@@ -19,6 +19,8 @@ transition:transform 1s;
 const StyledSection=styled.section`
 font-size:30px;
 width:90%;
+margin-left: 10px;
+text-align:center;
 `
 const StyledMain =styled.main`
 height:100vh;

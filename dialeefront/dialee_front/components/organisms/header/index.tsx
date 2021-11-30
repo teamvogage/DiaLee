@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import Image from '../../atoms/image'
 const StyledHeaderContainer=styled.header`
-       position:absolute;
+       position:relative;
         height:30px;
         font-size:0;
         width:100%;
