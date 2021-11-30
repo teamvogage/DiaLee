@@ -41,5 +41,7 @@ def check_email_validation(request):
     return Response({'is_valid': True}, status=status.HTTP_200_OK)
 
 
-class MyTokenRefreshView(TokenRefreshView):
-    permission_classes = (AllowAny, )
+# import logging
+
+# class MyTokenRefreshView(TokenRefreshView):
+#     pass

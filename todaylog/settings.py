@@ -69,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'request_logging.middleware.LoggingMiddleware'
 ]
 
 ROOT_URLCONF = 'todaylog.urls'
@@ -206,3 +207,22 @@ CORS_ALLOWED_ORIGINS = [
     'http://39.115.162.208:30000',
 ]
 CORS_ALLOW_CREDENTIALS = True
+
+# 로깅 설정 (임시)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG', # change debug level as appropiate
+            'propagate': False,
+        },
+    },
+}
