@@ -107,7 +107,7 @@ const Home: NextPage = () => {
   const [isDisabled,setDisabled]=useRecoilState(disabledMainState);
   useEffect(()=>{
     const auto=getCookie("auto_login")
-    setDisabled(false);
+    setDisabled(true);
     checkLogin().then(
       (val)=>
       {

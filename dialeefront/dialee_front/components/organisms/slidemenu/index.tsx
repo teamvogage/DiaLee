@@ -76,7 +76,10 @@ const SlideMenu=()=>{
         }
         
     }
-   
+    const onLogout=()=>{
+        logout();
+       
+    }
     
     return(
      <StyledSlideMenu >
@@ -100,7 +103,7 @@ const SlideMenu=()=>{
                     <Button marginRight="17px" align="between" width="170px"  alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu3">
                                 메뉴
                     </Button> 
-                    <Button marginRight="22px" align="between" width="170px" alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu4" onClick={logout}>
+                    <Button marginRight="22px" align="between" width="170px" alignItems="flex-start" direction="row" prefix="/imoticon/Gift.png" suffix="/imoticon/Star.png" btn_type="subMenu4" onClick={onLogout}>
                 
                                 로그아웃
                     </Button> 
