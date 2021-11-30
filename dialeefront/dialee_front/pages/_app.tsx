@@ -8,8 +8,10 @@ import {BASED_URL} from '../lib/constants'
 import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} from '../styles/theme';
 import Head from 'next/head'
 import {CookiesProvider} from 'react-cookie'
-
-
+import FlexContainer from '../components/atoms/flexcontainer'
+import MainLoading from '../components/molecures/mainloading'
+import StyledBodyContainer from '../components/organisms/Body'
+import { ST } from 'next/dist/shared/lib/utils'
 
 
 axios.defaults.baseURL = BASED_URL;
@@ -26,9 +28,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Myeongjo&display=swap" rel="stylesheet"/></Head>
     
   <ThemeProvider theme={springTheme}>
- 
-  <Component {...pageProps} />
-
+  <StyledBodyContainer>
+    <FlexContainer direction="row"  align="between">
+      <MainLoading/>
+      <Component {...pageProps} />
+    </FlexContainer>
+    </StyledBodyContainer>
   </ThemeProvider>
   </RecoilRoot>
   </CookiesProvider>

@@ -14,6 +14,7 @@ import useLogin from "../lib/hooks/useLogin"
 import loginState from '../atom/loginState'
 import {useRecoilState} from 'recoil'
 import MainLoading from '../components/molecures/mainloading'
+import  Router  from 'next/router'
 
 
 let PageWaveCover=styled.div`
@@ -120,6 +121,9 @@ const Home: NextPage = () => {
 
   },[]);
   useEffect(()=>{
+    if(isLogin===true){
+      Router.push("/main");
+    }
     setClicked(isLogin);
   },[isLogin])
  
@@ -129,28 +133,15 @@ const Home: NextPage = () => {
   const Moon=useMemo(()=><><MoonDiv ></MoonDiv><MoonLightDiv ></MoonLightDiv> <StyledH1  >Voyage</StyledH1></>,[clicked]);
   const Login=useMemo(()=><LoginModal></LoginModal>,[clicked]);
   return (
-    <StyledBodyContainer>
-      <FlexContainer direction="row" align="between">
-       <MainLoading/>
-      </FlexContainer>
+  
      
-      {isLogin===false?<FlexContainer direction="row"  align="between">
-        <HomeDiv onClick={function(){ setDisabled(false);setClicked(true);}}>
-          {Moon}
-          {Waves}
-          {clicked===true?Login:null}
-        </HomeDiv>
-      </FlexContainer>:
-      <FlexContainer direction="row"  align="between">
+          <HomeDiv onClick={function(){ setDisabled(false);setClicked(true);}}>
+            {Moon}
+            {Waves}
+            {clicked===true?Login:null}
+          </HomeDiv>
      
-            <Main>
-              하이
-            </Main>
-             
-        </FlexContainer>
-        }
-      </StyledBodyContainer>
+   
   )
 }
-
 export default Home

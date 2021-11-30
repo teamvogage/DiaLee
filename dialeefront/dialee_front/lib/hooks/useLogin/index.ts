@@ -4,7 +4,7 @@ import { sendLogin, sendLogout,sendRefresh } from '../../axios';
 import useLoading from '../useLoading'
 import useCookie from '../useCookie'
 import {oneMonth} from '../../js/setDate'
-
+import Router from 'next/router'
 interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;
@@ -58,15 +58,18 @@ const useLogin=():IUseLogin=>{
                 removeCookie("auto_login")
                 setLogin(false);
             }
+            Router.push('/')
             return res.data.message;
         }catch(error){
             removeCookie("access_token");
             removeCookie("refresh_token");
             removeCookie("auto_login")
             setLogin(false);
+            Router.push('/')
             if(error)
             return "다시 시도해주세요.(error occured!)"
         }
+        
     }
     const autoLogin=async()=>{
         try{
