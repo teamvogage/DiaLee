@@ -72,12 +72,12 @@ const useLogin=():IUseLogin=>{
         try{
             loadingOn();
             const refresh_token=getCookie("refresh_token")
-         
             const res=await sendRefresh(refresh_token);
             loadingOff();
             if(res.data.status===true){
-               
-               
+                const expires=oneMonth()
+                setCookie("access_token",res.data.access_token||"no-token",{expires:expires});
+                setCookie("refresh_token",res.data.refresh_token||"no-token",);  
            
                 setLogin(true);
             }else{
