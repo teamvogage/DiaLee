@@ -27,7 +27,8 @@ margin-top:1vh;
 overflow:visible;
 margin-bottom:5vh;
 display:flex;
-justify-content:center;
+flex-direction:column;
+justify-content:flex-start;
 
         border-bottom:2px solid black;
         border-top:2px solid black;
