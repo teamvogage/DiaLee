@@ -28,7 +28,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Myeongjo&display=swap" rel="stylesheet"/></Head>
     
   <ThemeProvider theme={springTheme}>
-  <StyledBodyContainer>
+  
+  <StyledBodyContainer >
     <FlexContainer direction="row"  align="between">
       <MainLoading/>
       <Component {...pageProps} />

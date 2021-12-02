@@ -1,6 +1,6 @@
 import Document, {Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-
+import {DOMAIN} from '../lib/constants'
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
@@ -21,11 +21,17 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
         <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
-          {this.props.styleTags}
   
           </Head>
       
-        <body>
+        <body onContextMenu={(e) => {console.log(e);e.preventDefault();return false;}}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            location.href='intent://${DOMAIN}#Intent;scheme=http;package=com.android.chrome;end' 
+                `,
+          }}
+        />  
           <Main />
           <NextScript />
         </body>

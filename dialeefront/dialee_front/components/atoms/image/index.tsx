@@ -23,8 +23,8 @@ const StyledDiv=styled.div<{width:string,height:string,rotate:string,shadow:stri
 `
 const Image=({src,width,height,alt,onClick,rotate,shadow}:ComponentProps<any>)=>{
     return (
-    <StyledDiv width={width} height={height} shadow={shadow} rotate={rotate?rotate:""} onContextMenu={function(e){e.preventDefault()}}>
-        <NextImage  src={src||testImg} layout={"fill"}  onClick={onClick}  alt={alt?alt:"image"} priority={true}  >
+    <StyledDiv width={width} height={height} shadow={shadow} rotate={rotate?rotate:""} >
+        <NextImage  src={src||testImg} layout={"fill"}  onClick={onClick}  alt={alt?alt:"image"} priority={true} onTouchStart={()=>{return false;}} onContextMenu={(e) => {e.preventDefault();return false;}} >
         </NextImage>
     </StyledDiv>)
 }

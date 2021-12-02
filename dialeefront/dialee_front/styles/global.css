@@ -28,6 +28,7 @@ body {
   transition: background 4s;
   height: 100vh;
   -webkit-user-drag: none;
+  -webkit-touch-callout: none;
   -moz-user-select: none;
   user-select: none;
   animation: backgroundAnim forwards 4s;
@@ -37,6 +38,7 @@ body {
 img {
   -webkit-user-drag: none;
   -moz-user-select: none;
+  -webkit-touch-callout: none;
   user-select: none;
 }
 
