@@ -32,13 +32,17 @@ axios.interceptors.response.use(function (response) {
     if(status===401)
       {  
         const originalRequest = config;
-        sendRefresh(getCookie("refresh_token")).then((value)=>{
-        console.log(value);
+        sendRefresh(getCookie("refresh_token")).then(async(value)=>{
+            if(value.data.status===false){
             removeCookie("refresh_token");
             removeCookie("access_token");
             console.log("invalid token");
+
            ;
-            Router.push('/')
+            return Router.push('/')
+        }else{
+            return await axios(originalRequest);
+        }
         });
       }
     return Promise.reject(error);
