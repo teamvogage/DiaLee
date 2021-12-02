@@ -25,13 +25,7 @@ export default class MyDocument extends Document {
           </Head>
       
         <body onContextMenu={(e) => {console.log(e);e.preventDefault();return false;}}>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            location.href='intent://${DOMAIN}#Intent;scheme=http;package=com.android.chrome;end' 
-                `,
-          }}
-        />  
+       
           <Main />
           <NextScript />
         </body>
