@@ -21,30 +21,7 @@ export interface ILoginData{
     "refresh_token":string|null,
     "message":string,
 }
-axios.interceptors.response.use(function (response) {
-  
-    return response;
-  }, function (error) {
-    const {
-      config,
-      response: { status },
-    } = error;
-    if(status===401)
-      {  
-        const originalRequest = config;
-        sendRefresh(getCookie("refresh_token")).then(async(value)=>{
-        if(value.data.status===false){
-            removeCookie("refresh_token");
-            removeCookie("access_token");
-           await Router.push('/')
-           return Promise.resolve();
-        }else{
-            return await axios(originalRequest);
-        }
-        });
-      }
-    return Promise.reject(error);
-  });
+
 const {getCookie,removeCookie,setCookie}=useCookie()
 export const sendSignUp=async (data:ISendAccountData)=>{// 회원가입 
     try{
