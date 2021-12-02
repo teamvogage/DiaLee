@@ -14,7 +14,7 @@ interface IUseLogin{
 const useLogin=():IUseLogin=>{
     const [isLogin,setLogin]=useRecoilState(loginState);
     const {loadingOn,loadingOff}=useLoading();
-    const {getCookie,removeCookie,setCookie}=useCookie()
+    const {getCookie}=useCookie()
     const login=async(email:string,password:string)=>{
         try{
            
@@ -23,22 +23,11 @@ const useLogin=():IUseLogin=>{
             loadingOff();
 
             if(res.data.status===true){
-                const auto=getCookie("auto_login_temp");
-               
-                if(auto==="true"){
-                    const expires=oneMonth()
-                    setCookie("access_token",res.data.access_token||"no-token",);
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires}); 
-                    setCookie("auto_login","true",{expires:expires});   
-                }else{
-                    setCookie("access_token",res.data.access_token||"no-token",);
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",);
-                }
+                
                
                 setLogin(true);
             }else{
-                removeCookie("refresh_token");
-                removeCookie("access_token");
+              
                 setLogin(false);
             }
             return res.data.message
@@ -53,17 +42,12 @@ const useLogin=():IUseLogin=>{
             const res=await sendLogout();
             loadingOff();
             if(res.data.status===true){
-                removeCookie("access_token");
-                removeCookie("refresh_token");
-                removeCookie("auto_login")
+               
                 setLogin(false);
             }
             Router.push('/')
             return res.data.message;
         }catch(error){
-            removeCookie("access_token");
-            removeCookie("refresh_token");
-            removeCookie("auto_login")
             setLogin(false);
             Router.push('/')
             if(error)
@@ -78,21 +62,13 @@ const useLogin=():IUseLogin=>{
             const res=await sendRefresh(refresh_token);
             loadingOff();
             if(res.data.status===true){
-                const expires=oneMonth()
-                setCookie("access_token",res.data.access_token||"no-token");
-                setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires});  
-                
+              
                 setLogin(true);
             }else{
-                removeCookie("refresh_token");
-                removeCookie("access_token");
-                removeCookie("auto_login");
+           
                 setLogin(false);
             }
         }catch(error){
-           removeCookie("refresh_token");
-           removeCookie("access_token");
-           removeCookie("auto_login");
            setLogin(false);
         }
     }

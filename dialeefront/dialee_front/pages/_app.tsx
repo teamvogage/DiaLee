@@ -17,6 +17,8 @@ import StyledBodyContainer from '../components/organisms/Body'
 
 axios.defaults.withCredentials = true;
 axios.defaults.timeout=3000;
+
+
 function MyApp({ Component, pageProps }: AppProps) {
 
 

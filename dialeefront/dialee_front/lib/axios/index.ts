@@ -1,7 +1,9 @@
 import axios, { AxiosError,AxiosResponse } from "axios"
+import { useRecoilBridgeAcrossReactRoots_UNSTABLE } from "recoil";
 import {api} from "../constants"
 import useCookie from "../hooks/useCookie";
 import {oneMonth} from '../js/setDate'
+import Router from "next/router"
 export interface ISendAccountData{
     [index:string]:string;
     "voyager_name": string,
@@ -19,6 +21,28 @@ export interface ILoginData{
     "refresh_token":string|null,
     "message":string,
 }
+axios.interceptors.response.use(function (response) {
+  
+    return response;
+  }, function (error) {
+    const {
+      config,
+      response: { status },
+    } = error;
+    if(status===401)
+      {  
+        const originalRequest = config;
+        sendRefresh(getCookie("refresh_token")).then((value)=>{
+            console.log("good");
+        }).catch(async(error)=>{
+            console.log("invalid token");
+            await sendLogout();
+            Router.push('/')
+        });
+
+      }
+    return Promise.reject(error);
+  });
 const {getCookie,removeCookie,setCookie}=useCookie()
 export const sendSignUp=async (data:ISendAccountData)=>{// 회원가입 
     try{
@@ -101,10 +125,22 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
             refresh_token:res.data?.refresh_token,
             message:"로그인이 성공하였습니다."
         }
+        const auto=getCookie("auto_login_temp");
+               
+        if(auto==="true"){
+                    const expires=oneMonth()
+                    setCookie("access_token",res.data.access_token||"no-token",);
+                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires}); 
+                    setCookie("auto_login","true",{expires:expires});   
+        }else{
+                    setCookie("access_token",res.data.access_token||"no-token",);
+                    setCookie("refresh_token",res.data.refresh_token||"no-token",);
+        }
         axios.defaults.headers.common["Authorization"]=`Bearer ${res.data?.access_token}`;
         return {data:goodResponse};
     }catch(error){
-
+        removeCookie("refresh_token");
+        removeCookie("access_token");
         if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
             const NoResponse:ILoginData={
                 status:false,
@@ -143,8 +179,14 @@ export const sendLogout=async()=>{
             refresh_token:null,
             message:"로그아웃에 성공하였습니다. "
         }
+        removeCookie("access_token");
+        removeCookie("refresh_token");
+        removeCookie("auto_login")
         return {data:goodResponse}
     }catch(error){
+        removeCookie("access_token");
+        removeCookie("refresh_token");
+        removeCookie("auto_login")
             if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
                 const NoResponse:ILoginData={
                     status:true,
@@ -185,11 +227,14 @@ export const sendRefresh=async(refresh:string)=>{
             refresh_token:refresh,
             message:"성공."
         }
-        const expires=oneMonth()
-        setCookie("access_token",goodResponse.access_token||"no-token",{expires:expires});
-        setCookie("refresh_token",goodResponse.refresh_token||"no-token",);
+        const expires=oneMonth();
+        setCookie("access_token",res.data.access_token||"no-token");
+        setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires});  
         return {data:goodResponse};
     }catch(error){
+        removeCookie("refresh_token");
+        removeCookie("access_token");
+        removeCookie("auto_login");
         if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
             const NoResponse:ILoginData={
                 status:false,
