@@ -33,13 +33,11 @@ axios.interceptors.response.use(function (response) {
       {  
         const originalRequest = config;
         sendRefresh(getCookie("refresh_token")).then(async(value)=>{
-            if(value.data.status===false){
+        if(value.data.status===false){
             removeCookie("refresh_token");
             removeCookie("access_token");
-            console.log("invalid token");
-
-           ;
-            return Router.push('/')
+           await Router.push('/')
+           return Promise.resolve();
         }else{
             return await axios(originalRequest);
         }
