@@ -8,7 +8,7 @@ const StyledDiv=styled.div<{marginLeft:string,height:string,zIndex:number}>`
     z-index:${({zIndex})=>zIndex||`1000`};
     max-width:700px;
     display:flex;
-    height:100%;
+    height:100vh;
     top:0;
     left:0;
     overflow-x:hidden;

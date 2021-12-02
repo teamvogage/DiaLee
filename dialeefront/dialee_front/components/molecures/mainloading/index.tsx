@@ -10,7 +10,7 @@ import { useRecoilValue } from 'recoil';
 const StyledLoadingImg=styled.div`
     animation:imgRotationAnim 1s infinite;
     z-index:10000;
-    position:absolute;
+
     @keyframes imgRotationAnim{
         from
         {
