@@ -228,8 +228,8 @@ export const sendRefresh=async(refresh:string)=>{
             message:"성공."
         }
         const expires=oneMonth();
-        setCookie("access_token",res.data.access_token||"no-token");
-        setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires});  
+        setCookie("access_token",res.data.access);
+        setCookie("refresh_token",refresh,{expires:expires});  
         return {data:goodResponse};
     }catch(error){
         removeCookie("refresh_token");
