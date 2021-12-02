@@ -14,7 +14,7 @@ import StyledBodyContainer from '../components/organisms/Body'
 import { ST } from 'next/dist/shared/lib/utils'
 
 
-axios.defaults.baseURL = BASED_URL;
+
 axios.defaults.withCredentials = true;
 axios.defaults.timeout=3000;
 function MyApp({ Component, pageProps }: AppProps) {
