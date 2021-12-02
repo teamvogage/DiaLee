@@ -1,17 +1,17 @@
 import  '../styles/global.css'
 import type { AppProps } from 'next/app'
 import {ThemeProvider} from 'styled-components'
-import Footer from "../components/organisms/footer"
+
 import axios from 'axios'
-import { RecoilRoot,useRecoilValue} from 'recoil';
-import {BASED_URL} from '../lib/constants'
+import { RecoilRoot} from 'recoil';
+
 import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} from '../styles/theme';
 import Head from 'next/head'
 import {CookiesProvider} from 'react-cookie'
 import FlexContainer from '../components/atoms/flexcontainer'
 import MainLoading from '../components/molecures/mainloading'
 import StyledBodyContainer from '../components/organisms/Body'
-import { ST } from 'next/dist/shared/lib/utils'
+
 
 
 

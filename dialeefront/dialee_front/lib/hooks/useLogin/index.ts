@@ -23,12 +23,13 @@ const useLogin=():IUseLogin=>{
             loadingOff();
 
             if(res.data.status===true){
-                const auto=getCookie("auto_login");
+                const auto=getCookie("auto_login_temp");
                
                 if(auto==="true"){
                     const expires=oneMonth()
                     setCookie("access_token",res.data.access_token||"no-token",);
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires});  
+                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires}); 
+                    setCookie("auto_login","true",{expires:expires});   
                 }else{
                     setCookie("access_token",res.data.access_token||"no-token",);
                     setCookie("refresh_token",res.data.refresh_token||"no-token",);
@@ -80,7 +81,7 @@ const useLogin=():IUseLogin=>{
                 const expires=oneMonth()
                 setCookie("access_token",res.data.access_token||"no-token");
                 setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires});  
-           
+                
                 setLogin(true);
             }else{
                 removeCookie("refresh_token");

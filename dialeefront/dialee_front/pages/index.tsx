@@ -107,11 +107,12 @@ const Home: NextPage = () => {
   const {checkLogin,autoLogin}=useLogin();
   const [isDisabled,setDisabled]=useRecoilState(disabledMainState);
   useEffect(()=>{
-    const auto=getCookie("auto_login")
-   
+    const auto=getCookie("auto_login");
+    removeCookie("auto_login_temp");
     checkLogin().then(
       (val)=>
       {
+
         return  val===true?setLogin(true):auto==="true"?autoLogin():setLogin(false);
         //checklogin 에서 accesstoken을 체크함 체크한후 true 면 바로 로그인유지 아니면 auto를 체크해서 true일 경우 자동로그인 
       }
