@@ -115,7 +115,7 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
                     setCookie("access_token",res.data.access_token||"no-token",);
                     setCookie("refresh_token",res.data.refresh_token||"no-token",);
         }
-        axios.defaults.headers.common["Authorization"]=`Bearer ${res.data?.access_token}`;
+      
         return {data:goodResponse};
     }catch(error){
         removeCookie("refresh_token");
@@ -199,7 +199,7 @@ export const sendRefresh=async(refresh:string)=>{
     try{
         removeCookie("refresh_token");
         const res:AxiosResponse<any>=await axios.post(`${api}/accounts/token/refresh/`,{refresh:refresh});
-        axios.defaults.headers.common["Authorization"]=`Bearer ${res.data?.access}`;
+        
         const goodResponse:ILoginData={
             status:true,
             access_token:res.data?.access,

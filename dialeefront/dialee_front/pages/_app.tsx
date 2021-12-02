@@ -13,6 +13,21 @@ import { Cookies } from "react-cookie";
 import { sendRefresh } from '../lib/axios';
 import Router from 'next/router'
 const axiosApiInstance = axios.create();
+axiosApiInstance.interceptors.request.use(async config => {
+    const cookie=new Cookies();
+    const accessToken=cookie.get("access_token");
+    if(!accessToken)
+      return config;
+    config.headers = { 
+      'Authorization': `Bearer ${accessToken}`,
+      'Accept': 'application/json',
+    }
+    return config;
+  },
+  error => {
+    Promise.reject(error)
+});
+ 
 axiosApiInstance.interceptors.response.use((response) => {
   return response
 }, async function async(error) {
