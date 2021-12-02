@@ -20,7 +20,7 @@ const useLogin=():IUseLogin=>{
            
             loadingOn();
             const res=await sendLogin(email,password);
-           // loadingOff();
+            loadingOff();
 
             if(res.data.status===true){
                 const auto=getCookie("auto_login_temp");
