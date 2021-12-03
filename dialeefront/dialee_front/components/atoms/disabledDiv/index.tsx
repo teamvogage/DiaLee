@@ -19,7 +19,7 @@ const StyledDiv=styled.div<{marginLeft:string,height:string,zIndex:number}>`
     
     margin-left:${({marginLeft})=>marginLeft?marginLeft:'0px'};
     background:${(props)=>{
-        return `linear-gradient(180deg, ${props.theme.colors.color1} 7%, ${props.theme.colors.color3} 87%, ${props.theme.colors.main} 100%)`}};
+        return `linear-gradient(180deg, ${props.theme.colors.main} 80%,${props.theme.colors.color2} 94% , ${props.theme.colors.color1} 100%)`}};
     
     animation:loading 0.5s forwards;
         @keyframes loading{

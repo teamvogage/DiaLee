@@ -45,6 +45,7 @@ const MainLoading =()=>{
                 </StyledLoadingImg>
                 <Span size="25" color="black" >{loadingStr}</Span>
             </FlexContainer>
+          
         </DisabledDiv>}
         </>
     )

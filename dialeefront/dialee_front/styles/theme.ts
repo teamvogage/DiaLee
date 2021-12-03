@@ -63,11 +63,11 @@ const fallColorTheme:CcolorTheme={
   
 }
 const winterColorTheme:CcolorTheme={
-    main:"#0B7F21",
-    color1:"#BF0426",
-    color2:"#F20544",
-    color3:"#83A603",
-    color4:"pink",
+    main:"#D1DAE1",
+    color1:"#76848F",
+    color2:"#d8ebff",
+    color3:"#4d5057",
+    color4:"#8e6569",
     
   
 }

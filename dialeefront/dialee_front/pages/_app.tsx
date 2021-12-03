@@ -12,6 +12,7 @@ import StyledBodyContainer from '../components/organisms/Body'
 import { Cookies } from "react-cookie";
 import { sendRefresh } from '../lib/axios';
 import Router from 'next/router'
+import { useState } from 'react';
 const axiosApiInstance = axios.create();
 axiosApiInstance.interceptors.request.use(async config => {
     const cookie=new Cookies();
@@ -53,7 +54,7 @@ axios.defaults.timeout=3000;
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-
+  const [themeState,setThemeState]=useState(retroTheme);
 
   return (<>
   <CookiesProvider>
@@ -62,12 +63,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Myeongjo&display=swap" rel="stylesheet"/></Head>
     
-  <ThemeProvider theme={springTheme}>
+  <ThemeProvider theme={themeState}>
   
   <StyledBodyContainer >
     <FlexContainer direction="row"  align="between">
       <MainLoading/>
-      <Component {...pageProps} />
+      <Component {...pageProps}  onChangeTheme={setThemeState}/>
     </FlexContainer>
     </StyledBodyContainer>
   </ThemeProvider>
