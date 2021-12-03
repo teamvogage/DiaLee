@@ -4,7 +4,7 @@ const MainPage=()=>{
     return(
        
             <WithMenuTemplate>
-
+                작성하기
             </WithMenuTemplate>
      
     )

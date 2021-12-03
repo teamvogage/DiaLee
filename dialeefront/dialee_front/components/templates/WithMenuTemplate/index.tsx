@@ -13,12 +13,12 @@ display:flex;
 flex-direction:row;
 height:200%;
 width:100%;
-transform:translateX(${({active})=>active===false?`-191px`:`100px`});
+transform:translateX(${({active})=>active===false?`-192px`:`100px`});
 transition:transform 1s;
 `
 const StyledSection=styled.section`
 font-size:30px;
-width:90%;
+width:95%;
 margin-left: 10px;
 text-align:center;
 `
@@ -26,12 +26,12 @@ const StyledMain =styled.main`
 height:100vh;
 max-height:800px;
 
-max-width:700px;
+max-width:680px;
 width:100vw;
 position:relative;
-margin-top:1vh;
+
 overflow:visible;
-margin-bottom:5vh;
+
 display:flex;
 flex-direction:column;
 justify-content:flex-start;
