@@ -205,10 +205,18 @@ export const sendRefresh=async(refresh:string)=>{
             access_token:res.data?.access,
             refresh_token:refresh,
             message:"성공."
-        }
-        const expires=oneMonth();
+        }   
         axios.defaults.headers.common['Authorization'] = `Bearer ${goodResponse.access_token}`;
-        setCookie("refresh_token",refresh,{expires:expires});  
+        const auto=getCookie("auto_login_temp");
+        if(auto==="true"){
+                    const expires=oneMonth()
+                  
+                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires}); 
+                    setCookie("auto_login","true",{expires:expires});   
+        }else{
+                    
+                    setCookie("refresh_token",res.data.refresh_token||"no-token",);
+        }
         return {data:goodResponse};
     }catch(error){
         removeCookie("refresh_token");
