@@ -65,17 +65,18 @@ const useLogin=():IUseLogin=>{
                 Router.push("/main");
                 setLogin(true);
             }else{
-           
+                Router.push('/')
                 setLogin(false);
             }
         }catch(error){
+            Router.push('/')
            setLogin(false);
         }
     }
     const checkLogin=async()=>{
         const refresh_token=getCookie("refresh_token")
         if(refresh_token!==undefined||null){
-            return true;
+          return true;
         }    
         else{
             return false;

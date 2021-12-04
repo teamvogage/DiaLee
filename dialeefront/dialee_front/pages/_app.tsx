@@ -50,7 +50,7 @@ axios.defaults.timeout=3000;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [themeState,setThemeState]=useState(retroTheme);
-
+  useEffect(()=>console.log("hi"));
   return (<>
   <CookiesProvider>
   <RecoilRoot>

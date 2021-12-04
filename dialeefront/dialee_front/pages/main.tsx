@@ -4,7 +4,6 @@ import Button from "../components/atoms/button";
 import Image from "../components/atoms/image";
 const MainPage=()=>{
     return(
-       
             <WithMenuTemplate>
                
             
