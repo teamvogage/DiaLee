@@ -24,7 +24,7 @@ const useLogin=():IUseLogin=>{
 
             if(res.data.status===true){
                 
-               
+                Router.push("/main");
                 setLogin(true);
             }else{
               
@@ -62,7 +62,7 @@ const useLogin=():IUseLogin=>{
             const res=await sendRefresh(refresh_token);
             loadingOff();
             if(res.data.status===true){
-              
+                Router.push("/main");
                 setLogin(true);
             }else{
            

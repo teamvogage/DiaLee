@@ -2,7 +2,7 @@ import  '../styles/global.css'
 import type { AppProps } from 'next/app'
 import {ThemeProvider} from 'styled-components'
 import axios from 'axios'
-import { RecoilRoot} from 'recoil';
+import { RecoilRoot,useRecoilState} from 'recoil';
 import {basicTheme, retroTheme,springTheme,summerTheme,fallTheme,winterTheme} from '../styles/theme';
 import Head from 'next/head'
 import {CookiesProvider} from 'react-cookie'
@@ -12,17 +12,12 @@ import StyledBodyContainer from '../components/organisms/Body'
 import { Cookies } from "react-cookie";
 import { sendRefresh } from '../lib/axios';
 import Router from 'next/router'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import useCookie from '../lib/hooks/useCookie';
+import loginState from '../atom/loginState';
+import useLogin from '../lib/hooks/useLogin';
 const axiosApiInstance = axios.create();
 axiosApiInstance.interceptors.request.use(async config => {
-    const cookie=new Cookies();
-    const accessToken=cookie.get("access_token");
-    if(!accessToken)
-      return config;
-    config.headers = { 
-      'Authorization': `Bearer ${accessToken}`,
-      'Accept': 'application/json',
-    }
     return config;
   },
   error => {
@@ -55,7 +50,23 @@ axios.defaults.timeout=3000;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [themeState,setThemeState]=useState(retroTheme);
+  const [isLogin,setLogin] =useRecoilState(loginState);
+  const {checkLogin,autoLogin}=useLogin();
+  useEffect(()=>{
+    checkLogin().then(
+      (val)=>
+      {
 
+        return  val===true?autoLogin():setLogin(false);
+        //checklogin 에서 accesstoken을 체크함 체크한후 true 면 바로 로그인유지 아니면 auto를 체크해서 true일 경우 자동로그인 
+      }
+    ).catch((err)=>{
+       return setLogin(false);
+    })
+
+  },[]);
+ 
+ 
   return (<>
   <CookiesProvider>
   <RecoilRoot>
