@@ -53,6 +53,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   
   const {checkLogin,autoLogin}=useLogin();
   useEffect(()=>{
+    console.log("hi");
     checkLogin()===true?
      autoLogin():Router.push('/');
   });
