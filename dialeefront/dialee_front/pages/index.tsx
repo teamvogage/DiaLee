@@ -103,19 +103,8 @@ animation:upAnimation 4s infinite;
 const Home: NextPage = () => {
  
   const [clicked,setClicked]=useState(false);
-  const [isLogin,setLogin] =useRecoilState(loginState);
-  const {checkLogin,autoLogin}=useLogin();
-  useEffect(()=>{
-    checkLogin().then(
-      (val)=>
-      {
-        return  val===true?autoLogin():setLogin(false);
-      }
-    ).catch((err)=>{
-       return setLogin(false);
-    })
-
-  },[]);
+ 
+ 
   const [isDisabled,setDisabled]=useRecoilState(disabledMainState);
  useEffect(()=>setClicked(false),[]);
   const Waves=<WaveDiv clicked={clicked}>
