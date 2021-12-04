@@ -1,5 +1,4 @@
-import {useRecoilState} from 'recoil'
-import loginState from '../../../atom/loginState';
+
 import { sendLogin, sendLogout,sendRefresh } from '../../axios';
 import useLoading from '../useLoading'
 import useCookie from '../useCookie'
@@ -9,10 +8,10 @@ interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;
     autoLogin:()=>void;
-    checkLogin:()=>Promise<boolean>;
+    checkLogin:()=>boolean;
 }
 const useLogin=():IUseLogin=>{
-    const [isLogin,setLogin]=useRecoilState(loginState);
+    
     const {loadingOn,loadingOff}=useLoading();
     const {getCookie}=useCookie()
     const login=async(email:string,password:string)=>{
@@ -25,10 +24,10 @@ const useLogin=():IUseLogin=>{
             if(res.data.status===true){
                 
                 Router.push("/main");
-                setLogin(true);
+                
             }else{
               
-                setLogin(false);
+               Router.push("/");
             }
             return res.data.message
         }catch(error){
@@ -41,14 +40,11 @@ const useLogin=():IUseLogin=>{
             loadingOn();
             const res=await sendLogout();
             loadingOff();
-            if(res.data.status===true){
-               
-                setLogin(false);
-            }
+           
             Router.push('/')
             return res.data.message;
         }catch(error){
-            setLogin(false);
+           
             Router.push('/')
             if(error)
             return "다시 시도해주세요.(error occured!)"
@@ -57,29 +53,29 @@ const useLogin=():IUseLogin=>{
     }
     const autoLogin=async()=>{
         try{
-            loadingOn();
+           
             const refresh_token=getCookie("refresh_token")
             const res=await sendRefresh(refresh_token);
-            loadingOff();
+           
             if(res.data.status===true){
                 Router.push("/main");
-                setLogin(true);
+               
             }else{
                 Router.push('/')
-                setLogin(false);
+               
             }
         }catch(error){
             Router.push('/')
-           setLogin(false);
+          
         }
     }
-    const checkLogin=async()=>{
+    const checkLogin=()=>{
         const refresh_token=getCookie("refresh_token")
         if(refresh_token!==undefined||null){
           return true;
         }    
         else{
-            return false;
+        return false;
         }
     }
     return {login,logout,autoLogin,checkLogin}
