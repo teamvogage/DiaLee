@@ -75,7 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   <StyledBodyContainer >
     <FlexContainer direction="row"  align="between">
       <MainLoading />
-      {isNotice===true&&<NoticeModal/>}
+      {isNotice===true&&<NoticeModal setNotice={setNotice}/>}
       <Component {...pageProps}  onChangeTheme={setThemeState}/>
     </FlexContainer>
     </StyledBodyContainer>
