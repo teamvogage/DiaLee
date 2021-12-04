@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import DisabledDiv from '../../atoms/disabledDiv';
 import FlexContainer from '../../atoms/flexcontainer';
@@ -23,7 +23,7 @@ const StyledLoadingImg=styled.div`
     }
 `
 
-const MainLoading =()=>{
+const MainLoading =(props:ComponentProps<any>)=>{
     const isLoading=useRecoilValue(loadingState);
     const srcs=["Anchor.png","Gift.png","FairyBall.png","SunFlower.png","Heart.png"]
     const randomSrc=useMemo(()=>Math.floor(Math.random()*srcs.length),[isLoading]);
@@ -43,7 +43,7 @@ const MainLoading =()=>{
                 <StyledLoadingImg>
                     <Image src={`/imoticon/${srcs[randomSrc]}`}  width="40px" height="40px"></Image>
                 </StyledLoadingImg>
-                <Span size="25" color="black" >{loadingStr}</Span>
+                <Span size="25" color="black" >{props.message||loadingStr}</Span>
             </FlexContainer>
           
         </DisabledDiv>}

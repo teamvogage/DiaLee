@@ -50,29 +50,24 @@ axios.defaults.timeout=3000;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [themeState,setThemeState]=useState(retroTheme);
-  const [isLogin,setLogin]=useState(false);
   const {checkLogin,autoLogin}=useLogin();
   useEffect(()=>{
     checkLogin()===true?
-     setLogin(true):setLogin(false);
+    autoLogin():Router.push('/');
 
   },[]);
-  useEffect(()=>{
-    isLogin===true?
-    autoLogin():Router.push('/');
-  },[isLogin])
   return (<>
   <CookiesProvider>
   <RecoilRoot>
   <Head><link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Myeongjo&display=swap" rel="stylesheet"/></Head>
-    
   <ThemeProvider theme={themeState}>
   
   <StyledBodyContainer >
     <FlexContainer direction="row"  align="between">
-      <MainLoading/>
+      <MainLoading />
+      
       <Component {...pageProps}  onChangeTheme={setThemeState}/>
     </FlexContainer>
     </StyledBodyContainer>
