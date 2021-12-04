@@ -6,7 +6,7 @@ import Button from '../../atoms/button';
 import Image from '../../atoms/image';
 import styled from "styled-components";
 
-const StyledModal = styled.div`
+const StyledModal = styled.div<{animationDelay:string,animated:boolean}>`
 background:linear-gradient(180deg,rgba(224,224,224,0.6) 0%, rgba(224,224,148,0.3) 5%, rgba(245,256,220,0.4) 30%, rgba(255,255,255,0.5) 50%, rgba(224,224,255,0.4) 70% ,rgba(225,255,245,0.6) 100%);
 z-index:100;
 position:absolute;
@@ -16,7 +16,8 @@ height:100%;
 padding-bottom:10vh;
 padding-top:10vh;
 transform:translateY(-100vh);
-animation:slideInTopAnim 1s forwards 1.7s;
+animation:${props=>props.animated===false?"none":"slideInTopAnim 1s forwards"};
+animation-delay:${props=>props.animationDelay||'1.7s'};
 `
 
 
@@ -29,7 +30,7 @@ const Modal=({title,confirmBtn,additionalBtns,children,isCancle,animated,animati
     }
     return(<>
         {isActive?<>
-                <StyledModal > 
+                <StyledModal animationDelay={animationDelay} animated={animated}> 
                     <FlexContainer direction="column" align="center" alignItems="center" alignContent="center">
                             <FlexContainer height="auto" align="center" direction="column" alignItems="center" flexGrow={2}>   
                                 <Span size="30">{title}</Span>
