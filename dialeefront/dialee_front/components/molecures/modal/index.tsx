@@ -15,7 +15,7 @@ overflow-y:auto;
 height:100%;
 padding-bottom:10vh;
 padding-top:10vh;
-transform:translateY(-100vh);
+transform:${props=>props.animated===false?"none":"translateY(-100vh)"};
 animation:${props=>props.animated===false?"none":"slideInTopAnim 1s forwards"};
 animation-delay:${props=>props.animationDelay||'1.7s'};
 `

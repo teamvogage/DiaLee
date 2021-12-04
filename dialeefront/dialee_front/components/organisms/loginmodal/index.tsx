@@ -35,7 +35,7 @@ const LoginModal=()=>{
         setCookie("auto_login_temp",`${autoLoginRef.current?.checked}`);
     }
     return (
-    <Modal animationDelay="1.7s" animated={true} top="10%"  width="80%" height="fit-content" title="로그인" confirmBtn={signUp==false?<Button btn_type="ok" onClick={onSignUp}>회원가입</Button>:<Button btn_type="cancle" onClick={onCancleSignUp} >뒤로 </Button>}  zIndex={8000} isCancle="no">
+    <Modal animationDelay="1.7s" animated={true}  height="fit-content" title="로그인" confirmBtn={signUp==false?<Button btn_type="ok" onClick={onSignUp}>회원가입</Button>:<Button btn_type="cancle" onClick={onCancleSignUp} >뒤로 </Button>}  zIndex={8000} isCancle="no">
         {signUp==true?<SignUp ></SignUp>:<>
         <NormalLogin direction="column" onLogin={onLogin} onClickHandler={()=>setNormal(!isNormal)}> </NormalLogin>
         {isNormal===false&&<SocialLogin onLogin={onLogin}/>}
