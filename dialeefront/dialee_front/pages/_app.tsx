@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     console.log("hi");
     checkLogin()===true?
      autoLogin():Router.push('/');
-  });
+  },[]);
   
   return (<>
   <CookiesProvider>
