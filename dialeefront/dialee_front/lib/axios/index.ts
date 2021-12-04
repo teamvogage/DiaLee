@@ -211,11 +211,11 @@ export const sendRefresh=async(refresh:string)=>{
         if(auto==="true"){
                     const expires=oneMonth()
                   
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires}); 
+                    setCookie("refresh_token",refresh,{expires:expires}); 
                     setCookie("auto_login","true",{expires:expires});   
         }else{
                 removeCookie("auto_login")
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",);
+                    setCookie("refresh_token",refresh||"no-token",);
         }
         removeCookie("auto_login_temp")
         return {data:goodResponse};
