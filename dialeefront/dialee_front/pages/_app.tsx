@@ -14,7 +14,7 @@ import { sendRefresh } from '../lib/axios';
 import Router from 'next/router'
 import { useState,useEffect } from 'react';
 import useCookie from '../lib/hooks/useCookie';
-import loginState from '../atom/loginState';
+
 import useLogin from '../lib/hooks/useLogin';
 const axiosApiInstance = axios.create();
 axiosApiInstance.interceptors.request.use(async config => {
@@ -50,14 +50,17 @@ axios.defaults.timeout=3000;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [themeState,setThemeState]=useState(retroTheme);
-  
+  const [isLogin,setLogin]=useState(false);
   const {checkLogin,autoLogin}=useLogin();
   useEffect(()=>{
-    console.log("hi");
     checkLogin()===true?
-     autoLogin():Router.push('/');
+     setLogin(true):setLogin(false);
+
   },[]);
-  
+  useEffect(()=>{
+    isLogin===true?
+    autoLogin():Router.push('/');
+  },[isLogin])
   return (<>
   <CookiesProvider>
   <RecoilRoot>

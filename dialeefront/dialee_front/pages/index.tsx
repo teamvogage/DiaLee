@@ -1,20 +1,12 @@
 import type { NextPage } from 'next'
-import React, { useState,useMemo, useCallback, useEffect } from 'react'
+import React, { useState,useMemo,  useEffect } from 'react'
 
 import disabledMainState from '../atom/disabledMainState'
 import styled from 'styled-components'
 import LoginModal from '../components/organisms/loginmodal'
 import HomeDiv from '../components/atoms/homeDiv'
-import Main from '../components/templates/WithMenuTemplate'
-import FlexContainer from '../components/atoms/flexcontainer'
-import axios from 'axios'
-import StyledBodyContainer from '../components/organisms/Body'
-import useCookie from '../lib/hooks/useCookie'
-import useLogin from "../lib/hooks/useLogin"
-import loginState from '../atom/loginState'
+
 import {useRecoilState} from 'recoil'
-import MainLoading from '../components/molecures/mainloading'
-import  Router  from 'next/router'
 
 
 let PageWaveCover=styled.div`
