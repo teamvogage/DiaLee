@@ -16,7 +16,7 @@ height:100%;
 padding-bottom:10vh;
 padding-top:10vh;
 transform:translateY(-100vh);
-animation:slideInTopAnim 3s forwards 1.7s;
+animation:slideInTopAnim 1s forwards 1.7s;
 `
 
 
