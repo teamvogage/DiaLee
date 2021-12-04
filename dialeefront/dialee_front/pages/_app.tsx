@@ -50,23 +50,7 @@ axios.defaults.timeout=3000;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [themeState,setThemeState]=useState(retroTheme);
-  const [isLogin,setLogin] =useRecoilState(loginState);
-  const {checkLogin,autoLogin}=useLogin();
-  useEffect(()=>{
-    checkLogin().then(
-      (val)=>
-      {
 
-        return  val===true?autoLogin():setLogin(false);
-        //checklogin 에서 accesstoken을 체크함 체크한후 true 면 바로 로그인유지 아니면 auto를 체크해서 true일 경우 자동로그인 
-      }
-    ).catch((err)=>{
-       return setLogin(false);
-    })
-
-  },[]);
- 
- 
   return (<>
   <CookiesProvider>
   <RecoilRoot>
