@@ -115,7 +115,7 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
                     
                     setCookie("refresh_token",res.data.refresh_token||"no-token",);
         }
-      
+        removeCookie("auto_login_temp")
         return {data:goodResponse};
     }catch(error){
  
@@ -217,6 +217,7 @@ export const sendRefresh=async(refresh:string)=>{
                 removeCookie("auto_login")
                     setCookie("refresh_token",res.data.refresh_token||"no-token",);
         }
+        removeCookie("auto_login_temp")
         return {data:goodResponse};
     }catch(error){
         removeCookie("refresh_token");
