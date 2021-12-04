@@ -207,14 +207,14 @@ export const sendRefresh=async(refresh:string)=>{
             message:"성공."
         }   
         axios.defaults.headers.common['Authorization'] = `Bearer ${goodResponse.access_token}`;
-        const auto=getCookie("auto_login_temp");
+        const auto=getCookie("auto_login");
         if(auto==="true"){
                     const expires=oneMonth()
                   
                     setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires}); 
                     setCookie("auto_login","true",{expires:expires});   
         }else{
-                    
+                removeCookie("auto_login")
                     setCookie("refresh_token",res.data.refresh_token||"no-token",);
         }
         return {data:goodResponse};
