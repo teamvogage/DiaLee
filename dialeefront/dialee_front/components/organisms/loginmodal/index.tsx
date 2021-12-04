@@ -7,15 +7,19 @@ import { useState,useRef } from "react";
 import SignUp from "../signup";
 import useLogin from "../../../lib/hooks/useLogin";
 import useCookie from "../../../lib/hooks/useCookie";
-
+import useLoading from "../../../lib/hooks/useLoading";
 const LoginModal=()=>{
     const [signUp,setSignUp]=useState(false);
     const [isNormal,setNormal]=useState(false);
+     
+    const {loadingOn,loadingOff}=useLoading();
     const autoLoginRef=useRef<HTMLInputElement>(null);
     const {login} =useLogin();
     const {setCookie}=useCookie();
     const onLogin=async(email:string,password:string)=>{
+        loadingOn();
         const res=await login(email,password);
+        loadingOff();
         return res||"error";
     }
     const onSignUp=()=>{

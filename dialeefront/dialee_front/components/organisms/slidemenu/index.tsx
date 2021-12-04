@@ -7,7 +7,7 @@ import disabledMainState from '../../../atom/disabledMainState';
 import {  useState } from 'react';
 import {  useRecoilState } from 'recoil';
 import useLogin from '../../../lib/hooks/useLogin';
-
+import useLoading from '../../../lib/hooks/useLoading';
 const StyledSlideMenu = styled.div`
     will-change:left;
     max-height:min-content;
@@ -50,7 +50,7 @@ const SlideMenu=()=>{
     const [click,setClick]=useState(0);
     const {logout}=useLogin();
     const [isDisabledMain,setDisabled] =useRecoilState(disabledMainState);
- 
+    const {loadingOn,loadingOff}=useLoading();
     const onClick=()=>{
        
         setDisabled(!isDisabledMain);
@@ -77,8 +77,9 @@ const SlideMenu=()=>{
         
     }
     const onLogout=()=>{
+        loadingOn();
         logout();
-       
+        loadingOff();
     }
     
     return(

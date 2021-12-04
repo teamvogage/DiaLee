@@ -1,6 +1,5 @@
 
 import { sendLogin, sendLogout,sendRefresh } from '../../axios';
-import useLoading from '../useLoading'
 import useCookie from '../useCookie'
 import {oneMonth} from '../../js/setDate'
 import Router from 'next/router'
@@ -11,15 +10,11 @@ interface IUseLogin{
     checkLogin:()=>boolean;
 }
 const useLogin=():IUseLogin=>{
-    
-    const {loadingOn,loadingOff}=useLoading();
+   
     const {getCookie}=useCookie()
     const login=async(email:string,password:string)=>{
         try{
-           
-            loadingOn();
             const res=await sendLogin(email,password);
-            loadingOff();
 
             if(res.data.status===true){
                 
@@ -37,10 +32,7 @@ const useLogin=():IUseLogin=>{
     }
     const logout=async()=>{
         try{
-            loadingOn();
             const res=await sendLogout();
-            loadingOff();
-           
             Router.push('/')
             return res.data.message;
         }catch(error){

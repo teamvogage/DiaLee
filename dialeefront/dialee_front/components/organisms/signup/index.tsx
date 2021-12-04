@@ -8,7 +8,7 @@ import VoyagerNameInput from '../../molecures/usernameInput';
 import PwdInput from '../../molecures/pwdInput';
 import EmailInput from '../../molecures/emailInput';
 import ConfirmSignUp from "../../molecures/confirmSignUp"
-
+import useLoading from "../../../lib/hooks/useLoading"
 const SignUp=()=>{
   
     const defaultData:ISendAccountData={
@@ -19,7 +19,7 @@ const SignUp=()=>{
        
     }
     const [data,setData]=useState(defaultData);
-
+    const {loadingOn,loadingOff}=useLoading();
     const [stage,setStage]=useState("email");
    
     const changeText=(name:string,value:string)=>{
@@ -58,8 +58,10 @@ const SignUp=()=>{
         const newData={...data};
         newData.password2=newData.password1;
         setData(newData);
+        loadingOn();
         const res=await sendSignUp(newData);
-        console.log(res);
+        loadingOff();
+      
         return res;
      }
    
