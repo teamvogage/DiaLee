@@ -94,10 +94,9 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
         password:pwd
     }
     try{
-        removeCookie("access_token")
+       
         removeCookie("refresh_token")
         const res:AxiosResponse<any>=await axios.post(`${api}/accounts/login/`,data);
-       
         const goodResponse:ILoginData={
             status:true,
             access_token:res.data?.access_token,
@@ -105,20 +104,21 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
             message:"로그인이 성공하였습니다."
         }
         const auto=getCookie("auto_login_temp");
+        axios.defaults.headers.common['Authorization'] = `Bearer ${goodResponse.access_token}`;
                
         if(auto==="true"){
                     const expires=oneMonth()
-                    setCookie("access_token",res.data.access_token||"no-token",);
+                  
                     setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires}); 
                     setCookie("auto_login","true",{expires:expires});   
         }else{
-                    setCookie("access_token",res.data.access_token||"no-token",);
+                    
                     setCookie("refresh_token",res.data.refresh_token||"no-token",);
         }
       
         return {data:goodResponse};
     }catch(error){
-        removeCookie("refresh_token");
+ 
         removeCookie("access_token");
         if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
             const NoResponse:ILoginData={
@@ -207,12 +207,11 @@ export const sendRefresh=async(refresh:string)=>{
             message:"성공."
         }
         const expires=oneMonth();
-        setCookie("access_token",res.data.access);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${goodResponse.access_token}`;
         setCookie("refresh_token",refresh,{expires:expires});  
         return {data:goodResponse};
     }catch(error){
         removeCookie("refresh_token");
-        removeCookie("access_token");
         removeCookie("auto_login");
         if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
             const NoResponse:ILoginData={

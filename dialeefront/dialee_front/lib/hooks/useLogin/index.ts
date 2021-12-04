@@ -73,14 +73,11 @@ const useLogin=():IUseLogin=>{
         }
     }
     const checkLogin=async()=>{
-        const access=getCookie("access_token");
-        if(access!==undefined||null){
-            setLogin(true);
+        const refresh_token=getCookie("refresh_token")
+        if(refresh_token!==undefined||null){
             return true;
-        }
-            
+        }    
         else{
-            setLogin(false);
             return false;
         }
     }
