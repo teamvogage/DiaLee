@@ -16,6 +16,7 @@ import { useState,useEffect } from 'react';
 import useCookie from '../lib/hooks/useCookie';
 
 import useLogin from '../lib/hooks/useLogin';
+import router from 'next/router';
 const axiosApiInstance = axios.create();
 axiosApiInstance.interceptors.request.use(async config => {
     return config;
@@ -53,9 +54,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   const {checkLogin,autoLogin}=useLogin();
   useEffect(()=>{
     checkLogin()===true?
-    autoLogin():Router.push('/');
+    autoLogin():noticeLogin();
 
   },[]);
+  function noticeLogin(){
+    console.log(Router.route)
+  }
   return (<>
   <CookiesProvider>
   <RecoilRoot>
