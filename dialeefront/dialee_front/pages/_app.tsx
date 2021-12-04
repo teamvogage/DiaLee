@@ -14,7 +14,7 @@ import { sendRefresh } from '../lib/axios';
 import Router from 'next/router'
 import { useState,useEffect } from 'react';
 import useCookie from '../lib/hooks/useCookie';
-
+import NoticeModal from '../components/organisms/noticemodal';
 import useLogin from '../lib/hooks/useLogin';
 import router from 'next/router';
 const axiosApiInstance = axios.create();
@@ -52,13 +52,17 @@ axios.defaults.timeout=3000;
 function MyApp({ Component, pageProps }: AppProps) {
   const [themeState,setThemeState]=useState(retroTheme);
   const {checkLogin,autoLogin}=useLogin();
+  const [isNotice,setNotice]=useState(false);
   useEffect(()=>{
     checkLogin()===true?
     autoLogin():noticeLogin();
 
   },[]);
   function noticeLogin(){
-    console.log(Router.route)
+    if(Router.route!=='/')
+      setNotice(true);
+    else
+      Router.push('/');
   }
   return (<>
   <CookiesProvider>
@@ -71,7 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   <StyledBodyContainer >
     <FlexContainer direction="row"  align="between">
       <MainLoading />
-      
+      {isNotice===true&&<NoticeModal/>}
       <Component {...pageProps}  onChangeTheme={setThemeState}/>
     </FlexContainer>
     </StyledBodyContainer>
