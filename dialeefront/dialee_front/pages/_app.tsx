@@ -56,11 +56,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         Router.push('/main')
       else
       {
-        setMessage("로그인이 필요해요. 로그인 정보를 잃은 것 같네요. \n 어쩔 수 없죠. 다시 로그인 해주세요.");
+        setMessage("로그인해야 됩니다.  홈으로 이동합니다.");
         setNotice(true);
       }
     }).catch((err)=>{
-      setMessage("에러가 발생했어요. 서버 문제이거나 인터넷 연결 문제일 수 있어?!@?#!@#!@#!@#123!$>%^&$@$#!@.요. 사실 심각한 오류인척하려고 오타내 봤어요.");
+      setMessage("에러가 발생했어요. 홈으로 이동합니다.");
     })
 
   },[]);
