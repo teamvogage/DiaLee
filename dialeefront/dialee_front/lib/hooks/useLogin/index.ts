@@ -17,11 +17,8 @@ const useLogin=():IUseLogin=>{
 
             if(res.data.status===true){
                 
-                Router.push("/main");
-                
             }else{
-              
-               Router.push("/");
+                Router.push('/')
             }
             return res.data.message
         }catch(error){

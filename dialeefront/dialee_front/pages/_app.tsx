@@ -56,8 +56,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         Router.push('/main')
       else
       {
-        setMessage("로그인해야 됩니다.  홈으로 이동합니다.");
-        setNotice(true);
+        setMessage("로그인해야 됩니다.홈으로 이동합니다.");
+        noticeLogin();
       }
     }).catch((err)=>{
       setMessage("에러가 발생했어요. 홈으로 이동합니다.");
