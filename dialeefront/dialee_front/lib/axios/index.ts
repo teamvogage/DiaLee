@@ -109,11 +109,11 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
         if(auto==="true"){
                     const expires=oneMonth()
                   
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires}); 
+                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires,httpOnly:true}); 
                     setCookie("auto_login","true",{expires:expires});   
         }else{
                     
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",);
+                    setCookie("refresh_token",res.data.refresh_token||"no-token",{httpOnly:true});
         }
         removeCookie("auto_login_temp")
         return {data:goodResponse};
@@ -211,11 +211,11 @@ export const sendRefresh=async(refresh:string)=>{
         if(auto==="true"){
                     const expires=oneMonth()
                   
-                    setCookie("refresh_token",refresh,{expires:expires}); 
+                    setCookie("refresh_token",refresh,{expires:expires,httpOnly:true}); 
                     setCookie("auto_login","true",{expires:expires});   
         }else{
                 removeCookie("auto_login")
-                    setCookie("refresh_token",refresh||"no-token",);
+                    setCookie("refresh_token",refresh||"no-token",{httpOnly:true});
         }
         removeCookie("auto_login_temp")
         return {data:goodResponse};

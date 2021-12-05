@@ -10,9 +10,9 @@ const useCookie =():IuseCookie=>{
         return cookie.get(name);
     }
     const setCookie=(name:string,value:string,options?:any)=>{
-        const option={...options,httpOnly:true};
+      
         
-        cookie.set(name,value,{path:"/",sameSite:"strict",...option})
+        cookie.set(name,value,{path:"/",sameSite:"strict",...options})
     }
     const removeCookie=(name:string,options?:any)=>{
         cookie.remove(name,{...options})
