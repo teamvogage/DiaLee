@@ -16,8 +16,8 @@ const useLogin=():IUseLogin=>{
             const res=await sendLogin(email,password);
 
             if(res.data.status===true){
-                Router.push('/')
-                autoLogin();
+                Router.push('/main')
+             
             }else{
                 Router.push('/')
             }
