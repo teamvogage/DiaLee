@@ -47,7 +47,7 @@ const useLogin=():IUseLogin=>{
         try{
            
             const refresh_token=getCookie("refresh_token")
-            console.log(refresh_token);
+           
             const res=await sendRefresh(refresh_token);
            
             if(res.data.status===true){
@@ -64,6 +64,7 @@ const useLogin=():IUseLogin=>{
     }
     const checkLogin=()=>{
         const refresh_token=getCookie("refresh_token")
+        console.log(refresh_token);
         if(refresh_token!==undefined||null){
           return true;
         }    
