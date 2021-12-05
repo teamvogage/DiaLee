@@ -17,6 +17,7 @@ const useLogin=():IUseLogin=>{
 
             if(res.data.status===true){
                 Router.push('/')
+                autoLogin();
             }else{
                 Router.push('/')
             }
