@@ -13,7 +13,7 @@ const NoticeModal=({setNotice,message}:ComponentProps<any>)=>{
     return(
     <Modal  animated={false}  title="로그인 해야됨." confirmBtn={<Button btn_type="cancle" onClick={onClick} >오케이 </Button>}  zIndex={8000} isCancle="no">
         
-        <Image src="/Error.png" width="100px" height="100px" alt="error"></Image>
+        <Image src="/Error.png" width="300px" height="300px" alt="error"></Image>
         <Span size="20" >{message}</Span>
 
     </Modal>
