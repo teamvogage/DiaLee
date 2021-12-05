@@ -16,7 +16,7 @@ const useLogin=():IUseLogin=>{
             const res=await sendLogin(email,password);
 
             if(res.data.status===true){
-                
+                Router.push('/')
             }else{
                 Router.push('/')
             }
