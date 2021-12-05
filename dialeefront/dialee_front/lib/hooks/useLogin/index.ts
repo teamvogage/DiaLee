@@ -6,7 +6,7 @@ import Router from 'next/router'
 interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;
-    autoLogin:()=>void;
+    autoLogin:()=>Promise<boolean>;
 }
 const useLogin=():IUseLogin=>{
    
@@ -48,14 +48,14 @@ const useLogin=():IUseLogin=>{
             const res=await sendRefresh();
            
             if(res.data.status===true){
-                Router.push("/main");
-                
-            }else{
-                Router.push('/')
                
+                return true;
+            }else{
+                
+               return false;
             }
         }catch(error){
-            Router.push('/')
+           return false;
           
         }
     }
