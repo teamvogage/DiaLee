@@ -2,10 +2,21 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenRefreshSerializer
+from rest_framework_simplejwt.exceptions import InvalidToken
+
+
+from dj_rest_auth.views import LoginView
+from dj_rest_auth.jwt_auth import set_jwt_cookies, set_jwt_refresh_cookie
+
+
 from allauth.account.adapter import get_adapter
 from allauth.utils import email_address_exists
 from allauth.account import app_settings as allauth_settings
+
+from django.conf import settings
+from django.utils import timezone
 
 
 # def check_username_validation(username):
@@ -41,7 +52,78 @@ def check_email_validation(request):
     return Response({'is_valid': True}, status=status.HTTP_200_OK)
 
 
-# import logging
+class CustomLoginView(LoginView):
+    def get_response(self):
 
-# class MyTokenRefreshView(TokenRefreshView):
-#     pass
+        serializer_class = self.get_response_serializer()
+
+        if getattr(settings, 'REST_USE_JWT', False):
+            from rest_framework_simplejwt.settings import (
+                api_settings as jwt_settings,
+            )
+            access_token_expiration = (timezone.now() + jwt_settings.ACCESS_TOKEN_LIFETIME)
+            refresh_token_expiration = (timezone.now() + jwt_settings.REFRESH_TOKEN_LIFETIME)
+            return_expiration_times = getattr(settings, 'JWT_AUTH_RETURN_EXPIRATION', False)
+
+            data = {
+                'user': self.user,
+                'access_token': self.access_token,
+                'refresh_token': self.refresh_token,
+            }
+
+            if return_expiration_times:
+                data['access_token_expiration'] = access_token_expiration
+                data['refresh_token_expiration'] = refresh_token_expiration
+
+            serializer = serializer_class(
+                instance=data,
+                context=self.get_serializer_context(),
+            )
+        elif self.token:
+            serializer = serializer_class(
+                instance=self.token,
+                context=self.get_serializer_context(),
+            )
+        else:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+
+        # refresh token을 httponly cookie로 저장하기 위해 커스텀한 부분!
+        if response.data.get('refresh_token'):
+            cookie_max_age = 3600 * 24 * 30  # 30일
+            response.set_cookie('refresh_token', response.data['refresh_token'], max_age=cookie_max_age, httponly=True )
+            del response.data['refresh_token']
+
+        if getattr(settings, 'REST_USE_JWT', False):
+            set_jwt_cookies(response, self.access_token, self.refresh_token)
+        return response
+
+
+class CookieTokenRefreshSerializer(TokenRefreshSerializer):
+    refresh = None
+    def validate(self, attrs):
+        attrs['refresh'] = self.context['request'].COOKIES.get('refresh_token')
+        if attrs['refresh']:
+            return super().validate(attrs)
+        else:
+            raise InvalidToken("'refresh token' 쿠키에 유효한 토큰이 없습니다.")
+
+
+# class CookieTokenObtainPairView(TokenObtainPairView):
+#   def finalize_response(self, request, response, *args, **kwargs):
+#     if response.data.get('refresh'):
+#         cookie_max_age = 3600 * 24 * 30  # 30일
+#         response.set_cookie('refresh_token', response.data['refresh'], max_age=cookie_max_age, httponly=True )
+#         del response.data['refresh']
+#     return super().finalize_response(request, response, *args, **kwargs)
+
+
+class CookieTokenRefreshView(TokenRefreshView):
+    def finalize_response(self, request, response, *args, **kwargs):
+        if response.data.get('refresh'):
+            cookie_max_age = 3600 * 24 * 30  # 30일
+            response.set_cookie('refresh_token', response.data['refresh'], max_age=cookie_max_age, httponly=True )
+            del response.data['refresh']
+        return super().finalize_response(request, response, *args, **kwargs)
+    serializer_class = CookieTokenRefreshSerializer
