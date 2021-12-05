@@ -3,6 +3,7 @@ import Modal from "../../molecures/modal"
 import Router from 'next/router'
 import Button from "../../atoms/button"
 import Span from "../../atoms/span"
+import Image from "next/dist/client/image"
 import { ComponentProps } from "react"
 const NoticeModal=({setNotice,message}:ComponentProps<any>)=>{
     const onClick=()=>{
@@ -11,6 +12,8 @@ const NoticeModal=({setNotice,message}:ComponentProps<any>)=>{
     }
     return(
     <Modal  animated={false}  title="로그인 해야됨." confirmBtn={<Button btn_type="cancle" onClick={onClick} >오케이 </Button>}  zIndex={8000} isCancle="no">
+        
+        <Image src="/Error.png" width="100px" height="100px" alt="error"></Image>
         <Span size="20" >{message}</Span>
 
     </Modal>
