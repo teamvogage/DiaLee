@@ -17,8 +17,7 @@ export interface ICheckData{
 }
 export interface ILoginData{
     "status":boolean,
-    "access_token":string|null,
-    "refresh_token":string|null,
+
     "message":string,
 }
 
@@ -99,23 +98,10 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
         const res:AxiosResponse<any>=await axios.post(`${api}/accounts/login/`,data);
         const goodResponse:ILoginData={
             status:true,
-            access_token:res.data?.access_token,
-            refresh_token:res.data?.refresh_token,
             message:"로그인이 성공하였습니다."
         }
         const auto=getCookie("auto_login_temp");
-        axios.defaults.headers.common['Authorization'] = `Bearer ${goodResponse.access_token}`;
-               
-        if(auto==="true"){
-                    const expires=oneMonth()
-                  
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",{expires:expires,httpOnly:true}); 
-                    setCookie("auto_login","true",{expires:expires});   
-        }else{
-                    
-                    setCookie("refresh_token",res.data.refresh_token||"no-token",{httpOnly:true});
-        }
-        removeCookie("auto_login_temp")
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.acess_token}`;
         return {data:goodResponse};
     }catch(error){
  
@@ -123,8 +109,6 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
         if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
             const NoResponse:ILoginData={
                 status:false,
-                access_token:null,
-                refresh_token:null,
                 message:"인터넷 문제나 서버문제가 발생하였습니다."
             }
             return {data:NoResponse}
@@ -132,16 +116,14 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
         if((error as AxiosError).response?.status===400){//필드가 비어있음.
             const ServerError:ILoginData={
                 status:false,
-                access_token:null,
-                refresh_token:null,
+
                 message:"이메일이나 비밀번호가 맞지 않습니다.::400"
             }
             return {data:ServerError};
         }
             const ServerError:ILoginData={
                 status:false,
-                access_token:null,
-                refresh_token:null,
+           
                 message:"서버 오류가 발생하였습니다."
             }
             ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`
@@ -154,23 +136,15 @@ export const sendLogout=async()=>{
         await axios.post(`${api}/accounts/logout/`);
         const goodResponse:ILoginData={
             status:true,
-            access_token:null,
-            refresh_token:null,
             message:"로그아웃에 성공하였습니다. "
         }
-        removeCookie("access_token");
-        removeCookie("refresh_token");
-        removeCookie("auto_login")
+    
         return {data:goodResponse}
     }catch(error){
-        removeCookie("access_token");
-        removeCookie("refresh_token");
-        removeCookie("auto_login")
+     
             if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
                 const NoResponse:ILoginData={
                     status:true,
-                    access_token:null,
-                    refresh_token:null,
                     message:"인터넷 문제나 서버문제가 발생하였습니다."
                 }
                 return {data:NoResponse}
@@ -178,16 +152,14 @@ export const sendLogout=async()=>{
             if((error as AxiosError).response?.status===400){//필드가 비어있음.
                 const ServerError:ILoginData={
                     status:true,
-                    access_token:null,
-                    refresh_token:null,
+    
                     message:"잘못된 요청입니다. 다시 시도해주세요.::400"
                 }
                 return {data:ServerError};
             }
             const ServerError:ILoginData={
                     status:true,
-                    access_token:null,
-                    refresh_token:null,
+            
                     message:"서버 오류가 발생하였습니다."
                 }
             ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`
@@ -195,29 +167,17 @@ export const sendLogout=async()=>{
     }
     
 }
-export const sendRefresh=async(refresh:string)=>{
+export const sendRefresh=async()=>{
     try{
-        removeCookie("refresh_token");
-        const res:AxiosResponse<any>=await axios.post(`${api}/accounts/token/refresh/`,{refresh:refresh});
+        
+        const res:AxiosResponse<any>=await axios.post(`${api}/accounts/token/refresh/`);
         
         const goodResponse:ILoginData={
             status:true,
-            access_token:res.data?.access,
-            refresh_token:refresh,
+          
             message:"성공."
         }   
-        axios.defaults.headers.common['Authorization'] = `Bearer ${goodResponse.access_token}`;
-        const auto=getCookie("auto_login");
-        if(auto==="true"){
-                    const expires=oneMonth()
-                  
-                    setCookie("refresh_token",refresh,{expires:expires,httpOnly:true}); 
-                    setCookie("auto_login","true",{expires:expires});   
-        }else{
-                removeCookie("auto_login")
-                    setCookie("refresh_token",refresh||"no-token",{httpOnly:true});
-        }
-        removeCookie("auto_login_temp")
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data?.access}`;
         return {data:goodResponse};
     }catch(error){
         removeCookie("refresh_token");
@@ -225,8 +185,6 @@ export const sendRefresh=async(refresh:string)=>{
         if(!(error as AxiosError).response){//인터넷 문제  요청이 안보내짐 
             const NoResponse:ILoginData={
                 status:false,
-                access_token:null,
-                refresh_token:null,
                 message:"인터넷 문제나 서버문제가 발생하였습니다."
             }
             return {data:NoResponse}
@@ -234,16 +192,14 @@ export const sendRefresh=async(refresh:string)=>{
         if((error as AxiosError).response?.status===400){//필드가 비어있음.
             const ServerError:ILoginData={
                 status:false,
-                access_token:null,
-                refresh_token:null,
+    
                 message:"이메일이나 비밀번호가 맞지 않습니다.::400"
             }
             return {data:ServerError};
         }
             const ServerError:ILoginData={
                 status:false,
-                access_token:null,
-                refresh_token:null,
+
                 message:"서버 오류가 발생하였습니다."
             }
             ServerError.message=`${ServerError.message}::${(error as AxiosError).response?.status}`

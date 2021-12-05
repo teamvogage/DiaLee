@@ -30,12 +30,8 @@ axiosApiInstance.interceptors.response.use((response) => {
 }, async function async(error) {
   const originalRequest = error.config;
   if (error.response.status === 401 && !originalRequest._retry) {
-    const cookie=new Cookies();
     originalRequest._retry = true;
-    const refreshToken=cookie.get("refresh_token");
-    if(!refreshToken)
-      return Router.push("/");
-    const res=await sendRefresh(refreshToken);
+    const res=await sendRefresh();
     if(res.data.status===true)
       return axios(originalRequest);
     if(res.data.status===false)
@@ -51,11 +47,10 @@ axios.defaults.timeout=3000;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [themeState,setThemeState]=useState(retroTheme);
-  const {checkLogin,autoLogin}=useLogin();
+  const {autoLogin}=useLogin();
   const [isNotice,setNotice]=useState(false);
   useEffect(()=>{
-    checkLogin()===true?
-    autoLogin():noticeLogin();
+    autoLogin();
 
   },[]);
   function noticeLogin(){

@@ -7,7 +7,6 @@ interface IUseLogin{
     login:(email:string,password:string)=>Promise<string|undefined>;
     logout:()=>Promise<string|undefined>;
     autoLogin:()=>void;
-    checkLogin:()=>boolean;
 }
 const useLogin=():IUseLogin=>{
    
@@ -45,9 +44,7 @@ const useLogin=():IUseLogin=>{
     }
     const autoLogin=async()=>{
         try{
-           
-            const refresh_token=getCookie("refresh_token")
-           
+        
             const res=await sendRefresh(refresh_token);
            
             if(res.data.status===true){
@@ -62,16 +59,6 @@ const useLogin=():IUseLogin=>{
           
         }
     }
-    const checkLogin=()=>{
-        const refresh_token=getCookie("refresh_token")
-        console.log(refresh_token);
-        if(refresh_token!==undefined||null){
-          return true;
-        }    
-        else{
-        return false;
-        }
-    }
-    return {login,logout,autoLogin,checkLogin}
+    return {login,logout,autoLogin}
 }
 export default useLogin;
