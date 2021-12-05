@@ -45,11 +45,11 @@ const useLogin=():IUseLogin=>{
     const autoLogin=async()=>{
         try{
         
-            const res=await sendRefresh(refresh_token);
+            const res=await sendRefresh();
            
             if(res.data.status===true){
                 Router.push("/main");
-               
+                
             }else{
                 Router.push('/')
                
