@@ -47,6 +47,7 @@ const useLogin=():IUseLogin=>{
         try{
            
             const refresh_token=getCookie("refresh_token")
+            console.log(refresh_token);
             const res=await sendRefresh(refresh_token);
            
             if(res.data.status===true){
