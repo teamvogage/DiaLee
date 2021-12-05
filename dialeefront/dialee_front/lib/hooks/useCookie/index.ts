@@ -10,7 +10,7 @@ const useCookie =():IuseCookie=>{
         return cookie.get(name);
     }
     const setCookie=(name:string,value:string,options?:any)=>{
-        const option={...options};
+        const option={...options,httpOnly:true};
         
         cookie.set(name,value,{path:"/",sameSite:"strict",...option})
     }
