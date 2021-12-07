@@ -9,9 +9,9 @@ import useLoading from "../../../lib/hooks/useLoading"
 const NoticeModal=({setNotice,message}:ComponentProps<any>)=>{
     const {loadingFake }= useLoading();
     const onClick=()=>{
-        setNotice(false);
-        loadingFake(4000);
-        Router.push('/');
+       
+     loadingFake(4000,()=>{ setNotice(false);return Router.push('/');});
+        
     }
 
     return(

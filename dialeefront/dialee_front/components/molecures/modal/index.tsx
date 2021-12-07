@@ -7,7 +7,7 @@ import Image from '../../atoms/image';
 import styled from "styled-components";
 
 const StyledModal = styled.div<{animationDelay:string,animated:boolean}>`
-background:linear-gradient(180deg,rgba(224,224,224,0.6) 0%, rgba(224,224,148,0.3) 5%, rgba(245,256,220,0.4) 30%, rgba(255,255,255,0.5) 50%, rgba(224,224,255,0.4) 70% ,rgba(225,255,245,0.6) 100%);
+background:linear-gradient(180deg,rgba(0,0,0,1) 0%, rgba(30,30,30,0.8) 5%, rgba(30,30,30,0.4) 30%, rgba(20,20,20,0.5) 50%, rgba(30,30,30,0.4) 70% ,rgba(0,0,0,0.8) 90%,rgba(0,0,0,0.8) 100%);
 z-index:100;
 position:absolute;
 width:100%;
