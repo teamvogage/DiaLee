@@ -92,11 +92,13 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
     try{
        
         removeCookie("refresh_token")
+        
         const res:AxiosResponse<any>=await axios.post(`${api}/accounts/login/`,data);
         const goodResponse:ILoginData={
             status:true,
             message:"로그인이 성공하였습니다."
         }
+        removeCookie("crsftoken")
         const auto=getCookie("auto_login_temp");
         axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.acess_token}`;
         return {data:goodResponse};
