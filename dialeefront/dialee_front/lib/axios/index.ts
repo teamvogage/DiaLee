@@ -1,9 +1,6 @@
 import axios, { AxiosError,AxiosResponse } from "axios"
-import { useRecoilBridgeAcrossReactRoots_UNSTABLE } from "recoil";
 import {api} from "../constants"
 import useCookie from "../hooks/useCookie";
-import {oneMonth} from '../js/setDate'
-import Router from "next/router"
 export interface ISendAccountData{
     [index:string]:string;
     "voyager_name": string,
@@ -138,7 +135,7 @@ export const sendLogout=async()=>{
             status:true,
             message:"로그아웃에 성공하였습니다. "
         }
-    
+        removeCookie("refresh_token");
         return {data:goodResponse}
     }catch(error){
      

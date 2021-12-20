@@ -1,8 +1,13 @@
-import StyledBodyContainer from "../components/organisms/Body";
+
 import WithMenuTemplate from "../components/templates/WithMenuTemplate"
-import Button from "../components/atoms/button";
-import Image from "../components/atoms/image";
-const MainPage=()=>{
+import {GetStaticProps} from 'next';
+
+export const getStaticProps:GetStaticProps=async(context) =>{
+    return {
+      props: {}, // will be passed to the page component as props
+    }
+  }
+ const MainPage=()=>{
     return(
             <WithMenuTemplate>
                
