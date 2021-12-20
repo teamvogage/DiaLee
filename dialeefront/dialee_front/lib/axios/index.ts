@@ -98,8 +98,12 @@ export const sendLogin=async(email:string,pwd:string)=>{//로그인
             status:true,
             message:"로그인이 성공하였습니다."
         }
-        removeCookie("crsftoken")
-        const auto=getCookie("auto_login_temp");
+        const csrftoken = getCookie('csrftoken');
+        axios.defaults.xsrfCookieName = 'csrftoken'; 
+        axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.acess_token}`;
         return {data:goodResponse};
     }catch(error){
