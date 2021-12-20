@@ -57,7 +57,7 @@ export const sendCheckEmail=async(email:string)=>{//이메일체크
         }
         return {data:goodResponse}
     }catch(error){
-        console.log(error);
+        
         if(!(error as AxiosError).response){//인터넷 문제 아예 요청이 안보내짐 
             const NoResponse:ICheckData={
                 is_valid:false,
@@ -136,6 +136,7 @@ export const sendLogout=async()=>{
             message:"로그아웃에 성공하였습니다. "
         }
         removeCookie("refresh_token");
+        console.log("remove");
         return {data:goodResponse}
     }catch(error){
      
