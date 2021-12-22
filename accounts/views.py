@@ -2,13 +2,13 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
+from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from rest_framework_simplejwt.exceptions import InvalidToken
 
 
-from dj_rest_auth.views import LoginView
-from dj_rest_auth.jwt_auth import set_jwt_cookies, set_jwt_refresh_cookie
+from dj_rest_auth.views import LoginView, LogoutView
+from dj_rest_auth.jwt_auth import set_jwt_cookies, unset_jwt_cookies
 
 
 from allauth.account.adapter import get_adapter
@@ -17,6 +17,8 @@ from allauth.account import app_settings as allauth_settings
 
 from django.conf import settings
 from django.utils import timezone
+from django.contrib.auth import logout as django_logout
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # def check_username_validation(username):
@@ -97,6 +99,57 @@ class CustomLoginView(LoginView):
 
         if getattr(settings, 'REST_USE_JWT', False):
             set_jwt_cookies(response, self.access_token, self.refresh_token)
+        return response
+
+
+class CustomLogoutView(LogoutView):
+    def logout(self, request):
+        try:
+            request.user.auth_token.delete()
+        except (AttributeError, ObjectDoesNotExist):
+            pass
+
+        if getattr(settings, 'REST_SESSION_LOGIN', True):
+            django_logout(request)
+
+        response = Response(
+            {'detail': 'Successfully logged out.'},
+            status=status.HTTP_200_OK,
+        )
+
+        if getattr(settings, 'REST_USE_JWT', False):
+            from rest_framework_simplejwt.exceptions import TokenError
+            from rest_framework_simplejwt.tokens import RefreshToken
+
+            cookie_name = getattr(settings, 'JWT_AUTH_COOKIE', None)
+
+            unset_jwt_cookies(response)
+
+            if 'rest_framework_simplejwt.token_blacklist' in settings.INSTALLED_APPS:
+                # add refresh token to blacklist
+                try:
+                    token = RefreshToken(request.data['refresh'])
+                    token.blacklist()
+                except KeyError:
+                    response.data = {'detail': 'Refresh token was not included in request data.'}
+                    response.status_code =status.HTTP_401_UNAUTHORIZED
+                except (TokenError, AttributeError, TypeError) as error:
+                    if hasattr(error, 'args'):
+                        if 'Token is blacklisted' in error.args or 'Token is invalid or expired' in error.args:
+                            response.data = {'detail': error.args[0]}
+                            response.status_code = status.HTTP_401_UNAUTHORIZED
+                        else:
+                            response.data = {'detail': 'An error has occurred.'}
+                            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+
+                    else:
+                        response.data = {'detail': 'An error has occurred.'}
+                        response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+
+            elif not cookie_name:
+                # 빈 refresh_token 쿠키 추가
+                response.set_cookie('refresh_token', "")
+
         return response
 
 
